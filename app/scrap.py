@@ -1,5 +1,5 @@
 from bs4 import *
-from config import *
+from .config import *
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -72,5 +72,3 @@ def scrape(topic):
     return topics
 
             
-
-print(scrape("Mobile Computing"))
