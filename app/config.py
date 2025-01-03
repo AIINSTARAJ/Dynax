@@ -1,3 +1,4 @@
+DEVELOPER = "A.I Instaraj"
 API_TOKEN = "7722543471:AAEK5AmgqYcavwicxMQfDvndf1wt5KsyFzI"
 START_MSG = "Hey!. This is Dynax ✨"
 ABOUT_MSG = "Dynax!. A bot for scraping metadata about research publications.Built with Love by A.I Instaraj🏅🌹."
