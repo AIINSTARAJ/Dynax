@@ -51,16 +51,21 @@ def handle_query(call):
 
 def search(message):
     try:
-        loading_msg = bot.reply_to(message,"Loading...... 💎💍")
-        results = scrape(message)
+        loading_msg = bot.reply_to(message, "Loading...... 💎💍")
+        results = scrape(message.text)
+        
         if not results:
-            bot.edit_message_text("No results Found! 📞🎗",chat_id=loading_msg.chat.id,message_id=loading_msg.message_id)
-        for i,paper in enumerate(results):
-            bot.send_message(message.chat.id, f"{i + 1}.\n Title : {paper['Title']}\n Author: {paper['Author']}\n Year: {paper['Year']}\n Citations: {paper['Cited']}\n Link: {paper['Link']}\n")
-            time.sleep(0.5)
-        bot.edit_message_text("Search Completed ✔✨!",chat_id=loading_msg.chat.id,message_id=loading_msg.message_id)
-    except Exception as E:
-        bot.edit_message_text(f"An Error Occured!{E} ✖➰",chat_id=loading_msg.chat.id,message_id=loading_msg.message_id)
+            bot.edit_message_text("No results Found! 📞🎗", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
+        else:
+            paper = results[0]  # Get the first result (or select another index if needed)
+            paper_str = f"Title: {paper['Title']}\nAuthor: {paper['Author']}\nYear: {paper['Year']}\nCitations: {paper['Cite']}\nLink: {paper['Link']}\n"
+            bot.send_message(message.chat.id, paper_str)
+        
+        bot.edit_message_text("Search Completed ✔✨!", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
+    
+    except Exception as e:
+        bot.edit_message_text(f"An Error Occurred! {e} ✖➰", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
+
 
 
 def find(message):
