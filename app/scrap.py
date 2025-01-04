@@ -1,5 +1,5 @@
 from bs4 import *
-from .config import *
+from config import *
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -12,10 +12,13 @@ import time
 
 def driver_init():
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-logging")
     chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--ignore-certificate-errors")
+    chrome_options.add_argument("--ignore-ssl-errors")
     service = Service(executable_path=DRIVER)
     driver = webdriver.Chrome(options=chrome_options,service=service)
     return driver
@@ -29,14 +32,14 @@ def scrape(topic):
     button_box = driver.find_element(By.ID,"gs_hdr_tsb")
     button_box.click()
 
-    topic_field = WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.ID,"gs_res_ccl"))
-    )
+    WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID,"gs_res_ccl_mid")))
 
+    content = driver.page_source
 
+    soup = BeautifulSoup(content,"html.parser")
     topics = []
-
-    papers = topic_field.find_elements(By.CLASS_NAME,"gs_r gs_or gs_scl")
+    papers = soup.find_elements(By.CLASS_NAME,"gs_r gs_or gs_scl")
+    print(papers)
     
     for paper in papers:
         Title = paper.find_element(By.ID,"JTvu6eNE3PwJ").text
@@ -67,8 +70,12 @@ def scrape(topic):
             "Link" : Link
         }
 
+
         topics.append(Research)
+
+    driver.quit()
 
     return topics
 
             
+print(scrape("Inroduction to Computing"))
