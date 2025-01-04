@@ -4,8 +4,8 @@ from app.scrap import *
 
 bot = TeleBot(API_TOKEN)
 
-def menu(msg):
-    menu_markup = util.quick_markup({
+
+menu_markup = util.quick_markup({
         'Search':{
             'callback_data':'search',
         },
@@ -19,7 +19,7 @@ def menu(msg):
             'callback_data':'download',
         },
     },row_width=2)
-    return menu_markup
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -33,7 +33,7 @@ def start(message):
 def menu(message):
     bot.send_message(message.chat.id,
                      "Interface with Dynax! 💍💎",
-                     reply_markup = menu(message))
+                     reply_markup = menu_markup)
 
 @bot.callback_query_handler(func=lambda call:True)
 def handle_query(call):
@@ -41,7 +41,7 @@ def handle_query(call):
         bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to search for! 🎗🎫")
         bot.register_next_step_handler(call.message,search)
     elif call.data == 'help':
-        bot.send_message(call.message.chat.id,"This bot allows you to search for academic publications metadata. Use the 'Search' button to begin")
+        bot.reply_to(call.message,"This bot allows you to search for academic publications metadata. Use the 'Search' button to begin")
     elif call.data == 'get':
         bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to find! 🎗🎫")
         bot.register_next_step_handler(call.message,find)
@@ -60,7 +60,7 @@ def search(message):
             time.sleep(0.5)
         bot.edit_message_text("Search Completed ✔✨!",chat_id=loading_msg.chat.id,message_id=loading_msg.message_id)
     except Exception as E:
-        bot.edit_message_text("An Error Occured! ✖➰",chat_id=loading_msg.chat.id,message_id=loading_msg.message_id)
+        bot.edit_message_text(f"An Error Occured!{E} ✖➰",chat_id=loading_msg.chat.id,message_id=loading_msg.message_id)
 
 
 def find(message):
