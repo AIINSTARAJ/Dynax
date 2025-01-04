@@ -37,15 +37,15 @@ def scrape(topic):
     content = driver.page_source
 
     soup = BeautifulSoup(content,"html.parser")
+    papers = soup.find_all("div", class_ = "gs_ri")
     topics = []
-    papers = soup.find_elements(By.CLASS_NAME,"gs_r gs_or gs_scl")
-    print(papers)
-    
     for paper in papers:
-        Title = paper.find_element(By.ID,"JTvu6eNE3PwJ").text
-        Link =  paper.find_element(By.ID,"JTvu6eNE3PwJ").get_attribute("href")
-        elements = paper.find_element(By.CLASS_NAME, "gs_a")
-        elems = elements.text.split('-')
+        Title_A = paper.find("h3",class_ = "gs_rt")
+        Title = Title_A.text
+        Link_A = Title_A.find('a')
+        Link = Link_A.get('href')
+        elements = paper.find("div", class_ = "gs_a").text
+        elems = elements.split('-')
         Author_Attr = elems[0]
         if len(Author_Attr.split(',')) == 1:
             Author = Author_Attr
@@ -56,11 +56,11 @@ def scrape(topic):
             Year = Year_Attr.split(',')[1]
         else:
             Year = Year_Attr
-        params = paper.find_element(By.CLASS_NAME,"gs_fl gs_flb")
-        links = params.find_elements(By.NAME,'a')
+        params = paper.find("div",class_ = "gs_fl gs_flb")
+        links = params.find_all('a')
         for  link in links:
             if link.text.startswith('Cited'):
-                Cite = link.text.split()
+                Cite = link.text.split(" ")
                 Cited = Cite[2]
         Research = {
             "Title": Title,
