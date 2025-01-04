@@ -47,7 +47,7 @@ def handle_query(call):
         bot.register_next_step_handler(call.message,find)
     elif call.data == 'download':
         bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to download! 🎗🎫")
-        bot.register_next_step_handler(call.message,download)
+        bot.register_next_step_handler(call.message, download)
 
 def search(message):
     try:
