@@ -54,7 +54,7 @@ def handle_query(call):
 def send_results_separately(results, index=0, message=None):
     if index < len(results):
         paper = results[index]
-        paper_str = f"<b>Title:</b> {paper['Title']}\n<b>Author:</b> {paper['Author']}\n<b>Year:</b> {paper['Year']}\n<b>Citations:</b> {paper['Cite']}\n<b>Link:</b> <a href='{paper['Link']}'>{paper['Link']}</a>"
+        paper_str = f"<b>Title:</b> {paper['Title']}\n<b>Author: {paper['Author']}</b>\n<b>Year:</b> {paper['Year']}\n<b>Citations:</b> {paper['Cite']}\n<b>Link:</b> <a href='{paper['Link']}'>{paper['Link']}</a>"
         bot.send_message(message.chat.id, paper_str,parse_mode="HTML",disable_web_page_preview=False)
         time.sleep(0.2)
         send_results_separately(results, index + 1, message)

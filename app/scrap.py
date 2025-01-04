@@ -27,17 +27,22 @@ def scrape(topic):
     formatted_topic = topic.replace(" ", "+")
     url = f"https://scholar.google.com/scholar?q={formatted_topic}"
 
-    response = requests.get(url)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+    }
+
+
+    response = requests.get(url,headers=headers)
 
     time.sleep(10)
 
 
-    soup = BeautifulSoup(response,"html.parser")
+    soup = BeautifulSoup(response.text,"html.parser")
     papers = soup.find_all("div", class_ = "gs_ri")
     topics = []
     for paper in papers:
         Title_A = paper.find("h3",class_ = "gs_rt")
-        Title = Title_A.text
+        Title = Title_A.text.upper()
         Link_A = Title_A.find('a')
         Link = Link_A.get('href')
         elements = paper.find("div", class_ = "gs_a").text
@@ -68,5 +73,5 @@ def scrape(topic):
 
 
         topics.append(Research)
-        
+
     return topics
