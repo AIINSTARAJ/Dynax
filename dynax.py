@@ -5,6 +5,7 @@ from app.scrap import *
 bot = TeleBot(API_TOKEN)
 
 
+
 menu_markup = util.quick_markup({
         'Search':{
             'callback_data':'search',
@@ -37,7 +38,7 @@ def menu(message):
 
 @bot.callback_query_handler(func=lambda call:True)
 def handle_query(call):
-    bot.edit_message_text(f"Command: '{call.data.capitalize()}'", chat_id=call.message.chat.id, message_id=call.message.message_id)
+    bot.edit_message_text(f"Command: <b>'{call.data.upper()}'</b>", parse_mode="HTML",chat_id=call.message.chat.id, message_id=call.message.message_id)
     if call.data == 'search':
         bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to search for! 🎗🎫")
         bot.register_next_step_handler(call.message,search)
@@ -53,8 +54,8 @@ def handle_query(call):
 def send_results_separately(results, index=0, message=None):
     if index < len(results):
         paper = results[index]
-        paper_str = f"Title: {paper['Title']}\nAuthor: {paper['Author']}\nYear: {paper['Year']}\nCitations: {paper['Cite']}\nLink: {paper['Link']}\n"
-        bot.send_message(message.chat.id, paper_str)
+        paper_str = f"<b>Title:</b> {paper['Title']}\n<b>Author:</b> {paper['Author']}\n<b>Year:</b> {paper['Year']}\n<b>Citations:</b> {paper['Cite']}\n<b>Link:</b> <a href='{paper['Link']}'>{paper['Link']}</a>"
+        bot.send_message(message.chat.id, paper_str,parse_mode="HTML")
         time.sleep(0.2)
         send_results_separately(results, index + 1, message)
 
@@ -66,7 +67,7 @@ def search(message):
             bot.edit_message_text("No results Found! 📞🎗", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
         else:
             send_results_separately(results, message=message)       
-        bot.edit_message_text("Search Completed ✔✨!", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
+        bot.edit_message_text(f"Search Completed! : <b>{'message.text'}</b> ✔✨", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
     except Exception as e:
         bot.edit_message_text(f"An Error Occurred! {e} ✖➰", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
 
