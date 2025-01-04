@@ -10,7 +10,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-def driver_init():
+'''def driver_init():
     chrome_options = Options()
     #chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
@@ -21,22 +21,18 @@ def driver_init():
     chrome_options.add_argument("--ignore-ssl-errors")
     service = Service(executable_path=DRIVER)
     driver = webdriver.Chrome(options=chrome_options,service=service)
-    return driver
+    return driver'''
 
 def scrape(topic):
-    driver = driver_init()
-    driver.get(URL)
-    time.sleep(5)
-    search_box = driver.find_element(By.NAME, "q")
-    search_box.send_keys(topic)
-    button_box = driver.find_element(By.ID,"gs_hdr_tsb")
-    button_box.click()
+    formatted_topic = topic.replace(" ", "+")
+    url = f"https://scholar.google.com/scholar?q={formatted_topic}"
 
-    WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID,"gs_res_ccl_mid")))
+    response = requests.get(url)
 
-    content = driver.page_source
+    time.sleep(10)
 
-    soup = BeautifulSoup(content,"html.parser")
+
+    soup = BeautifulSoup(response,"html.parser")
     papers = soup.find_all("div", class_ = "gs_ri")
     topics = []
     for paper in papers:
@@ -72,7 +68,5 @@ def scrape(topic):
 
 
         topics.append(Research)
-
-    driver.quit()
-
+        
     return topics
