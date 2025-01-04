@@ -37,6 +37,7 @@ def menu(message):
 
 @bot.callback_query_handler(func=lambda call:True)
 def handle_query(call):
+    bot.edit_message_text(f"Command: '{call.data.capitalize()}'", chat_id=call.message.chat.id, message_id=call.message.message_id)
     if call.data == 'search':
         bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to search for! 🎗🎫")
         bot.register_next_step_handler(call.message,search)
@@ -49,24 +50,25 @@ def handle_query(call):
         bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to download! 🎗🎫")
         bot.register_next_step_handler(call.message, download)
 
+def send_results_separately(results, index=0, message=None):
+    if index < len(results):
+        paper = results[index]
+        paper_str = f"Title: {paper['Title']}\nAuthor: {paper['Author']}\nYear: {paper['Year']}\nCitations: {paper['Cite']}\nLink: {paper['Link']}\n"
+        bot.send_message(message.chat.id, paper_str)
+        time.sleep(0.2)
+        send_results_separately(results, index + 1, message)
+
 def search(message):
     try:
         loading_msg = bot.reply_to(message, "Loading...... 💎💍")
-        results = scrape(message.text)
-        
+        results = scrape(message.text) 
         if not results:
             bot.edit_message_text("No results Found! 📞🎗", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
         else:
-            paper = results[0]  # Get the first result (or select another index if needed)
-            paper_str = f"Title: {paper['Title']}\nAuthor: {paper['Author']}\nYear: {paper['Year']}\nCitations: {paper['Cite']}\nLink: {paper['Link']}\n"
-            bot.send_message(message.chat.id, paper_str)
-        
+            send_results_separately(results, message=message)       
         bot.edit_message_text("Search Completed ✔✨!", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
-    
     except Exception as e:
         bot.edit_message_text(f"An Error Occurred! {e} ✖➰", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
-
-
 
 def find(message):
     ''
