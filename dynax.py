@@ -4,7 +4,7 @@ from app.scrap import *
 
 bot = TeleBot(API_TOKEN)
 
-def menu():
+def menu(msg):
     menu_markup = util.quick_markup({
         'Search':{
             'callback_data':'search',
@@ -33,7 +33,7 @@ def start(message):
 def menu(message):
     bot.send_message(message.chat.id,
                      "Interface with Dynax! 💍💎",
-                     reply_markup = menu())
+                     reply_markup = menu(message))
 
 @bot.callback_query_handler(func=lambda call:True)
 def handle_query(call):
