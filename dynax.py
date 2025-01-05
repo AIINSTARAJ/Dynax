@@ -19,7 +19,9 @@ menu_markup = util.quick_markup({
         'DOWNLOAD':{
             'callback_data':'download',
         },
-    },row_width=2)
+    },
+    row_width=2
+)
 
 
 @bot.message_handler(commands=['start'])
@@ -40,23 +42,17 @@ def menu(message):
 def handle_query(call):
     bot.edit_message_text(f"Command: <b>'{call.data.upper()}'</b>", parse_mode="HTML", chat_id=call.message.chat.id, message_id=call.message.message_id)
     if call.data == 'search':
-        bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to search for! 🎗🎫")
+        bot.send_message(call.message.chat.id,"Please enter the topic or keyword you want to search for! 🎗🎫")
         bot.register_next_step_handler(call.message,search)
     elif call.data == 'help':
         bot.reply_to(call.message,"This bot allows you to search for academic publications metadata. Use the 'Search' button to begin")
-    elif call.data == 'get':
-        bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to find! 🎗🎫")
-        bot.register_next_step_handler(call.message,find)
-    elif call.data == 'download':
-        bot.send_message(call.message.chat.id,"Please send the topic or keyboard you want to download! 🎗🎫")
-        bot.register_next_step_handler(call.message, download)
 
 def send_results_separately(results, index=0, message=None):
     if index < len(results):
         paper = results[index]
         paper_str = f"<b>Title:</b> {paper['Title']}\n<b>Author: {paper['Author']}</b>\n<b>Year:</b> {paper['Year']}\n<b>Citations:</b> {paper['Cite']}\n<b>Link:</b> <a href='{paper['Link']}'>{paper['Link']}</a>"
-        bot.send_message(message.chat.id, paper_str,parse_mode="HTML",disable_web_page_preview=False)
-        time.sleep(0.2)
+        bot.send_message(message.chat.id, paper_str,parse_mode="HTML", disable_web_page_preview=False)
+        time.sleep(0.1)
         send_results_separately(results, index + 1, message)
 
 def search(message):
@@ -70,10 +66,5 @@ def search(message):
         bot.edit_message_text(f"Search Completed! : <b>{message.text}</b> ✔✨", parse_mode='HTML',chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
     except Exception as e:
         bot.edit_message_text(f"An Error Occurred! {e} ✖➰", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
-
-def find(message):
-    ''
-def download(message):
-    ''
 
 bot.polling()
