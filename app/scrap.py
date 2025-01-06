@@ -34,8 +34,7 @@ def scrape(topic):
 
     response = requests.get(url,headers=headers)
 
-    time.sleep(10)
-
+    time.sleep(15)
 
     soup = BeautifulSoup(response.text,"html.parser")
     papers = soup.find_all("div", class_ = "gs_ri")
