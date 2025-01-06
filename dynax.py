@@ -10,14 +10,8 @@ menu_markup = util.quick_markup({
         'Search':{
             'callback_data':'search',
         },
-        'GET':{
-            'callback_data':'get',
-        },
         'HELP':{
             'callback_data':'help',
-        },
-        'DOWNLOAD':{
-            'callback_data':'download',
         },
     },
     row_width=2
