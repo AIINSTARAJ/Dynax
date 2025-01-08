@@ -5,3 +5,4 @@ ABOUT_MSG = "Dynax!. A bot for scraping metadata about research publications. Bu
 URL = "https://scholar.google.com"
 DRIVER = "C:\\Users\\USER\\OneDrive\\Documents\\Advanced Projects\\Dynax\src\\chromedriver.exe"
 NAME = "Dynax!"
+DEPLOY_OPTIONS = "REMDER"
