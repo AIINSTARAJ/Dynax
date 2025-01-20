@@ -20,8 +20,25 @@ menu_markup = util.quick_markup({
 
 def read_():
     with open('readme.md',encoding='cp1252') as r:
-        p = r.read()
-        return p
+        content_ = r.read()
+        return content_
+    
+
+def split_message(text, max_length=4000):
+    lines = text.splitlines()
+    chunks, current_chunk = [], []
+    current_length = 0
+    for line in lines:
+        if current_length + len(line) + 1 > max_length:
+            chunks.append('\n'.join(current_chunk))
+            current_chunk = [line]
+            current_length = len(line) + 1
+        else:
+            current_chunk.append(line)
+            current_length += len(line) + 1
+    if current_chunk:
+        chunks.append('\n'.join(current_chunk))
+    return chunks
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -31,11 +48,15 @@ def start(message):
 def start(message):
     bot.send_message(message.chat.id,ABOUT_MSG)
 
-@bot.message_handler(commands=['res'])
+@bot.message_handler(commands=['info'])
 def res_(message):
-    long_text = read_()
-    bot.send_message(message.chat.id,long_text,parse_mode="MarkdownV2 ")
+    con = read_()
+    long_text = con.replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('-', '\\-').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('.', '\\.').replace('!', '\\!')
+    chunks = split_message(long_text)
+    for chunk in chunks:
+        bot.send_message(chat_id="YOUR_CHAT_ID", text=chunk, parse_mode="MarkdownV2")
 
+        
 @bot.message_handler(commands=['menu'])
 def menu(message):
     bot.send_message(message.chat.id,
@@ -71,5 +92,4 @@ def search(message):
     except Exception as e:
         bot.edit_message_text(f"An Error Occurred! {e} ✖➰", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
 
-read_()
 bot.polling()
