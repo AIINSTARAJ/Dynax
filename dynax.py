@@ -18,6 +18,10 @@ menu_markup = util.quick_markup({
 )
 
 
+def read_():
+    with open('readme.md',encoding='cp1252') as r:
+        return r.read()
+
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id,START_MSG)
@@ -28,7 +32,7 @@ def start(message):
 
 @bot.message_handler(commands=['res'])
 def res_(message):
-    bot.send_message(message.chat.id,open('readme.md'))
+    bot.send_message(message.chat.id,read_(),parse_mode="MarkdownV2 ")
 
 @bot.message_handler(commands=['menu'])
 def menu(message):
