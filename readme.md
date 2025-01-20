@@ -24,7 +24,7 @@ Web scraping has emerged as a powerful technique for extracting data from websit
 
     *Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metadata fields.*
 
-*Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.*
+    *Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.*
 
 3.2 Telegram Bot Integration
 
