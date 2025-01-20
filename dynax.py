@@ -51,12 +51,12 @@ def start(message):
 @bot.message_handler(commands=['info'])
 def res_(message):
     con = read_()
-    long_text = con.replace('_', '\\_').replace('*', '\\*').replace('[', '\\[').replace(']', '\\]').replace('(', '\\(').replace(')', '\\)').replace('~', '\\~').replace('`', '\\`').replace('>', '\\>').replace('#', '\\#').replace('+', '\\+').replace('-', '\\-').replace('=', '\\=').replace('|', '\\|').replace('{', '\\{').replace('}', '\\}').replace('.', '\\.').replace('!', '\\!')
+    long_text = con.replace('_', '').replace('*', '').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('~', '').replace('`', '').replace('>', '').replace('#', '').replace('+', '').replace('-', '').replace('=', '').replace('|', '').replace('{', '').replace('}', '').replace('.', '').replace('!', '')
     chunks = split_message(long_text)
     for chunk in chunks:
-        bot.send_message(chat_id="YOUR_CHAT_ID", text=chunk, parse_mode="MarkdownV2")
+        bot.send_message(message.chat.id, text=chunk, parse_mode="MarkdownV2")
 
-        
+
 @bot.message_handler(commands=['menu'])
 def menu(message):
     bot.send_message(message.chat.id,
