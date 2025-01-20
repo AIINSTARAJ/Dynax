@@ -16,15 +16,15 @@ Web scraping has emerged as a powerful technique for extracting data from websit
 
 3. Methodology
 
-3.1 Web Scraping
+    3.1 Web Scraping
 
-The bot employs Python's BeautifulSoup library to parse HTML content and extract metadata from academic paper repositories. The scraping process involves:
+    *The bot employs Python's BeautifulSoup library to parse HTML content and extract metadata from academic paper repositories. The scraping process involves:*
 
-Identifying Target Sources: Selecting reputable academic databases or websites for data extraction.
+    *Identifying Target Sources: Selecting reputable academic databases or websites for data extraction.*
 
-Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metadata fields.
+*Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metadata fields.*
 
-Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.
+*Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.*
 
 3.2 Telegram Bot Integration
 
