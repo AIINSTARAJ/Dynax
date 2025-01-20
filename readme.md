@@ -51,7 +51,7 @@
 #### * **References**
 
 * Complete guide to web Scraping for academic research
-* How to Scrape Websites for Academic Research: A Tutorial
+* How to Scrap Websites for Academic Research: A Tutorial
 * Writing a Python web scraper for academic papers with RapidAPI.
 * Web Scraping - ResearchGate .
 * A study on Web Scraping - Technoarete
