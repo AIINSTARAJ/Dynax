@@ -44,7 +44,7 @@
    Integrating web scraping with a Telegram bot offers a convenient method for accessing academic paper metadata. The study highlights the importance of adhering to ethical guidelines in web scraping, including respecting terms of service and implementing rate limiting to prevent server overload. The user feedback indicates a positive reception, with users appreciating the ease of accessing scholarly information through the bot.
 6. #### **Conclusion**
 
-   The research demonstrates the feasibility and effectiveness of using a Telegram bot to scrape and deliver academic paper metadata. This approach enhances accessibility to scholarly data, benefiting researchers and professionals by providing a streamlined method for obtaining relevant information. Future work may involve expanding the bot's capabilities to include additional features, such as full-text retrieval and integration with multiple databases.
+   This research demonstrates the feasibility and effectiveness of using a Telegram bot to scrape and deliver academic paper metadata, providing a streamlined and accessible solution for researchers and professionals. The bot simplifies access to key information such as titles, authors, abstracts, and DOIs within Telegram. Future enhancements may include full-text retrieval, integration with multiple databases, and personalized search features, further enriching its utility and impact on scholarly research.
 
 #### **References**
 
