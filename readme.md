@@ -22,7 +22,7 @@ Web scraping has emerged as a powerful technique for extracting data from websit
 
     *Identifying Target Sources: Selecting reputable academic databases or websites for data extraction.*
 
-*Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metadata fields.*
+    *Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metadata fields.*
 
 *Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.*
 
