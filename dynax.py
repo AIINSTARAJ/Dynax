@@ -20,7 +20,8 @@ menu_markup = util.quick_markup({
 
 def read_():
     with open('readme.md',encoding='cp1252') as r:
-        return r.read()
+        p = r.read()
+        return p
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -32,7 +33,8 @@ def start(message):
 
 @bot.message_handler(commands=['res'])
 def res_(message):
-    bot.send_message(message.chat.id,read_(),parse_mode="MarkdownV2 ")
+    long_text = read_()
+    bot.send_message(message.chat.id,long_text,parse_mode="MarkdownV2 ")
 
 @bot.message_handler(commands=['menu'])
 def menu(message):
@@ -69,4 +71,5 @@ def search(message):
     except Exception as e:
         bot.edit_message_text(f"An Error Occurred! {e} ✖➰", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
 
+read_()
 bot.polling()
