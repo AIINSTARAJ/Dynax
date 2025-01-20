@@ -32,13 +32,13 @@ Web scraping has emerged as a powerful technique for extracting data from websit
 
     *Bot Setup: Registering the bot with Telegram and obtaining the API token.*
 
-*Command Handlers: Implementing functions to process user inputs and trigger the appropriate scraping functions.*
+    *Command Handlers: Implementing functions to process user inputs and trigger the appropriate scraping functions.*
 
-*User Interaction: Designing a user-friendly interface that allows users to request metadata and receive responses in a readable format.*
+    *User Interaction: Designing a user-friendly interface that allows users to request metadata and receive responses in a readable format.*
 
 4. Results
 
-The developed Telegram bot successfully retrieves and delivers academic paper metadata upon user request. The bot's performance was evaluated based on:
+    The developed Telegram bot successfully retrieves and delivers academic paper metadata upon user request. The bot's performance was evaluated based on:
 
 Accuracy: Correctness of the extracted metadata.
 
