@@ -1,10 +1,10 @@
 ***Dynax! A Scraper for Academic and Research Publications.***
 
-Title: Developing an Interactive Telegram Bot for Scraping Metadata of Academic Papers
+**Developing an Interactive Telegram Bot for Scraping Metadata of Academic Papers**
 
-  **Abstract:
+Abstract:
 
-This paper presents the design and implementation of an interactive Telegram bot utilizing the pyTelegramBotAPI library to scrap and deliver metadata from academic papers. The bot enables users to request and receive information such as titles, authors, publication dates, abstracts, and DOIs directly through Telegram, streamlining access to scholarly data. The development process encompasses web scraping techniques, bot integration, and user interface design, ensuring a user-friendly experience.
+    This paper presents the design and implementation of an interactive Telegram bot utilizing the pyTelegramBotAPI library to scrap and deliver metadata from academic papers. The bot enables users to request and receive information such as titles, authors, publication dates, abstracts, and DOIs directly through Telegram, streamlining access to scholarly data. The development process encompasses web scraping techniques, bot integration, and user interface design, ensuring a user-friendly experience.
 
 1. Introduction
 
@@ -52,18 +52,18 @@ This paper presents the design and implementation of an interactive Telegram bot
 
 6. Conclusion
 
-The research demonstrates the feasibility and effectiveness of using a Telegram bot to scrape and deliver academic paper metadata. This approach enhances accessibility to scholarly data, benefiting researchers and professionals by providing a streamlined method for obtaining relevant information. Future work may involve expanding the bot's capabilities to include additional features, such as full-text retrieval and integration with multiple databases.
+    The research demonstrates the feasibility and effectiveness of using a Telegram bot to scrape and deliver academic paper metadata. This approach enhances accessibility to scholarly data, benefiting researchers and professionals by providing a streamlined method for obtaining relevant information. Future work may involve expanding the bot's capabilities to include additional features, such as full-text retrieval and integration with multiple databases.
 
 References
 
-Complete guide to web Scraping for academic research
+    Complete guide to web Scraping for academic research
 
-How to Scrape Websites for Academic Research: A Tutorial
+    How to Scrape Websites for Academic Research: A Tutorial
 
-Writing a Python web scraper for academic papers with RapidAPI
+    Writing a Python web scraper for academic papers with RapidAPI
 
-Web Scraping - ResearchGate
+    Web Scraping - ResearchGate
 
-A study on Web Scraping - Technoarete
+    A study on Web Scraping - Technoarete
 
 This paper provides a comprehensive overview of developing an interactive Telegram bot for scraping and delivering academic paper metadata, offering insights into the integration of web scraping techniques with messaging platforms to enhance access to scholarly information.
