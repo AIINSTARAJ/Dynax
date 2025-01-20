@@ -4,17 +4,17 @@
 
 ### AUTHOR: *A.I Instaraj.*
 
-### **Abstract:**
+#### **Abstract:**
 
-    This paper presents the design and implementation of an interactive Telegram bot utilizing the pyTelegramBotAPI library to scrap and deliver metadata from academic papers. The bot enables users to request and receive information such as titles, authors, publication dates, abstracts, and DOIs directly through Telegram, streamlining access to scholarly data. The development process encompasses web scraping techniques, bot integration, and user interface design, ensuring a user-friendly and intuitive experience.
+    This paper presents the design and implementation of an advanced interactive Telegram bot, developed using the pyTelegramBotAPI library, to streamline access to    academic research metadata. The bot empowers users to retrieve comprehensive information, including titles, authors, publication dates, abstracts, and DOIs, directly within the Telegram platform. By integrating robust web scraping techniques with intuitive bot commands, the solution delivers seamless, real-time access to scholarly content. The design prioritizes user engagement through an intuitive interface, providing a responsive and efficient means of enhancing research productivity and information retrieval for students, researchers, and academics.
 
 1. #### **Introduction**
 
    Accessing comprehensive metadata of academic papers is essential for researchers and professionals in all fields. Traditional methods often involve manual searches across multiple databases, which can be time-consuming. This study introduces a Telegram bot that automates the retrieval of academic paper metadata, providing users with a seamless and efficient tool for accessing scholarly information.
-2. #### **Literature Review**
+3. #### **Literature Review**
 
    Web scraping has emerged as a powerful technique for extracting data from websites, facilitating the collection of large datasets for research purposes. Previous studies have explored various aspects of web scraping, including its applications in academic research and the development of tools for data extraction. However, integrating web scraping with messaging platforms like Telegram for real-time data delivery remains an area with limited exploration.
-3. #### **Methodology**
+4. #### **Methodology**
 
    ##### **3.1 *Web Scraping***
 
