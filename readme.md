@@ -20,21 +20,21 @@ Web scraping has emerged as a powerful technique for extracting data from websit
 
     *The bot employs Python's BeautifulSoup library to parse HTML content and extract metadata from academic paper repositories. The scraping process involves:*
 
-    *Identifying Target Sources: Selecting reputable academic databases or websites for data extraction.*
+    I*dentifying Target Sources: Selecting reputable academic databases or websites for data extraction.*
 
     *Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metadata fields.*
 
     *Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.*
 
-3.2 Telegram Bot Integration
+    3.2 Telegram Bot Integration
 
-The pyTelegramBotAPI library facilitates the creation of the Telegram bot, which includes:
+    *The pyTelegramBotAPI library facilitates the creation of the Telegram bot, which includes:*
 
-Bot Setup: Registering the bot with Telegram and obtaining the API token.
+    *Bot Setup: Registering the bot with Telegram and obtaining the API token.*
 
-Command Handlers: Implementing functions to process user inputs and trigger the appropriate scraping functions.
+*Command Handlers: Implementing functions to process user inputs and trigger the appropriate scraping functions.*
 
-User Interaction: Designing a user-friendly interface that allows users to request metadata and receive responses in a readable format.
+*User Interaction: Designing a user-friendly interface that allows users to request metadata and receive responses in a readable format.*
 
 4. Results
 
