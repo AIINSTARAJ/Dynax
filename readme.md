@@ -1,11 +1,10 @@
 ***Dynax! A Scraper for Academic and Research Publications.***
 
-
 Title: Developing an Interactive Telegram Bot for Scraping Metadata of Academic Papers
 
-Abstract:
+  **Abstract:
 
-This paper presents the design and implementation of an interactive Telegram bot utilizing the pyTelegramBotAPI library to scrape and deliver metadata from academic papers. The bot enables users to request and receive information such as titles, authors, publication dates, abstracts, and DOIs directly through Telegram, streamlining access to scholarly data. The development process encompasses web scraping techniques, bot integration, and user interface design, ensuring a user-friendly experience.
+This paper presents the design and implementation of an interactive Telegram bot utilizing the pyTelegramBotAPI library to scrap and deliver metadata from academic papers. The bot enables users to request and receive information such as titles, authors, publication dates, abstracts, and DOIs directly through Telegram, streamlining access to scholarly data. The development process encompasses web scraping techniques, bot integration, and user interface design, ensuring a user-friendly experience.
 
 1. Introduction
 
@@ -27,7 +26,6 @@ Parsing HTML Content: Using BeautifulSoup to navigate and extract relevant metad
 
 Data Storage: Organizing the extracted data into a structured format, such as a database or CSV file, for easy retrieval.
 
-
 3.2 Telegram Bot Integration
 
 The pyTelegramBotAPI library facilitates the creation of the Telegram bot, which includes:
@@ -38,7 +36,6 @@ Command Handlers: Implementing functions to process user inputs and trigger the 
 
 User Interaction: Designing a user-friendly interface that allows users to request metadata and receive responses in a readable format.
 
-
 4. Results
 
 The developed Telegram bot successfully retrieves and delivers academic paper metadata upon user request. The bot's performance was evaluated based on:
@@ -48,7 +45,6 @@ Accuracy: Correctness of the extracted metadata.
 Response Time: Speed of delivering information to users.
 
 User Satisfaction: Feedback from users regarding the bot's usability and functionality.
-
 
 5. Discussion
 
@@ -70,7 +66,4 @@ Web Scraping - ResearchGate
 
 A study on Web Scraping - Technoarete
 
-
 This paper provides a comprehensive overview of developing an interactive Telegram bot for scraping and delivering academic paper metadata, offering insights into the integration of web scraping techniques with messaging platforms to enhance access to scholarly information.
-
-
