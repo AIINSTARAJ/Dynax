@@ -26,6 +26,10 @@ def start(message):
 def start(message):
     bot.send_message(message.chat.id,ABOUT_MSG)
 
+@bot.message_handler(commands=['res'])
+def res_(message):
+    bot.send_message(message.chat.id,open('readme.md'))
+
 @bot.message_handler(commands=['menu'])
 def menu(message):
     bot.send_message(message.chat.id,
