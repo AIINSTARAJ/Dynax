@@ -18,27 +18,12 @@ menu_markup = util.quick_markup({
 )
 
 
-def read_():
-    with open('readme.md',encoding='cp1252') as r:
+def read_(file):
+    with open(file,encoding='cp1252') as r:
         content_ = r.read()
         return content_
     
 
-def split_message(text, max_length=4000):
-    lines = text.splitlines()
-    chunks, current_chunk = [], []
-    current_length = 0
-    for line in lines:
-        if current_length + len(line) + 1 > max_length:
-            chunks.append('\n'.join(current_chunk))
-            current_chunk = [line]
-            current_length = len(line) + 1
-        else:
-            current_chunk.append(line)
-            current_length += len(line) + 1
-    if current_chunk:
-        chunks.append('\n'.join(current_chunk))
-    return chunks
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -47,14 +32,6 @@ def start(message):
 @bot.message_handler(commands=['about'])
 def start(message):
     bot.send_message(message.chat.id,ABOUT_MSG)
-
-@bot.message_handler(commands=['info'])
-def res_(message):
-    con = read_()
-    long_text = con.replace('_', '').replace('*', '').replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace('~', '').replace('`', '').replace('>', '').replace('#', '').replace('+', '').replace('-', '').replace('=', '').replace('|', '').replace('{', '').replace('}', '').replace('.', '').replace('!', '')
-    chunks = split_message(long_text)
-    for chunk in chunks:
-        bot.send_message(message.chat.id, text=chunk, parse_mode="MarkdownV2")
 
 
 @bot.message_handler(commands=['menu'])
