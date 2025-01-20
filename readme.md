@@ -4,7 +4,7 @@
 
 ### AUTHOR: *A.I Instaraj.*
 
-##### * **Abstract:**
+### * **Abstract:**
 
     This paper presents the design and implementation of an advanced interactive Telegram bot, developed using the pyTelegramBotAPI library, to streamline access to  academic research metadata. The bot empowers users to retrieve comprehensive information, including titles, authors, publication dates, citations, abstracts, and DOIs, directly within the Telegram platform. By integrating robust web scraping techniques with intuitive bot commands, the solution delivers seamless, real-time access to scholarly content. The design prioritizes user engagement through an intuitive  interface, providing a responsive and efficient means of enhancing research productivity and information retrieval for students, researchers, and academias.
 
