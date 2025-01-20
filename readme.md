@@ -1,6 +1,6 @@
 # ***Dynax! A Scraper for Academic and Research Publications.***
 
-### **TITLE: Developing an Interactive Telegram Bot for Scraping Metadata of Academic Papers**
+### **TITLE: Design and Implementation of an Interactive Telegram Bot for Automated Retrieval of Academic Paper Metadata.**
 
 ### AUTHOR: *A.I Instaraj.*
 
