@@ -2,6 +2,7 @@ DEVELOPER = "A.I Instaraj"
 API_TOKEN = "7722543471:AAEK5AmgqYcavwicxMQfDvndf1wt5KsyFzI"
 SECRET_KEY = "Abbr..8080:4025x%3054.{}@index.dyn.las"
 SQLALCHEMY_DATABASE_URI = 'sqlite:///C:\\Users\\USER\\OneDrive\\Documents\\Advanced Projects\\Dynax\\src\\assets\\data\\data.db'
+STATIC_FOLDER = 'src/assets'
 START_MSG = "Hey!. This is Dynax ✨"
 ABOUT_MSG = "Dynax!. A bot for scraping metadata about research publications. Built with Love by A.I Instaraj🏅🌹."
 URL = "https://scholar.google.com"

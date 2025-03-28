@@ -14,7 +14,7 @@ app.config.from_pyfile('app\\config.py')
 
 db.init_app(app)
 
-app.register_blueprint(auth_)
+app.register_blueprint(auth_,url_prefix='/auth_')
 
 app.register_blueprint(logic_)
 
@@ -24,7 +24,11 @@ def index():
 
 @app.route('/favicon.ico')
 def icon():
-    return send_from_directory(directory="./src/assets/img",path="favicon.ico")
+    return send_from_directory(directory=app.config["STATIC_FOLDER"],path="img/favicon.ico")
+
+@app.route('/robots.txt')
+def robots():
+    return send_from_directory(directory=app.config["STATIC_FOLDER"],path="info/robots.txt")
 
 if __name__ == '__main__':
     app.run(debug=True,host='0.0.0.0',port=5425)

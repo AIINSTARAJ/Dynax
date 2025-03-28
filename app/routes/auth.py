@@ -21,7 +21,7 @@ auth_ = Blueprint('auth',
             import_name='__name__',
             static_folder='./src',
             template_folder='./src/templates',
-            url_prefix='auth_'
+            url_prefix='/auth_'
             )
 
 class Token:
@@ -81,15 +81,21 @@ def signup():
         else:
             TokenHandler = Token()
 
-            token = TokenHandler.generate_token(form_name,form_mail,form_study_field,form_res_ins,form_edu_level,form_pwd)
+            token = TokenHandler.generate_token(form_name,form_mail,form_study_field,form_res_ins,form_edu_level,pwd_)
 
             session['name'] = form_name
             session['mail'] = form_mail
             session['field'] = form_study_field
             session['interest'] = form_res_ins
             session['level'] = form_edu_level
-            session['pwd'] = form_pwd
+            session['pwd'] = pwd_
             session['token'] = token
+
+            new_user = user(username = form_name, mail = form_mail, res_field = form_study_field, 
+                            res_ins = form_res_ins,acad_level = form_edu_level,password = pwd_, token = token)
+            db.session.add(new_user)
+            db.session.commit() 
+
 
             flash("Signup Sucessful!.","sucess")
             print('----- Signup Successful -----')
@@ -143,7 +149,7 @@ def login():
             
         return render_template('login.html')
     
-@auth_.post('logout')
+@auth_.post('/logout')
 def logout():
     session.pop("name")
     session.pop("mail")
@@ -153,4 +159,24 @@ def logout():
     session.pop("pwd")
     session.pop("token")
 
+    return redirect(url_for('index'))
+
+@auth_.post('/del-acc')
+def delete_account():
+    ses_name = session["name"]
+    ses_mail = session["mail"]
+    ses_pwd = session['pwd']
+    ses_token = session['token']   
+    User = user.query.filter_by(username = ses_name,mail = ses_mail,token = ses_token,password=ses_pwd).first()
+    db.session.delete(User)
+    db.session.commit()
+    
+    session.pop("name")
+    session.pop("mail")
+    session.pop("field")
+    session.pop("interest")
+    session.pop("level")
+    session.pop("pwd")
+    session.pop("token")
+    
     return redirect(url_for('index'))
