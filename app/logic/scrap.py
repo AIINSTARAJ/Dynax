@@ -1,5 +1,5 @@
 from bs4 import *
-from .config import *
+from ..config import *
 import requests
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -23,7 +23,7 @@ import time
     driver = webdriver.Chrome(options=chrome_options,service=service)
     return driver'''
 
-def scrape(topic):
+def scrap_(topic):
     formatted_topic = topic.replace(" ", "+")
     url = f"https://scholar.google.com/scholar?q={formatted_topic}"
 

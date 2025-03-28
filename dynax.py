@@ -1,6 +1,6 @@
 from telebot import *
 from app.config import *
-from app.scrap import *
+from app.logic.scrap import *
 
 bot = TeleBot(API_TOKEN)
 
@@ -60,7 +60,7 @@ def send_results_separately(results, index=0, message=None):
 def search(message):
     try:
         loading_msg = bot.reply_to(message, "Loading...... 💎💍")
-        results = scrape(message.text) 
+        results = scrap_(message.text) 
         if not results:
             bot.edit_message_text("No results Found! 📞🎗", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
         else:
