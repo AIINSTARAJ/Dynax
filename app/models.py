@@ -14,6 +14,7 @@ class user(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     username = db.Column(db.String(12),nullable = False)
     mail = db.Column(db.String(48),nullable = False)
+    res_field = db.Column(db.String(48),nullable = False)
     res_ins = db.Column(db.String(48),nullable = False)
     acad_level = db.Column(db.String(48),nullable = False)
     password = db.Column(db.String(128),nullable = False)
