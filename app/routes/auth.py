@@ -115,12 +115,13 @@ def login():
             return redirect(url_for('logic.scrap'))
         
     except Exception as E:
-        
+
         if request.method == "POST":
+            name_ = request.form["user-name"]
             mail_ = request.form['res-mail']
             pwd_ = request.form['res-pwd']
 
-            User = user.query.filter_by(mail = mail_).first()
+            User = user.query.filter_by(username = name_,mail = mail_).first()
             p = check_password_hash(User.password,pwd_)
 
             if User and p:
@@ -136,7 +137,7 @@ def login():
                 try:
                     return redirect(url_for("logic.scrap"))
                 except Exception as E:
-                    print('----- Failed to Access Chat Routes-----')
+                    print('----- Failed to Access Scrap Routes-----')
 
             else:
                 print(f'---- Password Incorrect --- {User.username}')

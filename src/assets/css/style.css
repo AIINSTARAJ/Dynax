@@ -64,7 +64,8 @@ body {
     gap: 15px;
 }
 
-.login-btn, .signup-btn {
+.login-btn,
+.signup-btn {
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 6px;
@@ -82,7 +83,7 @@ body {
 }
 
 .signup-btn {
-    background-color:#0e123a;
+    background-color: #0e123a;
     color: var(--text-primary);
 }
 
@@ -208,7 +209,7 @@ body {
     transform: translateY(-5px);
 }
 
-.part-img{
+.part-img {
     width: 240px;
     height: 172px;
     margin: 0 auto 20px;
@@ -245,7 +246,7 @@ body {
     font-size: 18px;
 }
 
-#foot-gr-stl{
+#foot-gr-stl {
     font-size: 18px;
     margin-top: 6px;
     color: white;

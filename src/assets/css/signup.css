@@ -64,7 +64,8 @@ body {
     gap: 15px;
 }
 
-.login-btn, .signup-btn {
+.login-btn,
+.signup-btn {
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 6px;
@@ -82,7 +83,7 @@ body {
 }
 
 .signup-btn {
-    background-color:#0e123a;
+    background-color: #0e123a;
     color: var(--text-primary);
 }
 
@@ -90,13 +91,13 @@ body {
     background-color: rgb(97, 156, 147);
 }
 
-.logo-container{
+.logo-container {
     text-align: center;
     margin-bottom: 2rem;
     margin-top: 20px;
 }
 
-.logo-x{
+.logo-x {
     font-size: 36px;
     font-weight: 700;
     color: #3a86ff;
@@ -105,36 +106,36 @@ body {
     align-items: center;
 }
 
-.logo-icon{
+.logo-icon {
     display: inline-block;
     margin-right: 8px;
     height: 5rem;
     width: 5rem;
     border-radius: 8px;
-    background: linear-gradient(135deg,#3a86ff,#8338ec);
+    background: linear-gradient(135deg, #3a86ff, #8338ec);
     position: relative;
 }
 
-.logo-icon::after{
+.logo-icon::after {
     content: "";
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 4px;
     background-color: black;
 }
 
-p{
+p {
     text-align: center;
     font-size: 28px;
     margin-top: 20px;
     color: var(--text-secondary);
 }
 
-#form-sl-g{
+#form-sl-g {
     width: 720px;
     height: 976px;
     background-color: rgb(26, 26, 54);
@@ -146,23 +147,23 @@ p{
     padding-right: 5px;
 }
 
-h1{
+h1 {
     text-align: center;
     color: var(--text-secondary);
     margin-bottom: 8px;
     margin-top: 0px;
 }
 
-.dyn-label{
+.dyn-label {
     display: block;
     font-size: 24px;
     font-weight: 500;
-    color:var(--text-secondary);
+    color: var(--text-secondary);
     margin-left: 220px;
     margin-top: 20px;
 }
 
-.input-group{
+.input-group {
     width: 280px;
     margin-left: 220px;
     height: 36px;
@@ -174,15 +175,15 @@ h1{
     color: whitesmoke;
 }
 
-input:focus{
+input:focus {
     box-shadow: 0 0 0 3px rgb(22, 218, 185);
 }
 
-.dyn-ins{
+.dyn-ins {
     position: relative;
 }
 
-.dyn-toggle{
+.dyn-toggle {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -194,7 +195,7 @@ input:focus{
     right: 232px;
 }
 
-#btn-res{
+#btn-res {
     margin-left: 280px;
     background-color: rgb(14, 136, 218);
     margin-top: 02px;
@@ -208,21 +209,21 @@ input:focus{
     color: wheat;
 }
 
-#btn-res:hover{
+#btn-res:hover {
     background-color: #2563eb;
 }
 
-#dyn-go-upp{
+#dyn-go-upp {
     margin-top: -4px;
 }
 
-.dyn-under{
+.dyn-under {
     text-align: center;
     margin-top: -5px;
     align-items: center;
 }
 
-#dyn-alt{
+#dyn-alt {
     text-align: center;
     font-size: 18px;
     margin-top: 10px;
@@ -235,11 +236,11 @@ input:focus{
     color: gold;
 }
 
-#dyn-alt a:hover{
+#dyn-alt a:hover {
     text-decoration: underline;
 }
 
-#dyn-error-msg{
+#dyn-error-msg {
     font-size: 16px;
     margin-left: 220px;
     margin-top: -8px;
@@ -257,7 +258,7 @@ input:focus{
     font-size: 18px;
 }
 
-#foot-gr-stl{
+#foot-gr-stl {
     font-size: 18px;
     margin-top: 6px;
     color: white;
