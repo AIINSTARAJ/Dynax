@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> LogIn! </title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/login.css')}}">
+</head>
+<body>
+    <div class="container">
+        
+        <nav class="navbar">
+
+            <div class="logo"> Dynax! </div>
+
+            <ul class="nav-links">
+                <li><a href="#"> Analyze </a></li>
+                <li><a href="#"> Search </a></li>
+                <li><a href="#"> History </a></li>
+                <li><a href="#"> About </a></li>
+            </ul>
+
+            <div class="auth-buttons">
+                <a href="/auth_/login" class="login-btn"> Log In </a>
+                <a href="/auth_/signup" class="signup-btn"> Sign Up </a>
+            </div>
+
+        </nav>
+
+
+        <div class="logo-container"> 
+            <div class="logo-x"> 
+                <span class="logo-icon"></span>
+                Dynax!
+            </div>
+            <p> Log In to your Account. </p>
+        </div>
+
+        <form action="/auth_/login" id="form-sl-g"> 
+
+            <br>
+            <h1> Log In </h1>
+            <hr color="yellow">
+            <label class="dyn-label"> 
+                Full Name
+            </label>
+            <br>
+            <input class="input-group" name="user-name" type="text" required>
+            <br>
+
+            <label class="dyn-label"> 
+                Email
+            </label>
+            <br>
+            <input class="input-group" name="res-mail" type="email" required>
+            <br>
+
+            <label class="dyn-label"> 
+                Password
+            </label>
+            <br>
+            <div class="dyn-ins">
+                <input class="input-group" name="res-pwd" type="password" id="dyn-pwd" required>
+                <div class="dyn-toggle" id="pwd-toggle"> 
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </div>
+            </div>
+            <br>
+
+            <br>
+            <button id="btn-res"> 
+               Log In
+            </button>
+
+            <br>
+
+            <h4 id="dyn-alt"> 
+                Don't have an Account yet? <b><a href="/auth_/signup"> Signup</a></b>
+            </h4>
+
+            <hr color="yellow">
+            <br> 
+
+            <h1 class="dyn-under" id="dyn-under"> 
+                Dynax!
+           </h1>
+           
+        </form>
+       
+    </div>  
+    <footer class="footer-section">
+        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
+        <br>
+        <div class="social-links">
+            <a href="https://x.com/AI_Instaraj"> Twitter </a>
+            <a href="#"> LinkedIn </a>
+            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
+        </div>
+    </footer>
+    <script src="{{url_for('static',filename='js/auth.js')}}"></script>
+</body>
+</html>

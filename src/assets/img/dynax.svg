@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Radial Gradient for Background -->
+    <radialGradient id="spaceGradient" cx="50%" cy="50%" r="70%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#0a0a1a" />
+      <stop offset="100%" stop-color="#121226" />
+    </radialGradient>
+
+    <!-- Star Glow Filter -->
+    <filter id="starGlow">
+      <feGaussianBlur stdDeviation="2" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0
+                                           0 1 0 0 0
+                                           0 0 1 0 0
+                                           0 0 0 0.7 0" />
+    </filter>
+  </defs>
+
+  <!-- Background with Radial Gradient -->
+  <rect width="400" height="300" fill="url(#spaceGradient)" />
+
+  <!-- Subtle Grid Pattern -->
+  <pattern id="subtleGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(106,76,255,0.05)" stroke-width="1"/>
+  </pattern>
+  <rect width="400" height="300" fill="url(#subtleGrid)" opacity="0.3"/>
+
+  <!-- Stars with Varying Sizes and Positions -->
+  <g filter="url(#starGlow)">
+    <circle cx="50" cy="30" r="1.5" fill="#6a4cff" opacity="0.7"/>
+    <circle cx="120" cy="80" r="1" fill="#ffffff" opacity="0.5"/>
+    <circle cx="280" cy="50" r="2" fill="#6a4cff" opacity="0.8"/>
+    <circle cx="350" cy="120" r="1" fill="#ffffff" opacity="0.6"/>
+    <circle cx="100" cy="220" r="1.5" fill="#6a4cff" opacity="0.9"/>
+    <circle cx="250" cy="270" r="2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="380" cy="200" r="1" fill="#6a4cff" opacity="0.5"/>
+  </g>
+
+  <!-- Subtle Purple Nebula-like Shapes -->
+  <g opacity="0.2">
+    <path d="M0 250 Q200 200, 400 250" fill="none" stroke="#6a4cff" stroke-width="2"/>
+    <path d="M0 280 Q200 230, 400 280" fill="none" stroke="#6a4cff" stroke-width="1"/>
+  </g>
+</svg>

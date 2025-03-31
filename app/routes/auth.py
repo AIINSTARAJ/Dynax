@@ -60,7 +60,6 @@ def signup():
     if request.method == 'POST':
         form_name = request.form['user-name']
         form_mail = request.form['res-mail']
-        form_study_field = request.form["field-of-study"]
         form_res_ins = request.form["research-interest"]
         form_edu_level = request.form["academic-level"]
         form_pwd = request.form["res-pwd"]
@@ -81,18 +80,17 @@ def signup():
         else:
             TokenHandler = Token()
 
-            token = TokenHandler.generate_token(form_name,form_mail,form_study_field,form_res_ins,form_edu_level,pwd_)
+            token = TokenHandler.generate_token(form_name,form_mail,pwd_)
 
             session['name'] = form_name
             session['mail'] = form_mail
-            session['field'] = form_study_field
             session['interest'] = form_res_ins
             session['level'] = form_edu_level
             session['pwd'] = pwd_
             session['token'] = token
 
-            new_user = user(username = form_name, mail = form_mail, res_field = form_study_field, 
-                            res_ins = form_res_ins,acad_level = form_edu_level,password = pwd_, token = token)
+            new_user = user(username = form_name, mail = form_mail,res_ins = form_res_ins,
+                            acad_level = form_edu_level,password = pwd_, token = token)
             db.session.add(new_user)
             db.session.commit() 
 
@@ -106,18 +104,18 @@ def signup():
 
 @auth_.route('/login',methods = ["GET","POST"])
 def login():
-    ses_name = session["name"]
-    ses_mail = session["mail"]
-    ses_pwd = session['pwd']
-    ses_token = session['token']
 
-    if ses_name and ses_mail and ses_pwd and ses_token:
-        try:
+    try:
+        ses_name = session["name"]
+        ses_mail = session["mail"]
+        ses_pwd = session['pwd']
+        ses_token = session['token']
+
+        if ses_name and ses_mail and ses_pwd and ses_token:
             return redirect(url_for('logic.scrap'))
-        except Exception as E:
-            pass
-
-    else:
+        
+    except Exception as E:
+        
         if request.method == "POST":
             mail_ = request.form['res-mail']
             pwd_ = request.form['res-pwd']
@@ -130,7 +128,6 @@ def login():
 
                 session['name'] = User.username
                 session['mail'] = User.mail
-                session['field'] = User.res_field
                 session['interest'] = User.res_ins
                 session['level'] = User.acad_level
                 session['pwd'] = User.password
@@ -153,7 +150,6 @@ def login():
 def logout():
     session.pop("name")
     session.pop("mail")
-    session.pop("field")
     session.pop("interest")
     session.pop("level")
     session.pop("pwd")
@@ -173,7 +169,6 @@ def delete_account():
     
     session.pop("name")
     session.pop("mail")
-    session.pop("field")
     session.pop("interest")
     session.pop("level")
     session.pop("pwd")
