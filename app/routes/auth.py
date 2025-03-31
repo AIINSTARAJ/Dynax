@@ -52,53 +52,50 @@ def signup():
         ses_token = session['token']
 
         if ses_name and ses_mail and ses_pwd and ses_token:
-            return redirect(url_for('logic.scrap'))
+            return redirect(url_for('index'))
         
     except Exception as E:
-        pass
+        if request.method == 'POST':
+            form_name = request.form['user-name']
+            form_mail = request.form['res-mail']
+            form_res_ins = request.form["research-interest"]
+            form_edu_level = request.form["academic-level"]
+            form_pwd = request.form["res-pwd"]
 
-    if request.method == 'POST':
-        form_name = request.form['user-name']
-        form_mail = request.form['res-mail']
-        form_res_ins = request.form["research-interest"]
-        form_edu_level = request.form["academic-level"]
-        form_pwd = request.form["res-pwd"]
+            pwd_ = generate_password_hash(form_pwd,'scrypt')
 
-        pwd_ = generate_password_hash(form_pwd,'scrypt')
-        print('---- Form Inputs Successfully Sent ----')
+            exist_user = user.query.filter_by(username = form_name).first()
+            exist_mail = user.query.filter_by(mail=form_mail).first()
 
-        exist_user = user.query.filter_by(username = form_name).first()
-        exist_mail = user.query.filter_by(mail=form_mail).first()
+            if exist_user or exist_mail:
+                print('User Exists')
 
-        if exist_user or exist_mail:
-            print('----- User Exists -----')
+                flash("Username or e-mail address already exists. Please choose another username or e-mail!.","error")
 
-            flash("Username or e-mail address already exists. Please choose another username or e-mail!.","error")
+                return redirect(url_for('auth.login'))
+            
+            else:
+                TokenHandler = Token()
 
-            return redirect(url_for('auth.login'))
-        
-        else:
-            TokenHandler = Token()
+                token = TokenHandler.generate_token(form_name,form_mail,pwd_)
 
-            token = TokenHandler.generate_token(form_name,form_mail,pwd_)
+                session['name'] = form_name
+                session['mail'] = form_mail
+                session['interest'] = form_res_ins
+                session['level'] = form_edu_level
+                session['pwd'] = pwd_
+                session['token'] = token
 
-            session['name'] = form_name
-            session['mail'] = form_mail
-            session['interest'] = form_res_ins
-            session['level'] = form_edu_level
-            session['pwd'] = pwd_
-            session['token'] = token
-
-            new_user = user(username = form_name, mail = form_mail,res_ins = form_res_ins,
-                            acad_level = form_edu_level,password = pwd_, token = token)
-            db.session.add(new_user)
-            db.session.commit() 
+                new_user = user(username = form_name, mail = form_mail,res_ins = form_res_ins,
+                                acad_level = form_edu_level,password = pwd_, token = token)
+                db.session.add(new_user)
+                db.session.commit() 
 
 
-            flash("Signup Sucessful!.","sucess")
-            print('----- Signup Successful -----')
+                flash("Signup Sucessful!.","sucess")
+                print(f'Account {form_name} Created Successfully')
 
-            return redirect(url_for('auth.login'))
+                return redirect(url_for('auth.login'))
     return render_template('signup.html')
 
 
@@ -112,7 +109,7 @@ def login():
         ses_token = session['token']
 
         if ses_name and ses_mail and ses_pwd and ses_token:
-            return redirect(url_for('logic.scrap'))
+            return redirect(url_for('index'))
         
     except Exception as E:
 
@@ -134,20 +131,19 @@ def login():
                 session['pwd'] = User.password
                 session['token'] = User.token
 
-                try:
-                    return redirect(url_for("logic.scrap"))
-                except Exception as E:
-                    print('----- Failed to Access Scrap Routes-----')
+                
+                return redirect(url_for('index'))
+        
 
             else:
-                print(f'---- Password Incorrect --- {User.username}')
+                print(f'Password Incorrect{User.username}')
                 flash('Invalid Username or Password', 'error')
 
                 return redirect(url_for("auth.login"))
             
         return render_template('login.html')
     
-@auth_.post('/logout')
+@auth_.route('/logout')
 def logout():
     session.pop("name")
     session.pop("mail")
@@ -156,9 +152,10 @@ def logout():
     session.pop("pwd")
     session.pop("token")
 
+
     return redirect(url_for('index'))
 
-@auth_.post('/del-acc')
+@auth_.route('/delete')
 def delete_account():
     ses_name = session["name"]
     ses_mail = session["mail"]
@@ -174,5 +171,7 @@ def delete_account():
     session.pop("level")
     session.pop("pwd")
     session.pop("token")
+
+    print(f"Account {ses_name} Successfully Deleted")
     
     return redirect(url_for('index'))
