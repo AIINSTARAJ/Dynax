@@ -145,6 +145,7 @@ def login():
     
 @auth_.route('/logout')
 def logout():
+    
     session.pop("name")
     session.pop("mail")
     session.pop("interest")

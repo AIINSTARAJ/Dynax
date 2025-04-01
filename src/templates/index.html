@@ -19,11 +19,16 @@
                 <li><a href="#"> About </a></li>
             </ul>
 
-            <div class="auth-buttons">
-                <a href="/auth_/login" class="login-btn"> Log In </a>
-                <a href="/auth_/signup" class="signup-btn"> Sign Up </a>
-            </div>
-
+            {% if not auth %}
+                <div class="auth-buttons">
+                    <a href="/auth_/login" class="login-btn"> Log In </a>
+                    <a href="/auth_/signup" class="signup-btn"> Sign Up </a>
+                </div>
+            {% else %}
+                <div> 
+                    <a href="/auth_/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
+                </div>
+            {% endif %}
         </nav>
 
         <main class="hero-section">
@@ -93,14 +98,14 @@
                 <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}">
                 <h4> IEEE </h4>
                 <p> Enhance Research In Engineering and Computer Science </p>
-                <a href="#" class="learn-more"> Explore → </a>
+                <a href="#" class="explore"> Explore → </a>
             </div>
 
             <div class="res-partner">
                 <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}">
                 <h4> Research Gate </h4>
                 <p> Enhance Research In Engineering and Computer Science </p>
-                <a href="#" class="learn-more"> Explore → </a>
+                <a href="#" class="explore"> Explore → </a>
             </div>
 
             <div class="res-partner">
@@ -111,6 +116,16 @@
             </div>
 
         </section>
+    </div>
+
+    <div class="dyn-about"> 
+        <h1> 
+            About Dynax: Revolutionizing Research Together
+        </h1>
+        <p> 
+            We are dedicated to revolutionizing research research through cutting-edge AI and comprehensive data solutions,
+            empowering users with actionable insights and seamless data discovery
+        </p>
     </div>
 
     <footer class="footer-section">

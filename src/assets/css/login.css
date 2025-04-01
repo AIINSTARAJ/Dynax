@@ -197,7 +197,7 @@ input:focus {
 
 #btn-res {
     margin-left: 280px;
-    background-color: rgb(14, 136, 218);
+    background-color: rgb(7, 74, 119);
     margin-top: -4px;
     width: 150px;
     height: 45px;
@@ -210,7 +210,7 @@ input:focus {
 }
 
 #btn-res:hover {
-    background-color: #2563eb;
+    background-color: #171bf0;
 }
 
 .dyn-under {

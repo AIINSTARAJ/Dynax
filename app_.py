@@ -20,7 +20,8 @@ app.register_blueprint(logic_)
 
 @app.route('/',methods = ['GET'])
 def index():
-    return render_template('index.html')
+    auth_user = session.get("token")
+    return render_template('index.html',auth = auth_user)
 
 @app.route('/favicon.ico')
 def icon():

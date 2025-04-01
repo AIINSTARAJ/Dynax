@@ -65,12 +65,21 @@ body {
 }
 
 .login-btn,
-.signup-btn {
+.signup-btn,
+.logout-btn{
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 6px;
     transition: all 0.3s ease;
     font-size: 15px;
+}
+
+.logout-btn{
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 18px;
 }
 
 .login-btn {
@@ -89,6 +98,15 @@ body {
 
 .signup-btn:hover {
     background-color: rgb(97, 156, 147);
+}
+
+.logout-btn{
+    background-color: #0e123a;
+    color: var(--text-primary);   
+}
+
+.logout-btn:hover {
+    background-color: rgb(4, 12, 117);
 }
 
 .hero-section {
@@ -115,8 +133,8 @@ body {
 
 .cta-button {
     display: inline-block;
-    background-color: #6843c0;
-    color: var(--text-primary);
+    background-color: #6939d8;
+    color: whitesmoke;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 8px;
@@ -174,7 +192,7 @@ body {
 }
 
 .learn-more {
-    color: var(--accent-color);
+    color: rgb(76, 17, 212);
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
@@ -227,11 +245,35 @@ body {
 }
 
 .explore {
-    color: var(--accent-color);
+    color: rgb(76, 17, 212);
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
     margin-top: 15px;
+}
+
+.dyn-about {
+    text-align: center;
+    padding: 0px 0;
+    background: transparent;
+    margin-top: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.dyn-about  h1 {
+    font-size: 48px;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    line-height: 1.2;
+    color: rgb(76, 17, 212);
+}
+
+.dyn-about  p {
+    color: wheat;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 18px;
 }
 
 .footer-section {
