@@ -11,7 +11,7 @@ from werkzeug.security import *
 
 from ..logic.scrap import *
 
-from auth import Token
+from .auth import Token
 
 sys.path.insert(0,'../../')
 
@@ -26,10 +26,10 @@ def search():
     auth_user = session.get("token")
     return render_template('search.html', auth = auth_user)
 
-@logic_.route('/scrap', method='POST')
+@logic_.post('/scrap')
 def scrap():
     auth = session['token']
-    auth = Token().verify_token(auth)
+    auth = Token.verify_token(auth)
     if auth != False:
         data = request.get_json()
         topic = data['message']
