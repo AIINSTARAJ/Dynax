@@ -9,6 +9,10 @@ import sys
 
 from werkzeug.security import *
 
+from ..logic.scrap import *
+
+from auth import Token
+
 sys.path.insert(0,'../../')
 
 logic_ = Blueprint('logic',
@@ -16,3 +20,20 @@ logic_ = Blueprint('logic',
             static_folder='./src',
             template_folder='./src/templates'
             )
+
+@logic_.route('/search')
+def search():
+    auth_user = session.get("token")
+    return render_template('search.html', auth = auth_user)
+
+@logic_.route('/scrap', method='POST')
+def scrap():
+    auth = session['token']
+    auth = Token().verify_token(auth)
+    if auth != False:
+        data = request.get_json()
+        topic = data['message']
+        papers = scrap_(topic)
+        return jsonify({'content': papers,'name':auth})
+    else:
+        return jsonify({'content': 'Error! Unauthorized Access'})

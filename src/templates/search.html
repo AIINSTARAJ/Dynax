@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dynax! </title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/search.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+
+            <div class="logo"> Dynax! </div>
+
+            <ul class="nav-links">
+                <li><a href="#"> Analyze </a></li>
+                <li><a href="/search"> Search </a></li>
+                <li><a href="#"> History </a></li>
+                <li><a href="#"> About </a></li>
+            </ul>
+
+            {% if not auth %}
+            <div class="auth-buttons">
+                <a href="/auth/login" class="login-btn"> Log In </a>
+                <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            </div>
+            {% else %}
+            <div>
+                <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out
+                </a>
+            </div>
+            {% endif %}
+        </nav>
+
+        <div class="logo-container"></div>
+        <div class="logo-x">
+            <span class="logo-icon"></span>
+            Dynax!
+        </div>
+        <p> Search Research Papers. </p>
+    </div>
+
+
+    <!-- SEARCH BAR & NOTEPAD STYLE UI -->
+    <section class="search">
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="">
+        </div>
+        <button type="submit" id="search-btn">
+            SEARCH
+        </button>
+    </section>
+    
+
+    <div class="dyn-scrap-contents">
+
+        <h1 id="dyn-search-title">  </h1>
+
+        <div class="dyn-scrap-items">
+
+            <div class="dyn-scrap-item"></div>
+
+        </div>  
+
+    </div>
+
+
+    <footer class="footer-section">
+        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
+        <br>
+        <div class="social-links">
+            <a href="https://x.com/AI_Instaraj"> Twitter </a>
+            <a href="#"> LinkedIn </a>
+            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
+        </div>
+    </footer>
+    <script src="{{url_for('static', filename = 'js/search.js')}}"></script>
+</body>
+</html>

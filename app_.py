@@ -14,7 +14,7 @@ app.config.from_pyfile('app\\config.py')
 
 db.init_app(app)
 
-app.register_blueprint(auth_,url_prefix='/auth_')
+app.register_blueprint(auth_,url_prefix='/auth')
 
 app.register_blueprint(logic_)
 

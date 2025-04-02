@@ -21,7 +21,7 @@ auth_ = Blueprint('auth',
             import_name='__name__',
             static_folder='./src',
             template_folder='./src/templates',
-            url_prefix='/auth_'
+            url_prefix='/auth'
             )
 
 class Token:

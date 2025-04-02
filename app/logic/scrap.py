@@ -25,6 +25,7 @@ import time
 
 def scrap_(topic):
     formatted_topic = topic.replace(" ", "+")
+
     url = f"https://scholar.google.com/scholar?q={formatted_topic}"
 
     headers = {
@@ -45,7 +46,7 @@ def scrap_(topic):
         Link = Link_A.get('href')
         elements = paper.find("div", class_ = "gs_a").text
         elems = elements.split('-')
-        Author_Attr = elems[0]
+        Author_Attr:str = elems[0]
         if len(Author_Attr.split(',')) == 1:
             Author = Author_Attr
         else:

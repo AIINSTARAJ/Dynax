@@ -14,19 +14,19 @@
 
             <ul class="nav-links">
                 <li><a href="#"> Analyze </a></li>
-                <li><a href="#"> Search </a></li>
+                <li><a href="/search"> Search </a></li>
                 <li><a href="#"> History </a></li>
                 <li><a href="#"> About </a></li>
             </ul>
 
             {% if not auth %}
                 <div class="auth-buttons">
-                    <a href="/auth_/login" class="login-btn"> Log In </a>
-                    <a href="/auth_/signup" class="signup-btn"> Sign Up </a>
+                    <a href="/auth/login" class="login-btn"> Log In </a>
+                    <a href="/auth/signup" class="signup-btn"> Sign Up </a>
                 </div>
             {% else %}
                 <div> 
-                    <a href="/auth_/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
+                    <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                 </div>
             {% endif %}
         </nav>
@@ -95,21 +95,21 @@
         <section class="res-partners">
 
             <div class="res-partner">
-                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}">
+                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="IEEE">
                 <h4> IEEE </h4>
                 <p> Enhance Research In Engineering and Computer Science </p>
                 <a href="#" class="explore"> Explore → </a>
             </div>
 
             <div class="res-partner">
-                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}">
+                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="Research Gate">
                 <h4> Research Gate </h4>
                 <p> Enhance Research In Engineering and Computer Science </p>
                 <a href="#" class="explore"> Explore → </a>
             </div>
 
             <div class="res-partner">
-                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}">
+                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="Google Scholar">
                 <h4> Google Scholar </h4>
                 <p> Enhance Research In Engineering and Computer Science </p>
                 <a href="#" class="explore"> Explore → </a>
@@ -137,6 +137,6 @@
             <a href="https://github.com/AIINSTARAJ"> GitHub </a>
         </div>
     </footer>
-
+    
 </body>
 </html>
