@@ -26,14 +26,27 @@ def search():
     auth_user = session.get("token")
     return render_template('search.html', auth = auth_user)
 
-@logic_.post('/scrap')
+@logic_.route('/scrap',methods=['POST','GET'])
 def scrap():
     auth = session['token']
-    auth = Token.verify_token(auth)
+    auth = Token().verify_token(auth)
+
     if auth != False:
+
         data = request.get_json()
         topic = data['message']
-        papers = scrap_(topic)
-        return jsonify({'content': papers,'name':auth})
+
+        try:
+            papers = scrap_(topic)
+            return jsonify({'content': papers,'name':auth})
+        
+        except Exception as E:
+            return jsonify({'content': 'Error! Network Failure'})
+        
     else:
         return jsonify({'content': 'Error! Unauthorized Access'})
+
+@logic_.route('/analyze', methods = ['GET','POST'])
+def analyze():
+    auth_user = session.get("token")
+    return render_template('analyze.html', auth = auth_user)
