@@ -9,6 +9,17 @@ from sklearn.naive_bayes import *
 from sklearn.metrics import accuracy_score
 from sklearn.datasets import *
 import matplotlib.pyplot as plt
+import tensorflow as tf
+
+import keras
+
+from keras import Sequential
+
+model = Sequential()
+
+model.add(keras.Input((64,)))
+model.add(keras.Dense())
+
 
 import time
 

@@ -17,73 +17,54 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchResearchPapers(query) {
+
         showLoading();
-  
-        setTimeout(async function () {
+    
+        try {
+            const response = await fetch('/scrap', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 'message': query }),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+    
+            searchTitle.textContent = `Search Results for: ${query}`;
             
-            const data = [
-                {
-                    title: "Research Paper 1",
-                    author: "Author A, Author B",
-                    abstract: "This paper discusses machine learning applications in AI.",
-                    link: "#",
-                },
-                {
-                    title: "Research Paper 2",
-                    author: "Author C, Author D",
-                    abstract: "This paper explores deep learning in neural networks.",
-                    link: "#",
-                },
-                {
-                    title: "Research Paper 3",
-                    author: "Author E, Author F",
-                    abstract: "This paper presents a survey on AI and robotics.",
-                    link: "#",
-                },
-                {
-                    title: "Research Paper 4",
-                    author: "Author G, Author H",
-                    abstract: "This paper talks about computer vision and AI ethics.",
-                    link: "#",
-                },
-                {
-                    title: "Research Paper 5",
-                    author: "Author I, Author J",
-                    abstract: "This paper explores Retreival Augmented Generation.",
-                    link: "#",
-                },
-                {
-                    title: "Research Paper 6",
-                    author: "Author K, Author L",
-                    abstract: "This paper introduces LangChain and LLM.",
-                    link: "#",
-                },
-            ];
-            searchTitle.textContent = "Search Results for : ".concat(query);
-
-            scrapItemsContainer.innerHTML = "";
-
+            scrapItemsContainer.innerHTML = '';
+    
             data.forEach((item) => {
-
-                const itemElement = document.createElement("div");
-                itemElement.classList.add("dyn-scrap-item");
-
-
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('dyn-scrap-item');
+    
                 itemElement.innerHTML = `
                     <img src="../assets/img/dynax.svg">
-                    <h3> ${item.title} </h3>
-                    <p><strong> Authors: </strong> ${item.author} </p>
-                    <p id='dyn-abs'><strong> Abstract: </strong> ${item.abstract} </p>
+                    <h3>${item.title}</h3>
+                    <p><strong>Authors:</strong> ${item.authors}</p>
+                    <p id='dyn-abs'><strong>Abstract:</strong> ${item.abstract}</p>
                     <div class="metadata">
-                        <span><a id='dyn-link' href="${item.link}" target="_blank"> Read more → </a></span>
+                        <span><a id='dyn-link' href="${item.url}" target="_blank">Read more →</a></span>
                     </div>
                 `;
-
+    
                 scrapItemsContainer.appendChild(itemElement);
             });
+        } catch (error) {
 
-            hideLoading();}, 1000);
+            console.error('Error fetching research papers:', error);
+            alert('Failed to fetch research papers. Please try again later.',error);
+
+        } finally {
+            hideLoading();
+        }
     }
+    
         
     searchButton.addEventListener("click", function () {
         const query = searchInput.value.trim();

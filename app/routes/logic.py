@@ -11,6 +11,8 @@ from werkzeug.security import *
 
 from ..logic.scrap import *
 
+from ..logic.search import *
+
 from .auth import Token
 
 sys.path.insert(0,'../../')
@@ -37,8 +39,8 @@ def scrap():
         topic = data['message']
 
         try:
-            papers = scrap_(topic)
-            return jsonify({'content': papers,'name':auth})
+            papers = search_publications(topic)
+            return jsonify({'data': papers})
         
         except Exception as E:
             return jsonify({'content': 'Error! Network Failure'})
