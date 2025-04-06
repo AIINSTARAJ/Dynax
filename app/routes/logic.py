@@ -40,13 +40,13 @@ def scrap():
 
         try:
             papers = search_publications(topic)
-            return jsonify({'data': papers})
+            return jsonify(papers)
         
         except Exception as E:
-            return jsonify({'content': 'Error! Network Failure'})
+            return 'Error! Network Failure'
         
     else:
-        return jsonify({'content': 'Error! Unauthorized Access'})
+        return 'Error! Unauthorized Access'
 
 @logic_.route('/analyze', methods = ['GET','POST'])
 def analyze():

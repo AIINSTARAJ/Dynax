@@ -32,10 +32,18 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-    
+
+            const msg = await response;
+
+            if (msg === "Error! Network Failure" || msg === 'Error! Unauthorized Access')
+
+                alert("Error in Scraping Research Papers")
+                
+                
+                      
             const data = await response.json();
     
-            searchTitle.textContent = `Search Results for: ${query}`;
+            searchTitle.textContent = `Search Results for : ${query}`;
             
             scrapItemsContainer.innerHTML = '';
     
@@ -45,11 +53,18 @@ document.addEventListener("DOMContentLoaded", function () {
     
                 itemElement.innerHTML = `
                     <img src="../assets/img/dynax.svg">
-                    <h3>${item.title}</h3>
-                    <p><strong>Authors:</strong> ${item.authors}</p>
-                    <p id='dyn-abs'><strong>Abstract:</strong> ${item.abstract}</p>
+                    <h3>${item.title?.slice(0, 100) || "No Title"}</h3>
+
+                    <div class="info-line"><strong> Authors: </strong> ${item.authors}</div>
+                    <div class="info-line"><strong> Year: </strong> ${item.year}</div>
+                    <div class="info-line"><strong> Citations: </strong> ${item.citations}</div>
+                    <div class="info-line"><strong> Publisher: </strong> ${item.publisher}</div>
+                    <div class="info-line"><strong> DOI: </strong> ${item.doi}</div>
+                    <div class="info-line"><strong> Journal: </strong> ${item.publication}</div>
+                    <div class="info-line"><strong> Type: </strong> ${item.journal_type}</div>
+
                     <div class="metadata">
-                        <span><a id='dyn-link' href="${item.url}" target="_blank">Read more →</a></span>
+                        <a href="${item.url}" target="_blank">View Full Paper</a>
                     </div>
                 `;
     
