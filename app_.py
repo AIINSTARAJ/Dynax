@@ -10,7 +10,7 @@ app = Flask(__name__,
             static_folder='src/assets',
             template_folder='src/templates')
 
-app.config.from_pyfile('app\\config.py')
+app.config.from_pyfile('app/config.py')
 
 db.init_app(app)
 
