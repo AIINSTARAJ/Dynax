@@ -1,1 +1,1 @@
-worker: python dynax.py
+web: python app_.py
