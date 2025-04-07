@@ -1,6 +1,6 @@
 from telebot import *
 from app.config import *
-from app.logic.scrap import *
+from app.logic.search import *
 
 bot = TeleBot(API_TOKEN)
 
@@ -52,7 +52,7 @@ def handle_query(call):
 def send_results_separately(results, index=0, message=None):
     if index < len(results):
         paper = results[index]
-        paper_str = f"<b>Title:</b> {paper['Title']}\n<b>Author: {paper['Author']}</b>\n<b>Year:</b> {paper['Year']}\n<b>Citations:</b> {paper['Cite']}\n<b>Link:</b> <a href='{paper['Link']}'>{paper['Link']}</a>"
+        paper_str = f"<b>Title:</b> {paper['title']}\n<b>Author: {paper['authors']}</b>\n<b>Year:</b> {paper['year']}\n<b>Citations:</b> {paper['citations']}\n<b>Link:</b> <a href='{paper['url']}'>{paper['url']}</a>"
         bot.send_message(message.chat.id, paper_str,parse_mode="HTML", disable_web_page_preview=False)
         time.sleep(0.1)
         send_results_separately(results, index + 1, message)
@@ -60,7 +60,7 @@ def send_results_separately(results, index=0, message=None):
 def search(message):
     try:
         loading_msg = bot.reply_to(message, "Loading...... 💎💍")
-        results = scrap_(message.text) 
+        results =search_publications(message.text) 
         if not results:
             bot.edit_message_text("No results Found! 📞🎗", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
         else:

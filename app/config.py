@@ -1,5 +1,5 @@
 DEVELOPER = "A.I Instaraj"
-API_TOKEN = "7722543471:AAEK5AmgqYcavwicxMQfDvndf1wt5KsyFzI"
+API_TOKEN = "7808377808:AAGkatfsVibkW1MAP9eVaON1K9Z8SMbJrhI"
 SECRET_KEY = "Abbr..8080:4025x%3054.{}@index.dyn.las"
 SQLALCHEMY_DATABASE_URI = 'sqlite:///C:\\Users\\USER\\OneDrive\\Documents\\Advanced Projects\\Dynax\\src\\assets\\data\\data.db'
 STATIC_FOLDER = 'src/assets'

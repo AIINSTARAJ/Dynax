@@ -33,13 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
 
-            const msg = await response;
+            const msg = response;
 
             if (msg === "Error! Network Failure" || msg === 'Error! Unauthorized Access')
 
-                alert("Error in Scraping Research Papers")
-                
-                
+                alert("Error in Scraping Research Papers")                                
                       
             const data = await response.json();
     

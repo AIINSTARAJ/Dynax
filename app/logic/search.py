@@ -41,7 +41,7 @@ def search_publications(query, max_results=72, sort_by='relevance'):
                 authors.append(author['family'])
                 
         pub_info = {
-            'title': result.get('title',"Not Available").capitalize(),
+            'title': result.get('title',"Not Available"),
             'authors': ', '.join(authors),
             'year': result.get('published', {}).get('date-parts', [[0]])[0][0] if result.get('published') else 'Not available',
             'citations': result.get('is-referenced-by-count', 'Not available'),
