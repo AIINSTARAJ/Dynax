@@ -43,7 +43,6 @@ def scrap():
             return jsonify(papers)
         
         except Exception as E:
-            print(E)
             return 'Error! Network Failure'
         
     else:
