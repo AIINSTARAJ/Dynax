@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div class="info-line"><strong> Authors: </strong> ${item.authors} </div>
                     <div class="info-line"><strong> Year: </strong> ${item.date} </div>
                     <div class="info-line"><strong> DOI: </strong> ${item.doi} </div>
-                    <div class="info-line"><strong> Journal: </strong> ${item.field} </div>
+                    <div class="info-line"><strong> Subject: </strong> ${item.field} </div>
                     <div class="info-line"><strong> Abstract: </strong> ${item.abstract} </div>
 
                     <div class="metadata">
