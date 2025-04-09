@@ -83,15 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
                     'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
                 },
-                {
-                    'title': 'Artificial Intelligence',
-                    'authors' : 'Ian GodFellow',
-                    'Year' : 'April 2025',
-                    'doi' : 'arXiv/2540.4250',
-                    'field': 'Artificial Intelligence, Computational Theory',
-                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
-                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
-                },
             ]
     
             data.forEach((item) => {
