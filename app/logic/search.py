@@ -1,22 +1,10 @@
 from crossref.restful import Works
 
 def search_publications(query, max_results=72, sort_by='relevance'):
-    """
-    Search for publications in Crossref by query
-    
-    Parameters:
-    query (str): The search query
-    max_results (int): Maximum number of results to return
-    sort_by (str): Sort by 'relevance', 'citations', or 'year'
-    
-    Returns:
-    list: List of publication dictionaries
-    """
     works = Works()
 
     search_results = works.query(query).order('asc')
     
-    # Convert iterator to list, but limit to max_results
     results = []
     count = 0
     for item in search_results:
@@ -58,15 +46,6 @@ def search_publications(query, max_results=72, sort_by='relevance'):
 
 
 def get_publication_by_doi(doi):
-    """
-    Get publication details by DOI
-    
-    Parameters:
-    doi (str): The DOI of the publication
-    
-    Returns:
-    dict: Publication information or None if not found
-    """
     works = Works()
     try:
         item = works.doi(doi)
@@ -96,6 +75,7 @@ def get_publication_by_doi(doi):
             return pub_info
         else:
             return None
+        
     except Exception as e:
         print(f"Error retrieving DOI {doi}: {str(e)}")
         return None

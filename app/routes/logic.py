@@ -5,7 +5,11 @@ __retro__ : Information Systems
 
 from flask import *
 
+from ..logic.research import *
+
 import sys
+
+import jwt
 
 from werkzeug.security import *
 
@@ -39,14 +43,21 @@ def scrap():
         topic = data['message']
 
         try:
-            papers = search_publications(topic)
+            papers = get_papers(topic)
+            papers = add_link(papers)
+            
             return jsonify(papers)
         
         except Exception as E:
-            return 'Error! Network Failure'
-        
+            return 'Error! Network Failure'    
     else:
         return 'Error! Unauthorized Access'
+
+@logic_.route('/paper/<doi>')
+def paper(doi):
+    doi = decode_url(doi)
+    paper = get_doi(doi)
+    return render_template('paper.html', paper = paper)
 
 @logic_.route('/analyze', methods = ['GET','POST'])
 def analyze():

@@ -280,14 +280,14 @@ p {
 .dyn-scrap-item h3 {
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 05px;
     text-align: center;
     color: #ffffff;
 }
 
 /* Info lines (authors, year, etc) */
 .dyn-scrap-item .info-line {
-    font-size: 15px;
+    font-size: 16px;
     margin: 2px 0;
     color: var(--text-primary);
     line-height: 1.3;
@@ -305,7 +305,7 @@ p {
     margin-top: auto;
     padding-top: 10px;
     border-top: 1px solid #0d2cdb;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
 }
 

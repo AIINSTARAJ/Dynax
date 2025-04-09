@@ -19,8 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     async function fetchResearchPapers(query) {
 
         showLoading();
-    
-        try {
+        
+        try{
+        /*try {
             const response = await fetch('/scrap', {
                 method: 'POST',
                 headers: {
@@ -39,11 +40,77 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 alert("Error in Scraping Research Papers")                                
                       
-            const data = await response.json();
+            const data = await response.json();*/
     
             searchTitle.textContent = `Search Results for : ${query}`;
             
             scrapItemsContainer.innerHTML = '';
+
+            data = [
+                {
+                    'title': 'Artificial Intelligence',
+                    'authors' : 'Ian GodFellow',
+                    'Year' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+                {
+                    'title': 'Artificial Intelligence and Augmented Reality Exploration',
+                    'authors' : 'Ian GodFellow',
+                    'date' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+                {
+                    'title': 'Artificial Intelligence',
+                    'authors' : 'Ian GodFellow',
+                    'Year' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+                {
+                    'title': 'Artificial Intelligence',
+                    'authors' : 'Ian GodFellow',
+                    'Year' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+                {
+                    'title': 'Artificial Intelligence',
+                    'authors' : 'Ian GodFellow',
+                    'Year' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+                {
+                    'title': 'Artificial Intelligence',
+                    'authors' : 'Ian GodFellow',
+                    'Year' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+                {
+                    'title': 'Artificial Intelligence',
+                    'authors' : 'Ian GodFellow',
+                    'Year' : 'April 2025',
+                    'doi' : 'arXiv/2540.4250',
+                    'field': 'Artificial Intelligence, Computational Theory',
+                    'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
+                    'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
+                },
+            ]
     
             data.forEach((item) => {
                 const itemElement = document.createElement('div');
@@ -53,16 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     <img src="../assets/img/dynax.svg">
                     <h3>${item.title?.slice(0, 100) || "No Title"}</h3>
 
-                    <div class="info-line"><strong> Authors: </strong> ${item.authors}</div>
-                    <div class="info-line"><strong> Year: </strong> ${item.year}</div>
-                    <div class="info-line"><strong> Citations: </strong> ${item.citations}</div>
-                    <div class="info-line"><strong> Publisher: </strong> ${item.publisher}</div>
-                    <div class="info-line"><strong> DOI: </strong> ${item.doi}</div>
-                    <div class="info-line"><strong> Journal: </strong> ${item.publication}</div>
-                    <div class="info-line"><strong> Type: </strong> ${item.journal_type}</div>
+                    <div class="info-line"><strong> Authors: </strong> ${item.authors} </div>
+                    <div class="info-line"><strong> Year: </strong> ${item.date} </div>
+                    <div class="info-line"><strong> DOI: </strong> ${item.doi} </div>
+                    <div class="info-line"><strong> Journal: </strong> ${item.field} </div>
+                    <div class="info-line"><strong> Abstract: </strong> ${item.abstract} </div>
 
                     <div class="metadata">
-                        <a href="${item.url}" target="_blank">View Full Paper</a>
+                        <a href="${item.link}" target="_blank"> Explore → </a>
                     </div>
                 `;
     
