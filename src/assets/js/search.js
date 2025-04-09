@@ -20,8 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         showLoading();
         
-        try{
-        /*try {
+        try {
             const response = await fetch('/scrap', {
                 method: 'POST',
                 headers: {
@@ -40,13 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 alert("Error in Scraping Research Papers")                                
                       
-            const data = await response.json();*/
+            const data = await response.json();
     
             searchTitle.textContent = `Search Results for : ${query}`;
             
             scrapItemsContainer.innerHTML = '';
 
-            data = [
+            /*data = [
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
@@ -101,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
                     'link' : 'https://127.0.0.1:5425/paper/rttXpyuiop'
                 }
-            ]
+            ]*/
     
             data.forEach((item) => {
                 const itemElement = document.createElement('div');
