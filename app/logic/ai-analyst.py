@@ -20,10 +20,7 @@ model = Sequential()
 model.add(keras.Input((64,)))
 model.add(keras.Dense())
 
-
-import time
-
-data =  load_sample_images()
+model.compile(optimizer='adam',loss=keras.losses.BinaryCrossentropy)
 
 
 

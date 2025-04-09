@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const msg = response;
 
-            if (msg === "Error! Network Failure" || msg === 'Error! Unauthorized Access')
+            if (msg == "Error! Network Failure" || msg === 'Error! Unauthorized Access')
 
                 alert("Error in Scraping Research Papers")                                
                       
