@@ -17,6 +17,10 @@ from ..logic.scrap import *
 
 from ..logic.search import *
 
+from ..logic.pdf_logic import *
+
+from ..logic.AI_Logic import *
+
 from .auth import Token
 
 sys.path.insert(0,'../../')
@@ -59,7 +63,16 @@ def paper(doi):
     paper = get_doi(doi)
     return render_template('paper.html', paper = paper)
 
-@logic_.route('/analyze', methods = ['GET','POST'])
-def analyze():
+@logic_.route('/analyze/<doi>', methods = ['GET','POST'])
+def analyze(doi):
     auth_user = session.get("token")
-    return render_template('analyze.html', auth = auth_user)
+    if auth_user:
+        doi = decode_url(doi)
+        paper = get_doi(doi)
+        link = get_pdf(paper['pdf'],doi)
+        content = get_content(link)
+        analysis = get_analysis(content)
+        pdf_link = set_pdf(analysis['pdf'],doi)
+        return jsonify(analysis['html'])
+    else:
+        return redirect(url_for('auth/login'))
