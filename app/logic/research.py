@@ -3,6 +3,8 @@ import requests
 import re
 import base64
 
+from search import *
+
 def clean_categories(category_string):
     categories = category_string.split(';')
     
@@ -50,6 +52,13 @@ def get_papers(topic:str,max=100,sort_by = ''):
         doi_attr = abs_doi.find("a")
         doi:str = doi_attr.text.strip()
 
+        pub_ = get_publication_by_doi(doi.replace('arXiv:',''))
+
+        citations = pub_['citations']
+        publisher = pub_['publisher']
+        publication = pub_['publications']
+        journalType = pub_['journal_type']
+
         url = doi_attr.get("href")
         pdf = f"https://arxiv.org/pdf/{doi.replace('arXiv:','')}"
 
@@ -75,11 +84,15 @@ def get_papers(topic:str,max=100,sort_by = ''):
             'title' : title,
             'authors' : authors,
             'date' : date,
-            'url': url,
+            'cite' : citations,
             'doi' : doi,
+            'url': url,
             'pdf' : pdf,
+            'publisher' : publisher,
+            'publication': publication,
             'abstract' : abstract,
-            'field' : field
+            'field' : field,
+            'journal_type' : journalType
         }
 
         Papers.append(paper)
@@ -118,15 +131,27 @@ def get_doi(doi:str):
     
     field = clean_categories(field)
 
+    
+    pub_ = get_publication_by_doi(doi.replace('arXiv:',''))
+
+    citations = pub_['citations']
+    publisher = pub_['publisher']
+    publication = pub_['publications']
+    journalType = pub_['journal_type']
+
     paper = {
         'title' : title,
         'authors' : authors,
         'date' : date,
+        'cite' : citations,
         'url': url,
         'doi' : doi,
         'pdf' : pdf,
+        'publisher' : publisher,
+        'publication': publication,
         'abstract' : abstract,
-        'field' : field
+        'field' : field,
+        'journal_type' : journalType
     }
 
     return paper

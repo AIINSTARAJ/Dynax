@@ -1,6 +1,6 @@
 from crossref.restful import Works
 
-def search_publications(query, max_results=72, sort_by='relevance'):
+def search_publications(query, max_results=100, sort_by='relevance'):
     works = Works()
 
     search_results = works.query(query).order('asc')
