@@ -35,10 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const msg = response;
 
-            if (msg == "Error! Network Failure" || msg === 'Error! Unauthorized Access')
+            if (msg == "Error! Network Failure" || msg === 'Error! Unauthorized Access'){
 
-                alert("Error in Scraping Research Papers")                                
-                      
+                alert("Error in Scraping Research Papers");
+                
+                return;
+            
+            }
+
             const data = await response.json();
     
             searchTitle.textContent = `Search Results for : ${query}`;
@@ -49,7 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
+                    'publisher' : 'MicroComputing Inc',
                     'date' : 'April 2025',
+                    'cite' : 32,
                     'doi' : 'arXiv/2540.4250',
                     'field': 'Artificial Intelligence, Computational Theory',
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
@@ -58,7 +64,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
+                    'publisher' : 'MicroComputing Inc',
                     'date' : 'April 2025',
+                    'cite' : 32,
                     'doi' : 'arXiv/2540.4250',
                     'field': 'Artificial Intelligence, Computational Theory',
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
@@ -67,7 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
+                    'publisher' : 'MicroComputing Inc',
                     'date' : 'April 2025',
+                    'cite' : 32,
                     'doi' : 'arXiv/2540.4250',
                     'field': 'Artificial Intelligence, Computational Theory',
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
@@ -76,7 +86,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
+                    'publisher' : 'MicroComputing Inc',
                     'date' : 'April 2025',
+                    'cite' : 32,
                     'doi' : 'arXiv/2540.4250',
                     'field': 'Artificial Intelligence, Computational Theory',
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
@@ -85,7 +97,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
+                    'publisher' : 'MicroComputing Inc',
                     'date' : 'April 2025',
+                    'cite' : 32,
                     'doi' : 'arXiv/2540.4250',
                     'field': 'Artificial Intelligence, Computational Theory',
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
@@ -94,7 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 {
                     'title': 'Artificial Intelligence and Augmented Reality Exploration',
                     'authors' : 'Ian GodFellow',
+                    'publisher' : 'MicroComputing Inc',
                     'date' : 'April 2025',
+                    'cite' : 32,
                     'doi' : 'arXiv/2540.4250',
                     'field': 'Artificial Intelligence, Computational Theory',
                     'abstract': 'Artificial Intelligence is the method of training computational systems to perform great tasks in the environment.',
@@ -111,7 +127,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     <h3>${item.title?.slice(0, 100) || "No Title"}</h3>
 
                     <div class="info-line"><strong> Authors: </strong> ${item.authors} </div>
+                    <div class="info-line"><strong> Publisher: </strong> ${item.publisher} </div>
                     <div class="info-line"><strong> Year: </strong> ${item.date} </div>
+                    <div class="info-line"><strong> Citations: </strong> ${item.cite} </div>
                     <div class="info-line"><strong> DOI: </strong> ${item.doi} </div>
                     <div class="info-line"><strong> Subject: </strong> ${item.field} </div>
                     <div class="info-line"><strong> Abstract: </strong> ${item.abstract} </div>
@@ -126,10 +144,12 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
 
             console.error('Error fetching research papers:', error);
-            alert('Failed to fetch research papers. Please try again later.',error);
+
+            alert('Failed to Fetch Research Papers. Please Try Again Later.');
 
         } finally {
-            hideLoading();
+
+            hideLoading(),1000
         }
     }
     

@@ -17,9 +17,9 @@ from ..logic.scrap import *
 
 from ..logic.search import *
 
-from ..logic.pdf_logic import *
+from ..logic.pdf_logic import set_pdf
 
-from ..logic.AI_Logic import *
+from ..logic.AI_Logic import get_analysis
 
 from .auth import Token
 
@@ -34,7 +34,11 @@ logic_ = Blueprint('logic',
 @logic_.route('/search')
 def search():
     auth_user = session.get("token")
-    return render_template('search.html', auth = auth_user)
+
+    if auth_user:
+        return render_template('search.html', auth = auth_user)
+    else:
+        return redirect(url_for('auth/login'))
 
 @logic_.route('/scrap',methods=['POST','GET'])
 def scrap():
@@ -59,20 +63,52 @@ def scrap():
 
 @logic_.route('/paper/<doi>')
 def paper(doi):
-    doi = decode_url(doi)
-    paper = get_doi(doi)
-    return render_template('paper.html', paper = paper)
-
-@logic_.route('/analyze/<doi>', methods = ['GET','POST'])
-def analyze(doi):
-    auth_user = session.get("token")
+    auth_user = session.get('token')
     if auth_user:
         doi = decode_url(doi)
         paper = get_doi(doi)
-        link = get_pdf(paper['pdf'],doi)
-        content = get_content(link)
-        analysis = get_analysis(content)
-        pdf_link = set_pdf(analysis['pdf'],doi)
-        return jsonify(analysis['html'])
+        return render_template('paper.html', paper = paper)
     else:
         return redirect(url_for('auth/login'))
+
+@logic_.route('/analyze/<doi>', methods = ['GET','POST'])
+def analyze(doi):
+
+    auth_user = request.get_json()['user']
+
+    if auth_user:
+
+        doi = decode_url(doi)
+
+        analysis = get_analysis(doi)
+        pdf_link = set_pdf(analysis['pdf'],doi)
+
+        return jsonify(analysis['html'])
+    
+    else:
+
+        return redirect(url_for('auth/login'))
+    
+    
+@logic_.route('/sum-download/<doi>')
+def summary(doi):
+
+    doi = decode_url(doi)
+
+    try:
+        pdf_path = f"Dynax!-{doi}.pdf"
+
+        return send_from_directory(
+            app.config['SUMMARY FOLDER'], pdf_path)
+    
+    except Exception as E:
+
+        Analysis = get_analysis(doi)
+        link = set_pdf(Analysis['pdf'],doi)
+
+        pdf_path_x = f"Dynax!-{doi}.pdf"
+
+        return send_from_directory(
+            app.config['PDF_FOLDER'], pdf_path_x
+        )
+    

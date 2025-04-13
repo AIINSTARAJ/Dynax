@@ -3,7 +3,7 @@ import requests
 import re
 import base64
 
-from search import *
+from .search import *
 
 def clean_categories(category_string):
     categories = category_string.split(';')

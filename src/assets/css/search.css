@@ -257,7 +257,7 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 480px; /* Fixed height */
+    min-height: 490px; /* Fixed height */
     max-height: none;
     padding: 15px;
     display: flex;
@@ -297,12 +297,13 @@ p {
 /* Label inside info */
 .dyn-scrap-item .info-line strong {
     color: #ddd;
-    font-weight: 900;
+    font-weight: bolder;
+    font-size: 17px;
 }
 
 /* Metadata footer link */
 .dyn-scrap-item .metadata {
-    margin-top: auto;
+    margin-top: 05px;
     padding-top: 10px;
     border-top: 1px solid #0d2cdb;
     font-size: 18px;
