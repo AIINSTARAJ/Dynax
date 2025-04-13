@@ -3,10 +3,11 @@ import os
 from fpdf import FPDF
 
 def set_pdf(content: str,doi: str):
-    if not os.path.exists("../src/PDF"):
+    
+    if not os.path.exists("PDF"):
         os.mkdir("PDF")
 
-    filename = f"../src/PDF/Dynax-{doi}.pdf"
+    filename = f"PDF/Dynax-{doi}.pdf"
 
     pdf = FPDF()
     pdf.add_page()
@@ -19,4 +20,3 @@ def set_pdf(content: str,doi: str):
         pdf.cell(200, 10, txt=line, ln=True)
 
     pdf.output(filename)
-

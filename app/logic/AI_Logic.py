@@ -1,16 +1,19 @@
 import json
+import os
+from dotenv import *
 from langchain_google_genai import GoogleGenerativeAI
 from langchain_community.document_loaders import ArxivLoader
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
-from ..config import *
 
-def get_analysis(doi: str, google_api_key: str) -> dict:
+load_dotenv()
+
+def get_analysis(doi: str, google_api_key = None) -> dict:
     """
     Analyzes a research paper using its DOI and returns PDF and HTML summaries.
     """
 
-    google_api_key = GOOGLE_API_KEY
+    google_api_key = os.environ.get('GOOGLE_API_KEY')
 
     arxiv_id = doi.split("/")[-1]
     
@@ -176,3 +179,6 @@ def get_analysis(doi: str, google_api_key: str) -> dict:
         "pdf": pdf_content,
         "html": html_content
     }
+
+
+print(get_analysis("arXiv:2542.5045"))
