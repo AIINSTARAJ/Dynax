@@ -1,0 +1,254 @@
+:root {
+    --bg-primary: #0a0b1a;
+    --bg-secondary: #121428;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+    --accent-color: #6b46c1;
+    --accent-hover: #7c3aed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    background-image: url(../img/dynax.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    margin-top: 5px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-size: 24px;
+}
+
+.nav-links a:hover {
+    color: var(--text-primary);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.login-btn,
+.signup-btn,
+.logout-btn{
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.logout-btn{
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+.login-btn {
+    color: wheat;
+    border: 1px solid var(--text-secondary);
+}
+
+.login-btn:hover {
+    background-color: rgb(10, 120, 148);
+}
+
+.signup-btn {
+    background-color: #0e123a;
+    color: var(--text-primary);
+}
+
+.signup-btn:hover {
+    background-color: rgb(97, 156, 147);
+}
+
+.logout-btn{
+    background-color: #0e123a;
+    color: var(--text-primary);   
+}
+
+.logout-btn:hover {
+    background-color: rgb(4, 12, 117);
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 20px;
+}
+
+.logo-x {
+    font-size: 36px;
+    font-weight: 700;
+    color: #3a86ff;
+    letter-spacing: -0.5px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo-icon {
+    display: inline-block;
+    margin-right: 8px;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #3a86ff, #8338ec);
+    position: relative;
+    margin-left: 495px;
+}
+
+.logo-icon::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 4px;
+    background-color: black;
+}
+
+.res-head{
+    margin-top: 50px;
+}
+
+.res-title{
+    text-align: center;
+    font-size: 32px;
+    margin-top: 00px;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.res-author{
+    margin-top: 5px;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.res-content{
+    margin-top: 32px;
+}
+
+.res-data{
+    margin-left: 600px;
+    font-size: 24px;
+}
+
+.res-data a {
+    text-decoration: none;
+    color: black;
+}
+
+.res-data a:hover{
+    color: cyan;
+}
+
+.res-abstract{
+    margin-top: 32px;
+}
+
+.res-abstract h1 {
+    text-align: center;
+    font-size: 36px;
+}
+
+
+.res-abstract p {
+    margin: 10px 100px;
+    word-wrap: break-word;
+    font-size: 22.5px;
+}
+
+
+hr{
+    margin: 0px 200px;
+    color: #00ffcc;
+}
+
+.btn-s{
+    margin-top: 5px;
+}
+
+.res-btn{
+    margin-top: 28px;
+    display: inline-block;
+    background: linear-gradient(125deg,#5229e9 40%, cyan);
+    color: rgb(193, 195, 233);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.res-btn:hover{
+    background: rgba(20, 80, 190, 0.623);
+}
+
+#btn-ls{
+    margin: 0px 450px;
+}
+
+.footer-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: #00ffcc;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#foot-gr-stl {
+    font-size: 18px;
+    margin-top: 6px;
+    color: white;
+}
