@@ -67,18 +67,18 @@ def paper(doi):
         '''doi = decode_url(doi)
         paper = get_doi(doi)'''
         paper = {'title': 'Learning Robotics, with Robotics, by Robotics', 'authors': 'Ilaria Gaudiello, Elisabetta Zibetti', 'date': 'April 2016', 'citations': 26, 'url': 'https://doi.org/10.1002/9781119335740', 'abstract': 'Endometrial cancer is the most common gynecological cancer in women in most of the developed world. The majority of these women with endometrial cancer will be unaffected by their disease. The challenge therefore is for surgical treatment not to be worse than the disease. Robotics has changed the way that we care for women living with endometrial cancer by making low-impact surgical treatment available to more women than was previously possible.', 'doi': '10.1002/9781119335740', 'publisher': 'Wiley', 'publication': 'Not available', 'journal_type': 'monograph','field':'Machine Learning, Artificial Intelligence','pdf':'https://arxiv.org/pdf/2450.1842'}
-        return render_template('paper.html', paper = paper)
+        return render_template('paper.html', paper = paper,auth = auth_user)
     else:
         return redirect(url_for('auth/login'))
 
-@logic_.route('/analyze/<doi>', methods = ['GET','POST'])
-def analyze(doi):
+@logic_.route('/analyze/', methods = ['GET','POST'])
+def analyze():
 
     auth_user = request.get_json()['user']
 
-    if auth_user:
+    doi = request.get_json()['doi']
 
-        doi = decode_url(doi)
+    if auth_user:
 
         analysis = get_analysis(doi)
         pdf_link = set_pdf(analysis['pdf'],doi)

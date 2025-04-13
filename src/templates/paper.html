@@ -20,6 +20,8 @@
                 <li><a href="#"> History </a></li>
                 <li><a href="#"> About </a></li>
             </ul>
+             
+            <div hidden id="auth-token"> {{auth}} </div>
 
             {% if not auth %}
             <div class="auth-buttons">
@@ -50,7 +52,7 @@
     <ul class="res-content"> 
         <li class="res-data"> Date - {{paper['date']}}</li>
         <li class="res-data"> Subject - {{paper['field']}}</span>
-        <li class="res-data"> DOI - {{paper['doi']}}</span>
+        <li class="res-data" id="res-doi"> DOI - {{paper['doi']}}</span>
         <li class="res-data"> URL - <a href="{{paper['url']}}">{{paper['url']}}</a></span>
     </ul>
 
@@ -62,12 +64,23 @@
     <br>
     <hr>
 
-    <div class="btn-s"> 
+    <div class="btn-s">
+
         <button class="res-btn" id="btn-ls"> 
             Analyze
         </button>
-        <button class="res-btn" id="btn-rs" href="{{paper['pdf']}}" download="/"> Download </button>
+
+        <button class="res-btn" id="btn-rs" href="{{paper['pdf']}}" download="/">
+            Download
+        </button>
+
     </div>
+
+    <div class="dyn-loading">
+        <div class="spinner"></div>
+    </div>
+
+    <div class=".analysis"> </div>
 
     
     <footer class="footer-section">
@@ -79,6 +92,6 @@
             <a href="https://github.com/AIINSTARAJ"> GitHub </a>
         </div>
     </footer>
-    <script src="{{url_for('static', filename = 'js/search.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/paper.js')}}"></script>
 </body>
 </html>
