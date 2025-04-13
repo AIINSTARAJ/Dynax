@@ -124,15 +124,13 @@ document.addEventListener("DOMContentLoaded", function () {
     
                 itemElement.innerHTML = `
                     <img src="../assets/img/dynax.svg">
-                    <h3>${item.title?.slice(0, 100) || "No Title"}</h3>
+                    <h3>${item.title}</h3>
 
                     <div class="info-line"><strong> Authors: </strong> ${item.authors} </div>
-                    <div class="info-line"><strong> Publisher: </strong> ${item.publisher} </div>
                     <div class="info-line"><strong> Year: </strong> ${item.date} </div>
-                    <div class="info-line"><strong> Citations: </strong> ${item.cite} </div>
                     <div class="info-line"><strong> DOI: </strong> ${item.doi} </div>
                     <div class="info-line"><strong> Subject: </strong> ${item.field} </div>
-                    <div class="info-line"><strong> Abstract: </strong> ${item.abstract} </div>
+                    <div class="info-line"><strong> Abstract: </strong> ${item.abstract.substring(0, 400)}... </div>
 
                     <div class="metadata">
                         <a href="${item.link}" target="_blank"> Explore → </a>

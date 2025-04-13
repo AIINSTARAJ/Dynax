@@ -156,7 +156,3 @@ def add_link(papers_list, base_url="https://127.0.0.1:5242/paper/"):
             encoded_doi = encode_url(paper['doi'])
             paper['link'] = f"{base_url}{encoded_doi}"
     return papers_list
-
-papers = get_papers("Automation")
-papers = add_link(papers)
-print(papers)

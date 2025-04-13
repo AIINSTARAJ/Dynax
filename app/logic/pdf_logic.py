@@ -2,7 +2,7 @@
 import os
 from fpdf import FPDF
 
-def set_pdf(doi: str, content: str):
+def set_pdf(content: str,doi: str):
     if not os.path.exists("../src/PDF"):
         os.mkdir("PDF")
 

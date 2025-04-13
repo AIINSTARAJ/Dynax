@@ -257,8 +257,7 @@ p {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 490px; /* Fixed height */
-    max-height: none;
+    height: 564px; /* Fixed height */
     padding: 15px;
     display: flex;
     flex-direction: column;
@@ -298,7 +297,7 @@ p {
 .dyn-scrap-item .info-line strong {
     color: #ddd;
     font-weight: bolder;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 /* Metadata footer link */

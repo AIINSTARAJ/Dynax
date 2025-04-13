@@ -9,17 +9,15 @@ from ..logic.research import *
 
 import sys
 
-import jwt
-
 from werkzeug.security import *
 
 from ..logic.scrap import *
 
 from ..logic.search import *
 
-from ..logic.pdf_logic import set_pdf
+from ..logic.pdf_logic import *
 
-from ..logic.AI_Logic import get_analysis
+from ..logic.AI_Logic import *
 
 from .auth import Token
 
@@ -57,6 +55,7 @@ def scrap():
             return jsonify(papers)
         
         except Exception as E:
+            print(E)
             return 'Error! Network Failure'    
     else:
         return 'Error! Unauthorized Access'
