@@ -1,5 +1,7 @@
 from crossref.restful import Works
 
+from scholarly import *
+
 def search_publications(query, max_results=100, sort_by='relevance'):
     works = Works()
 

@@ -1,6 +1,6 @@
 import json
 from langchain_google_genai import GoogleGenerativeAI
-from langchain.document_loaders import ArxivLoader
+from langchain_community.document_loaders import ArxivLoader
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from ..config import *

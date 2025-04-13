@@ -3,8 +3,6 @@ import requests
 import re
 import base64
 
-from .search import *
-
 def clean_categories(category_string):
     categories = category_string.split(';')
     
@@ -52,13 +50,6 @@ def get_papers(topic:str,max=100,sort_by = ''):
         doi_attr = abs_doi.find("a")
         doi:str = doi_attr.text.strip()
 
-        pub_ = get_publication_by_doi(doi.replace('arXiv:',''))
-
-        citations = pub_['citations']
-        publisher = pub_['publisher']
-        publication = pub_['publications']
-        journalType = pub_['journal_type']
-
         url = doi_attr.get("href")
         pdf = f"https://arxiv.org/pdf/{doi.replace('arXiv:','')}"
 
@@ -84,15 +75,11 @@ def get_papers(topic:str,max=100,sort_by = ''):
             'title' : title,
             'authors' : authors,
             'date' : date,
-            'cite' : citations,
             'doi' : doi,
             'url': url,
             'pdf' : pdf,
-            'publisher' : publisher,
-            'publication': publication,
             'abstract' : abstract,
-            'field' : field,
-            'journal_type' : journalType
+            'field' : field
         }
 
         Papers.append(paper)
@@ -131,27 +118,15 @@ def get_doi(doi:str):
     
     field = clean_categories(field)
 
-    
-    pub_ = get_publication_by_doi(doi.replace('arXiv:',''))
-
-    citations = pub_['citations']
-    publisher = pub_['publisher']
-    publication = pub_['publications']
-    journalType = pub_['journal_type']
-
     paper = {
         'title' : title,
         'authors' : authors,
         'date' : date,
-        'cite' : citations,
         'url': url,
         'doi' : doi,
         'pdf' : pdf,
-        'publisher' : publisher,
-        'publication': publication,
         'abstract' : abstract,
         'field' : field,
-        'journal_type' : journalType
     }
 
     return paper
@@ -181,3 +156,7 @@ def add_link(papers_list, base_url="https://127.0.0.1:5242/paper/"):
             encoded_doi = encode_url(paper['doi'])
             paper['link'] = f"{base_url}{encoded_doi}"
     return papers_list
+
+papers = get_papers("Automation")
+papers = add_link(papers)
+print(papers)
