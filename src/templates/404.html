@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Dynax! </title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/paper.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/404.css')}}">
 </head>
 
 <body>
@@ -43,49 +43,22 @@
             Dynax!
         </div>
     </div>
-
-    <div class="res-head"> 
-        <p class="res-title"> {{paper['title']}} </p>
-        <p class="res-author"> {{paper['authors']}} </p>
-    </div>
-
-    <ul class="res-content"> 
-        <li class="res-data"> Date - {{paper['date']}}</li>
-        <li class="res-data"> Subject - {{paper['field']}}</span>
-        <li class="res-data" id="res-doi"> DOI - {{paper['doi']}}</span>
-        <li class="res-data"> URL - <a href="{{paper['url']}}">{{paper['url']}}</a></span>
-    </ul>
-
-    <div class="res-abstract"> 
-        <h1 class=""> Abstract </h1>
-        <p class="abstract-content"> {{paper['abstract']}} </p>
-    </div>
-
-    <br>
-    <hr>
-
-    <div class="btn-s">
-
-        <button class="res-btn" id="btn-ls"> 
-            Analyze
-        </button>
-
-        <a href="{{paper['pdf']}}" download="/">
-            <button class="res-btn" id="btn-rs">
-                Download
-            </button>
-        </a>
-
-    </div>
-
-    <div class="dyn-loading">
-        <div class="spinner"></div>
-    </div>
-
-    <div class="analysis">
-    </div>
-
     
+    <div id="main"> 
+        <div id="_404"> 
+            404!
+        </div>
+        <h4 id="res-found"> 
+            Page Not Found
+        </h4>
+        <a href="/" class="home-btn"> 
+            <span id="home">
+                Home →
+            </span> 
+        </a>
+    </div>
+
+
     <footer class="footer-section">
         <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
         <br>

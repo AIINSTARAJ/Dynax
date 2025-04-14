@@ -179,6 +179,3 @@ def get_analysis(doi: str, google_api_key = None) -> dict:
         "pdf": pdf_content,
         "html": html_content
     }
-
-
-print(get_analysis("arXiv:2542.5045"))
