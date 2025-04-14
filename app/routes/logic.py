@@ -36,7 +36,7 @@ def search():
     if auth_user:
         return render_template('search.html', auth = auth_user)
     else:
-        return redirect(url_for('auth/login'))
+        return redirect(url_for('auth.login'))
 
 @logic_.route('/scrap',methods=['POST','GET'])
 def scrap():
@@ -69,7 +69,7 @@ def paper(doi):
         paper = {'title': 'Learning Robotics, with Robotics, by Robotics', 'authors': 'Ilaria Gaudiello, Elisabetta Zibetti', 'date': 'April 2016', 'citations': 26, 'url': 'https://doi.org/10.1002/9781119335740', 'abstract': 'Endometrial cancer is the most common gynecological cancer in women in most of the developed world. The majority of these women with endometrial cancer will be unaffected by their disease. The challenge therefore is for surgical treatment not to be worse than the disease. Robotics has changed the way that we care for women living with endometrial cancer by making low-impact surgical treatment available to more women than was previously possible.', 'doi': '10.1002/9781119335740', 'publisher': 'Wiley', 'publication': 'Not available', 'journal_type': 'monograph','field':'Machine Learning, Artificial Intelligence','pdf':'https://arxiv.org/pdf/2450.1842'}
         return render_template('paper.html', paper = paper,auth = auth_user)
     else:
-        return redirect(url_for('auth/login'))
+        return redirect(url_for('auth.login'))
 
 @logic_.route('/analyze/', methods = ['GET','POST'])
 def analyze():
@@ -79,8 +79,9 @@ def analyze():
     doi = request.get_json()['doi']
 
     if auth_user:
-
-        analysis = get_analysis(doi)
+        
+        paper = get_doi(doi)
+        analysis = get_analysis(paper)
         pdf_link = set_pdf(analysis['pdf'],doi)
 
         return jsonify(analysis['html'])
@@ -103,7 +104,8 @@ def summary(doi):
     
     except Exception as E:
 
-        Analysis = get_analysis(doi)
+        paper = get_doi(doi)
+        Analysis = get_analysis(paper)
         link = set_pdf(Analysis['pdf'],doi)
 
         pdf_path_x = f"Dynax!-{doi}.pdf"

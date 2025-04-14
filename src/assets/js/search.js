@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const msg = response;
 
-            if (msg == "Error! Network Failure" || msg === 'Error! Unauthorized Access'){
+            if (msg === "Error! Network Failure" || msg === 'Error! Unauthorized Access'){
 
                 alert("Error in Scraping Research Papers");
                 
@@ -119,18 +119,25 @@ document.addEventListener("DOMContentLoaded", function () {
             ]*/
     
             data.forEach((item) => {
+
                 const itemElement = document.createElement('div');
                 itemElement.classList.add('dyn-scrap-item');
+
+                if (item.title.length > 80) {
+                    abst = item.abstract.substring(0, 320);
+                } else {
+                    abst = item.abstract.substring(0,400);
+                }
     
                 itemElement.innerHTML = `
                     <img src="../assets/img/dynax.svg">
                     <h3>${item.title}</h3>
-
+                    <p>${item.title.length}</p>
                     <div class="info-line"><strong> Authors: </strong> ${item.authors} </div>
                     <div class="info-line"><strong> Year: </strong> ${item.date} </div>
                     <div class="info-line"><strong> DOI: </strong> ${item.doi} </div>
                     <div class="info-line"><strong> Subject: </strong> ${item.field} </div>
-                    <div class="info-line"><strong> Abstract: </strong> ${item.abstract.substring(0, 400)}... </div>
+                    <div class="info-line"><strong> Abstract: </strong> ${abst}... </div>
 
                     <div class="metadata">
                         <a href="${item.link}" target="_blank"> Explore → </a>

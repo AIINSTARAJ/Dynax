@@ -1,6 +1,7 @@
-
+import requests
 import os
 from fpdf import FPDF
+import fitz
 
 def set_pdf(content: str,doi: str):
     
@@ -20,3 +21,15 @@ def set_pdf(content: str,doi: str):
         pdf.cell(200, 10, txt=line, ln=True)
 
     pdf.output(filename)
+
+def get_content(link):
+
+    response = requests.get(link)
+
+    with fitz.open(stream=response.content,filetype='pdf') as doc:
+        text_content = ''
+        for page in doc:
+            text_content += page.get_text()
+
+    return text_content
+        
