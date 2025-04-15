@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 import base64
+import json
 
 def clean_categories(category_string):
     categories = category_string.split(';')
@@ -150,7 +151,7 @@ def decode_url(encoded_doi):
     except Exception as e:
         return f"Error decoding: {str(e)}"
 
-def add_link(papers_list, base_url="https://127.0.0.1:5242/paper/"):
+def add_link(papers_list, base_url="http://127.0.0.1:5425/paper/"):
     for paper in papers_list:
         if 'doi' in paper and paper['doi']:
             encoded_doi = encode_url(paper['doi'])

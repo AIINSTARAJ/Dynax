@@ -16,7 +16,7 @@ def get_analysis(paper:json, google_api_key = None) -> dict:
 
     google_api_key = os.environ.get('GOOGLE_API_KEY')
 
-    full_text = get_content(paper['url'])
+    full_text = get_content(paper['pdf'].strip("'\""))
 
     title = paper['title']
 
@@ -79,43 +79,12 @@ def get_analysis(paper:json, google_api_key = None) -> dict:
         Create content designed specifically for HTML/JavaScript integration with this structure:
         - Excludes <title> tag as you mentioned it will be handled by JavaScript
         - The output must follow this JSON structure exactly:
+
         
-        {
-          "paragraphs": [
-            {
-              "header": "Executive Summary",
-              "content": "Detailed paragraph about main contributions..."
-            },
-            {
-              "header": "Methodological Innovations",
-              "content": "Deep analysis of methods..."
-            },
             ... at least 10 paragraphs total with headers and content and please the amount should depend on the paper content,
             The more a paper is lenghty, The mire the lenght of the comprehensive summary, And also each Pargraph should be highly intellectual and Explanatory if possible 100+ lines
-          ],
-          "metadata": [
-            {
-              "title": "Citations",
-              "content": "Citation analysis..."
-            },
-            {
-              "title": "Publication Impact",
-              "content": "Impact assessment..."
-            },
-            {
-              "title": "Key Algorithms",
-              "content": "Algorithmic overview..."
-            },
-            {
-              "title": "Dataset Information",
-              "content": "Dataset analysis..."
-            },
-            {
-              "title": "Reproducibility Assessment",
-              "content": "Evaluation of reproducibility..."
-            }
-          ]
-        }
+ 
+
         
         The HTML content must be structured for maximum clarity with:
         - Distinctive headers for each paragraph
@@ -123,6 +92,8 @@ def get_analysis(paper:json, google_api_key = None) -> dict:
         - Complete metadata entries that provide crucial research context
         - Content optimized for scholarly audience with precise technical terminology
         - Handle Styling and hyperlinkproperly as it would be rendered in a website
+        - Properly formatted citations and references in a consistent style (APA, MLA, or Chicago)
+        - I am directly rendering it so take care of the rendering ans styling and everything
         
         CRITICAL INSTRUCTIONS:
         - Apply chain-of-thought reasoning visibly in your analysis
@@ -140,7 +111,7 @@ def get_analysis(paper:json, google_api_key = None) -> dict:
     )
     
 
-    llm = GoogleGenerativeAI(model="gemini-pro", temperature=0.2, google_api_key=google_api_key)
+    llm = GoogleGenerativeAI(model="models/gemini-1.5-pro", temperature=0.2, google_api_key=google_api_key)
     chain = LLMChain(llm=llm, prompt=prompt)
     
     response = chain.run({
@@ -153,26 +124,15 @@ def get_analysis(paper:json, google_api_key = None) -> dict:
     parts = response.split("-----HTML JSON BELOW-----")
     pdf_content = parts[0].strip()
     
-    html_content = {}
-    if len(parts) > 1:
-        json_text = parts[1].strip()
-        try:
-            html_content = json.loads(json_text)
-        except json.JSONDecodeError:
-            html_content = {
-                "paragraphs": [{"header": "Error", "content": "Could not parse JSON output."}],
-                "metadata": [{"title": "Error", "content": "JSON parsing failed."}]
-            }
-    else:
-        html_content = {
-            "paragraphs": [{"header": "Error", "content": "Structured JSON not found in response."}],
-            "metadata": [{"title": "Note", "content": "Only PDF content was generated."}]
-        }
-    
+    html_content = parts[1].strip
+
     return {
         "pdf": pdf_content,
         "html": html_content
     }
 
 if __name__ == '__main__':
-    print(get_analysis())
+    analysis = get_analysis(paper = {'title': 'OSCAR: Online Soft Compression And Reranking', 'authors': ['Maxime Louis', 'Thibault Formal', 'Hervé Dejean', 'Stéphane Clinchant'], 'date': '17 Mar 2025', 'url': "'https://arxiv.org/abs/2504.07109", 'doi': 'arXiv:2504.07109', 'pdf': "'https://arxiv.org/pdf/2504.07109", 'abstract': 'Retrieval-Augmented Generation (RAG) enhances Large Language Models (LLMs) by integrating external knowledge, leading to improved accuracy and relevance. However, scaling RAG pipelines remains computationally expensive as retrieval sizes grow. To address this, we introduce OSCAR, a novel query-dependent online soft compression method that reduces computational overhead while preserving performance. Unlike traditional hard compression methods, which shorten retrieved texts, or soft compression approaches, which map documents to continuous embeddings offline, OSCAR dynamically compresses retrieved information at inference time, eliminating storage overhead and enabling higher compression rates. Additionally, we extend OSCAR to simultaneously perform reranking, further optimizing the efficiency of the RAG pipeline. Our experiments demonstrate state-of-the-art performance with a 2-5x speed-up in inference and minimal to no loss in accuracy for LLMs ranging from 1B to 24B parameters. The models are available at: this https URL.', 'field': ['Information Retrieval', 'Artificial Intelligence', 'Computation and Language']})
+    with open('a.txt','w') as fl:
+        fl.write(analysis['pdf'])
+        
