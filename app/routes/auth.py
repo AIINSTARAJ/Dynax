@@ -158,10 +158,15 @@ def logout():
 
 @auth_.route('/delete')
 def delete_account():
-    ses_name = session["name"]
-    ses_mail = session["mail"]
-    ses_pwd = session['pwd']
-    ses_token = session['token']   
+    try:
+        ses_name = session["name"]
+        ses_mail = session["mail"]
+        ses_pwd = session['pwd']
+        ses_token = session['token']
+
+    except Exception as E:
+        return redirect(url_for('auth.login'))  
+       
     User = user.query.filter_by(username = ses_name,mail = ses_mail,token = ses_token,password=ses_pwd).first()
     db.session.delete(User)
     db.session.commit()

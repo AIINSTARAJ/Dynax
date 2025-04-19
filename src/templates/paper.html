@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Dynax! </title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/paper.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar">
+
+            <div class="logo"> Dynax! </div>
+
+            <ul class="nav-links">
+                <li><a href="#"> Analyze </a></li>
+                <li><a href="/search"> Search </a></li>
+                <li><a href="#"> History </a></li>
+                <li><a href="/about"> About </a></li>
+            </ul>
+             
+            <div hidden id="auth-token"> {{auth}} </div>
+
+            {% if not auth %}
+            <div class="auth-buttons">
+                <a href="/auth/login" class="login-btn"> Log In </a>
+                <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            </div>
+            {% else %}
+            <div>
+                <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')">
+                    Log Out
+                </a>
+            </div>
+            {% endif %}
+        </nav>
+
+        <div class="logo-container"></div>
+        <div class="logo-x">
+            <span class="logo-icon"></span>
+            Dynax!
+        </div>
+    </div>
+
+    <div class="res-head"> 
+        <p class="res-title" id="title"> {{paper['title']}} </p>
+        <p class="res-author"> {{', '.join(paper['authors'])}} </p>
+    </div>
+    
+
+    <ul class="res-content"> 
+        <li class="res-data"> <strong>  Date - </strong>{{paper['date']}}</li>
+        <li class="res-data"> <strong> Subject - </strong>{{', '.join(paper['field'])}}</li>
+        <li class="res-data" id="res-doi"> <strong> DOI - </strong>{{paper['doi']}}</li>
+        <li class="res-data"> <strong>  URL - </strong> <a href= "{{paper['url'].replace("'", "")}}"> {{paper['url'].replace("'", "")}} </a></li>
+    </ul>
+
+    <div class="res-abstract"> 
+        <h1 class=""> Abstract </h1>
+        <p class="abstract-content"> {{paper['abstract']}} </p>
+    </div>
+
+    <br>
+    <hr>
+
+    <div class="btn-s">
+
+        <button class="res-btn" id="btn-ls"> 
+            Analyze
+        </button>
+
+        <a href="{{paper['pdf'].replace("'", "")}}" download>
+            <button class="res-btn" id="btn-rs">
+                Download
+            </button>
+        </a>
+
+    </div>
+
+    <div class="dyn-loading">
+        <div class="spinner"></div>
+    </div>
+  
+    <div class="res-txt">  </div>
+
+    <div class="analysis_"> </div>
+
+    
+    <foot class="footer-section">
+        <div id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</div>
+        <br>
+        <div class="social-links">
+            <a href="https://x.com/AI_Instaraj"> Twitter </a>
+            <a href="#"> LinkedIn </a>
+            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
+        </div>
+    </foot>
+    <script src="{{url_for('static', filename = 'js/paper.js')}}"></script>
+</body>
+</html>

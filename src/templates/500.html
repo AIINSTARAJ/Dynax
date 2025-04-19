@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Dynax! </title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/search.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/404.css')}}">
 </head>
 
 <body>
@@ -20,6 +20,8 @@
                 <li><a href="#"> History </a></li>
                 <li><a href="/about"> About </a></li>
             </ul>
+             
+            <div hidden id="auth-token"> {{auth}} </div>
 
             {% if not auth %}
             <div class="auth-buttons">
@@ -40,33 +42,21 @@
             <span class="logo-icon"></span>
             Dynax!
         </div>
-        <p> Search Research Papers. </p>
-    </div>
-
-
-    <!-- SEARCH BAR & NOTEPAD STYLE UI -->
-    <section class="search">
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="">
-        </div>
-        <button type="submit" id="search-btn">
-            SEARCH
-        </button>
-    </section>
-
-    <div class="dyn-loading">
-        <div class="spinner"></div>
     </div>
     
-
-    <div class="dyn-scrap-contents">
-
-        <h1 id="dyn-search-title"> </h1>
-
-        <div class="dyn-scrap-items"> </div>  
-
+    <div id="main"> 
+        <div id="_404"> 
+            500!
+        </div>
+        <h4 id="res-found"> 
+            Server Error
+        </h4>
+        <a href="/" class="home-btn"> 
+            <span id="home">
+                Home →
+            </span> 
+        </a>
     </div>
-
 
 
     <footer class="footer-section">
@@ -78,6 +68,6 @@
             <a href="https://github.com/AIINSTARAJ"> GitHub </a>
         </div>
     </footer>
-    <script src="{{url_for('static', filename = 'js/search.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/paper.js')}}"></script>
 </body>
 </html>

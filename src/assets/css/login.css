@@ -11,7 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins';
 }
 
 body {
@@ -137,7 +137,7 @@ p {
 
 #form-sl-g {
     width: 720px;
-    height: 630px;
+    height: fit-content;
     background-color: rgb(26, 26, 54);
     margin-left: 240px;
     border-radius: 10px;
@@ -215,8 +215,9 @@ input:focus {
 
 .dyn-under {
     text-align: center;
-    margin-top: -5px;
+    margin-top: -10px;
     align-items: center;
+    margin-bottom: -10px;
 }
 
 #dyn-alt {
