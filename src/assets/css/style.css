@@ -158,6 +158,10 @@ body {
     text-align: center;
     color: rgb(46, 19, 179);
     font-size: 28px;
+    background: linear-gradient(125deg,#5229e9 36%, rgb(3, 158, 158));
+    -webkit-background-clip: text;
+    background-clip: linear-gradient(125deg,#5229e9 40%, cyan);
+    -webkit-text-fill-color: transparent;
 }
 
 .feature-card {
@@ -211,6 +215,10 @@ body {
     text-align: center;
     color: rgb(25, 6, 109);
     font-size: 28;
+    background: linear-gradient(125deg,#a605ac 12%, rgb(7, 185, 185));
+    -webkit-background-clip: text;
+    background-clip: linear-gradient(125deg,#5229e9 40%, cyan);
+    -webkit-text-fill-color: transparent;
 }
 
 
