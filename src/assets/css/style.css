@@ -215,7 +215,7 @@ body {
     text-align: center;
     color: rgb(25, 6, 109);
     font-size: 28;
-    background: linear-gradient(125deg,#a605ac 12%, rgb(7, 185, 185));
+    background: linear-gradient(25deg,#a605ac 12%, rgb(7, 185, 185) 80%);
     -webkit-background-clip: text;
     background-clip: linear-gradient(125deg,#5229e9 40%, cyan);
     -webkit-text-fill-color: transparent;
