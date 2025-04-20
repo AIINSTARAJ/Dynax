@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         try {
 
-            /*const response = await fetch('/analyze', {
+            const response = await fetch('/analyze', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,11 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const msg = await response.text();
 
-            AnalysisContainer.innerHTML = msg;*/
+            AnalysisContainer.innerHTML = msg;
 
             IntroContainer.innerHTML = `<br> Dynax! AI Analysis -- ${Title}`
    
-            AnalysisContainer.innerHTML = `
+            /*AnalysisContainer.innerHTML = `
                   <!DOCTYPE html>
                   <html>
                   <head>
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                   </body>
-                  </html>`
+                  </html>*/
                         
         } catch (error) {
 
