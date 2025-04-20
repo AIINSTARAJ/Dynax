@@ -19,10 +19,21 @@
                 <li><a href="/about">About</a></li>
             </ul>
             
-            <div class="auth-buttons">
-                <a href="/auth/login" class="login-btn">Log In</a>
-                <a href="/auth/signup" class="signup-btn">Sign Up</a>
-            </div>
+
+
+            {% if not auth %}
+                <div class="auth-buttons">
+                    <a href="/auth/login" class="login-btn"> Log In </a>
+                    <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+                </div>
+                {% else %}
+                <div>
+                    <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')">
+                        Log Out
+                    </a>
+                </div>
+            {% endif %}
+
         </nav>
         
         <div class="hero-section">

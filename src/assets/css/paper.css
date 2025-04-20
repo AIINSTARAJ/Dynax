@@ -223,10 +223,11 @@ body {
 
 
 .res-abstract p {
-    margin: 10px 100px;
+    margin: 10px 20px;
     word-wrap: break-word;
     font-size: 22.5px;
     color: #dadcf8;
+    text-align: justify;
 }
 
 

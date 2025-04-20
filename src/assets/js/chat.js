@@ -60,23 +60,22 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 // In a real implementation, this would be an API call to your backend
 
-               /*const response =  fetch('/analyze', {
+               const response =  fetch('/bot', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(
-                        {'doi': doi,
-                        'user': auth}
+                        {'msg': message}
                     ),
                 });
             
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);    
-                }*/
+                }
 
                 const randomIndex = Math.floor(Math.random() * botResponses.length);
-                resolve(botResponses[randomIndex]);
+                resolve(response);
 
             }, responseTime);
         });
@@ -90,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Add user message to chat
         addMessage(message, true);
+        
         messageInput.value = '';
         
         // Show typing indicator
@@ -123,7 +123,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             // Handle error
             removeTypingIndicator();
+
             addMessage("Sorry, I encountered an error processing your request.", false);
+
             console.error("Error getting bot response:", error);
         }
     }
