@@ -238,9 +238,9 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
         "pdf_content": pdf_content
     })
 
-    content = html_content.replace("'''html","").replace("'''","")
+    content = html_content.replace("```html","").replace("```","")
     
-    return html_content
+    return content
 
 if __name__ == '__main__':
     analysis = get_analysis(paper = {

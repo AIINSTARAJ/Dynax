@@ -10,9 +10,9 @@ def set_pdf(content: str,doi: str):
         if not os.path.exists("PDF"):
             os.mkdir("PDF")
 
-        filename = os.path.join('PDF', 'Dynax-{doi}.pdf')
+        filename = os.path.join('PDF', f'Dynax-{doi}.pdf')
 
-        pdfkit.from_string(content,filename)
+        pdfkit.from_string(content)
 
     except Exception as E:
         

@@ -277,11 +277,6 @@ body {
     margin-top: 40px;
 }
 
-.dyn-search-title {
-    align-items: center;
-    display: flex;
-}
-
 .dyn-search-title h1{
     color: var(--text-primary);
     background: linear-gradient(125deg, #5229e9 36%, rgb(3, 158, 158));
@@ -291,8 +286,6 @@ body {
     font-size: 28px;
     font-weight: bold;
     text-align: center;
-    margin-left: 40%;
-    margin-right: 40%;
     margin-top: 25px;
     margin-bottom: -15px;
 }

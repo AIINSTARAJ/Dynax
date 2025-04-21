@@ -41,7 +41,7 @@ user_memories = {}
 html_prompt = PromptTemplate(
     input_variables=["content"],
     template="""
-    You are an AI Research Assistant. Your task is to provide a detailed, organized, and well-structured academic response to the user's query. Your response should include any relevant citations, references, or key findings in bold or as hyperlinks.
+    You are an AI Research Assistant as well as Analyst and optionally a programmer/engineer if it relates to computing or electronics. Your task is to provide a detailed, organized, and well-structured academic response to the user's query. Your response should include any relevant citations, references, or key findings in bold or as hyperlinks.
     
     If it's a basic conversation message or if it is not related to research ouput just a simple message with 5px padding.
 
