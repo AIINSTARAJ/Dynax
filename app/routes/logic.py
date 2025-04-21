@@ -9,6 +9,10 @@ from ..logic.scrap.research import *
 
 import sys
 
+import html
+
+from langchain.schema import AIMessage
+
 from werkzeug.security import *
 
 from ..logic.scrap.scrap import *
@@ -132,14 +136,19 @@ def chat():
     else:
         return redirect(url_for('auth.login'))
     
-@logic_.route('/bot')
+
+@logic_.route('/bot', methods=['POST'])
 def bot():
     auth_user = session.get("token")
 
     response = request.get_json()
-
     msg = response['msg']
 
-    content = research(auth_user,msg)
+    content = research(auth_user, msg)['message']
 
-    return
+    if isinstance(content, AIMessage):
+        return jsonify({"response": html.escape(content.content.replace("```html",'').replace("```",""))})
+    elif isinstance(content, dict):
+        return jsonify({"response": content.get("output", str(content))})
+    else:
+        return jsonify({"response": str(content)})

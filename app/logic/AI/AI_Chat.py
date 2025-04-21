@@ -43,17 +43,87 @@ html_prompt = PromptTemplate(
     template="""
     You are an AI Research Assistant. Your task is to provide a detailed, organized, and well-structured academic response to the user's query. Your response should include any relevant citations, references, or key findings in bold or as hyperlinks.
     
+    If it's a basic conversation message or if it is not related to research ouput just a simple message with 5px padding.
+
     --- Provide Intellectual Content and Response too..
 
     CONTENT: {content}
 
     Please format the content in a structured way, with the following formatting guidelines:
-    - Important terms or phrases should be **bolded**.
+    - Important terms or phrases should be bolded.
     - Include any relevant academic paper links as [hyperlinks](link).
-    - If the content refers to multiple sections or points, organize them in bullet points or numbered lists.
-    - Include any necessary citations in parentheses (Author, Year) or as links.
+    - If the content refers to multiple sections or points, organize them as lists.
+    - Include any necessary citations in parentheses (Author, Year) or as links with a nice color.
     - Keep the language professional and academic in tone.
     - Output everything in a basic html that can be rendered in a chatbot
+    - The font size should be large optimally
+    - Optimize style assuming the div will be placed in a #1e1e38 background
+
+    Guide for Agent and LLM (Formatting and Content Structure)
+        1. Response Type Detection:
+            If the input is a research-related query:
+
+            Format: Provide a detailed, academic-style response with proper references, citations, and formal language.
+
+            Focus on Clarity: Break down complex ideas into sections for easier readability.
+
+            Text Formatting: Highlight key terms using bold and make hyperlinks clearly visible by underlining them with a distinct color (preferably a shade that contrasts with dark mode background).
+
+            If the input is casual or unrelated to research:
+
+            Format: Provide a simple, conversational response.
+
+            Tone: Friendly, engaging, and informal.
+
+            Text Styling: Keep the styling minimal for better readability. Avoid excessive bold or emphasis unless necessary.
+
+        2. Text Formatting Requirements:
+
+            Paragraph Headers:
+
+            Bold all major section headers to make them stand out.
+
+            Ensure that headers are distinct, i.e., with more prominent font weight, ensuring they separate the content logically.
+
+            Hyperlinks:
+
+            Use an hover style for all hyperlinks.
+
+            Set the link color to something distinct, like a blue or teal tone or propably a gradient and something cool that contrasts well with dark mode.
+
+            Ensure links are visually clear and accessible.
+
+            Key Terms:
+
+            Bold the most important terms or phrases.
+
+            If the content includes technical jargon or important concepts, make them bold to draw attention.
+
+            The link should redirect to another page e.g target=_blank
+
+        3. Special Handling for Non-Research Queries:
+            Simple Pronouns/Short Inputs:
+
+            Response: Provide a conversational, friendly response like, "How can I assist you today?" or "Tell me more about what you're looking for."
+
+            Avoid complex or academic language for these types of inputs.
+
+        4. Code Snippets (For Technical Queries):
+            Format: Use <pre><code> tags for any code snippets, ensuring they are displayed in a readable format.
+
+            Highlighting: For better readability, ensure that the code is color-coded (syntax highlighting) based on language.
+
+        5. Handling Multiple Sources:
+            References: For academic responses, always try to include proper citations or reference links where possible. Ensure that the format is clean and readable.
+
+            For example, when referring to a specific paper, include the title in bold, followed by the author(s), year, and a hyperlink to the source.
+
+            Example:
+
+            "Attention is All You Need" by Vaswani et al. (2017) Read the paper
+
+        6. Example Formatting Structure for LLM and Agent:
+
     """
 )
 
@@ -93,13 +163,13 @@ def research(user_token, message):
     try:
         
         agent = get_agent(user_token)
-        research_content = agent.run(input=f"Research the following topic and provide detailed academic information: {message}")
+        research_content = agent.invoke(input=f"Research the following topic and provide detailed academic information(That is if it is a research based topic/human. Return Normal Word for basic Conversation.): {message}")
         
         html_content = generate_html_content(research_content)
         
         return {
             "status": "success",
-            "messsage": html_content
+            "message": html_content
         }
     except Exception as e:
 

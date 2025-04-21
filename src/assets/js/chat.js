@@ -51,45 +51,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Function to simulate bot response (would be replaced with actual API call)
-    function getBotResponse(message) {
-        return new Promise((resolve) => {
-            // Simulate API delay
-            const responseTime = 1000 + Math.random() * 2000;
-            
-            setTimeout(() => {
-                // In a real implementation, this would be an API call to your backend
 
-               const response =  fetch('/bot', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(
-                        {'msg': message}
-                    ),
-                });
-            
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);    
-                }
-
-                const randomIndex = Math.floor(Math.random() * botResponses.length);
-                resolve(response);
-
-            }, responseTime);
+    // Function to simulate bot response (with actual API call)
+    async function getBotResponse(message) {
+        const res = await fetch('/bot', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ msg: message }),
         });
+    
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+    
+        const data = await res.json();
+        return data.response; 
     }
+    
 
-    // Function to handle sending a message
-    async function sendMessage() {
+   /* async function sendMessage() {
         const message = messageInput.value.trim();
         
         if (message === '') return;
         
         // Add user message to chat
         addMessage(message, true);
-        
+
         messageInput.value = '';
         
         // Show typing indicator
@@ -97,7 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         try {
             // Get bot response (would be API call in production)
-            const response = await getBotResponse(message);
+            const content = await getBotResponse(message);
+            const cleanRes = DOMPurify.sanitize(content);
             
             // Remove typing indicator and add bot response
             removeTypingIndicator();
@@ -110,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Typewriter effect
             let i = 0;
             const typeWriter = () => {
-                if (i < response.length) {
-                    botMessageDiv.textContent += response.charAt(i);
+                if (i < content.length) {
+                    botMessageDiv.textContent += cleanRes.charAt(i);
                     i++;
                     chatMessages.scrollTop = chatMessages.scrollHeight;
                     setTimeout(typeWriter, 20 + Math.random() * 10);
@@ -128,7 +118,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
             console.error("Error getting bot response:", error);
         }
-    }
+    }*/
+
+    async function sendMessage() {
+            const message = messageInput.value.trim();
+            
+            if (message === '') return;
+            
+            // Add user message to chat
+            addMessage(message, true);
+        
+            messageInput.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            try {
+                // Get bot response (would be API call in production)
+                const content = await getBotResponse(message);
+                
+                // Sanitize the content to ensure no harmful code
+                const cleanRes = DOMPurify.sanitize(content);
+                
+                // Decode HTML entities to allow rendering of tags
+                const decodedContent = decodeHtmlEntities(cleanRes);
+                
+                // Remove typing indicator and add bot response
+                removeTypingIndicator();
+                
+                // Add bot message div to the chat
+                const botMessageDiv = document.createElement('div');
+                botMessageDiv.classList.add('message', 'bot-message');
+                chatMessages.appendChild(botMessageDiv);
+                
+                // Typewriter effect
+                let i = 0;
+                let typedContent = ''; // Accumulate the typed content
+        
+                const typeWriter = () => {
+                    if (i < decodedContent.length) {
+                        typedContent += decodedContent.charAt(i); // Add the next character to the content
+                        botMessageDiv.textContent = typedContent;  // Update text content (no HTML yet)
+                        i++;
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                        setTimeout(typeWriter, 20 + Math.random() * 10);
+                    } else {
+                        // Once typing is complete, set the innerHTML to decoded content
+                        botMessageDiv.innerHTML = typedContent; // Now inject HTML
+                    }
+                };
+                
+                typeWriter();
+                
+            } catch (error) {
+                // Handle error
+                removeTypingIndicator();
+        
+                addMessage("Sorry, I encountered an error processing your request.", false);
+        
+                console.error("Error getting bot response:", error);
+            }
+        }
+        
+        // Decode HTML entities back to proper HTML
+        function decodeHtmlEntities(text) {
+            const textArea = document.createElement('textarea');
+            textArea.innerHTML = text;
+            return textArea.value;
+        }
+        
 
     // Event listeners
     sendButton.addEventListener('click', sendMessage);
