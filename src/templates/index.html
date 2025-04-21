@@ -1,145 +1,4 @@
-/*<!DOCTYPE html>
-<html lang="en-us">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dynax! </title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
-</head>
-<body>
-    <div class="container">
-        <nav class="navbar">
 
-            <div class="logo"> Dynax! </div>
-
-            <ul class="nav-links">
-                <li><a href="#"> Analyze </a></li>
-                <li><a href="/search"> Search </a></li>
-                <li><a href="#"> History </a></li>
-                <li><a href="/about"> About </a></li>
-            </ul>
-
-            {% if not auth %}
-                <div class="auth-buttons">
-                    <a href="/auth/login" class="login-btn"> Log In </a>
-                    <a href="/auth/signup" class="signup-btn"> Sign Up </a>
-                </div>
-            {% else %}
-                <div> 
-                    <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
-                </div>
-            {% endif %}
-        </nav>
-
-        <main class="hero-section">
-            <h1> Let's Analyze, Research, and Discover with AI </h1>
-            <p> Empower your research with Dynax's intelligent paper analysis and scraping tools. </p>
-            <a href="#" class="cta-button"> Get Started → </a>
-        </main>
-
-        
-        <h1 class="res-features">
-            Key Features
-        </h1>
-
-        <section class="features-grid">
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                </div>
-
-                <h3> Advanced AI Analysis </h3>
-                <p> Leverage cutting-edge AI to extract insights from research papers.</p>
-                <a href="#" class="learn-more"> Learn More → </a>
-
-            </div>
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                    </svg>
-                </div>
-
-                <h3> Seamless Scraping </h3>
-                <p> Efficiently extract and organize research data from multiple sources.</p>
-                <a href="#" class="learn-more" >Learn More → </a>
-
-            </div>
-
-            <div class="feature-card">
-
-                <div class="feature-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </div>
-
-                <h3> Research Workflow </h3>
-                <p> Streamline your research process with intelligent tools and insights. </p>
-                <a href="#" class="learn-more"> Learn More → </a>
-
-            </div>
-
-        </section>
-   
-        <h1 class="res-part">
-            Research Partners
-        </h1>
-
-        <section class="res-partners">
-
-            <div class="res-partner">
-                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="IEEE">
-                <h4> IEEE </h4>
-                <p> Enhance Research In Engineering and Computer Science </p>
-                <a href="#" class="explore"> Explore → </a>
-            </div>
-
-            <div class="res-partner">
-                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="Research Gate">
-                <h4> Research Gate </h4>
-                <p> Enhance Research In Engineering and Computer Science </p>
-                <a href="#" class="explore"> Explore → </a>
-            </div>
-
-            <div class="res-partner">
-                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="Google Scholar">
-                <h4> Google Scholar </h4>
-                <p> Enhance Research In Engineering and Computer Science </p>
-                <a href="#" class="explore"> Explore → </a>
-            </div>
-
-        </section>
-    </div>
-
-    <div class="dyn-about"> 
-        <h1> 
-            About Dynax: Revolutionizing Research Together
-        </h1>
-        <p> 
-            We are dedicated to revolutionizing research research through cutting-edge AI and comprehensive data solutions,
-            empowering users with actionable insights and seamless data discovery
-        </p>
-    </div>
-
-    <footer class="footer-section">
-        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
-        <br>
-        <div class="social-links">
-            <a href="https://x.com/AI_Instaraj"> Twitter </a>
-            <a href="#"> LinkedIn </a>
-            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
-        </div>
-    </footer>
-    
-</body>
-</html>
 
 
 
@@ -153,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
@@ -171,10 +29,6 @@
                 <li><a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
             </ul>
 
-            <div class="mobile-menu-icon">
-                <i class="fas fa-bars"></i>
-            </div>
-
             {% if not auth %}
                 <div class="auth-buttons">
                     <a href="/auth/login" class="login-btn"> Log In </a>
@@ -191,7 +45,7 @@
             <div class="hero-content">
                 <h1 class="animate-title">Let's Analyze, Research, and Discover with AI</h1>
                 <p class="animate-text">Empower your research with Dynax's intelligent paper analysis and scraping tools.</p>
-                <a href="#" class="cta-button animate-button">Get Started <i class="fas fa-arrow-right"></i></a>
+                <a href="#"  class="cta-animate"><span class="cta-button animate-button">Get Started &#8594;</span></a>
             </div>
             <div class="hero-image">
                 <div class="floating-shapes">
@@ -336,10 +190,6 @@
         <h1>About Dynax: Revolutionizing Research Together</h1>
         <p>We are dedicated to revolutionizing research through cutting-edge AI and comprehensive data solutions,
             empowering users with actionable insights and seamless data discovery</p>
-        <div class="about-cta">
-            <a href="#" class="about-button">Our Story</a>
-            <a href="#" class="about-button">Contact Us</a>
-        </div>
     </div>
 
     <footer class="footer-section">
