@@ -224,51 +224,6 @@ body {
     font-size: 21px;
 }
 
-.logo-container {
-    text-align: center;
-    margin-bottom: 2rem;
-    margin-top: 32px;
-}
-
-.logo-x {
-    font-size: 36px;
-    font-weight: 700;
-    color: #3a86ff;
-    letter-spacing: -0.5px;
-    display: inline-flex;
-    align-items: center;
-}
-
-.logo-icon {
-    display: inline-block;
-    margin-right: 8px;
-    height: 5rem;
-    width: 5rem;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #3a86ff, #8338ec);
-    position: relative;
-}
-
-.logo-icon::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 4px;
-    background-color: black;
-}
-
-p {
-    text-align: center;
-    font-size: 28px;
-    margin-top: 20px;
-    color: var(--text-secondary);
-}
-
-
 .footer-section {
     text-align: center;
     padding: 2rem 0;
