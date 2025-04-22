@@ -12,7 +12,12 @@ def set_pdf(content: str,doi: str):
 
         filename = os.path.join('PDF', f'Dynax-{doi}.pdf')
 
-        pdfkit.from_string(content)
+        path_to_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
+
+        options = {'page-size': 'A4', 'encoding': 'UTF-8'}
+        config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
+
+        pdfkit.from_string(content, filename, configuration=config,options=options)
 
     except Exception as E:
         

@@ -1,32 +1,22 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynax! | AI Research Platform</title>
+    <title> Dynax! </title>
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
     <div class="container">
         <nav class="navbar">
-            <div class="logo">
-                <span class="logo-text">Dynax<span class="accent">!</span></span>
-            </div>
+
+            <div class="logo"> Dynax! </div>
 
             <ul class="nav-links">
-                <li><a href="#" class="nav-link"><i class="fas fa-chart-line"></i> Analyze</a></li>
-                <li><a href="/search" class="nav-link"><i class="fas fa-search"></i> Search</a></li>
-                <li><a href="#" class="nav-link"><i class="fas fa-history"></i> History</a></li>
-                <li><a href="/about" class="nav-link"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#"> Analyze </a></li>
+                <li><a href="/search"> Search </a></li>
+                <li><a href="#"> History </a></li>
+                <li><a href="/about"> About </a></li>
             </ul>
 
             {% if not auth %}
@@ -36,266 +26,117 @@
                 </div>
             {% else %}
                 <div> 
-                    <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to log out?')"> Log Out </a>
+                    <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                 </div>
             {% endif %}
         </nav>
 
         <main class="hero-section">
-            <div class="hero-content">
-                <h1 class="animate-title">Let's Analyze, Research, and Discover with AI</h1>
-                <p class="animate-text">Empower your research with Dynax's intelligent paper analysis and scraping tools.</p>
-                <a href="#"  class="cta-animate"><span class="cta-button animate-button">Get Started &#8594;</span></a>
-            </div>
-            <div class="hero-image">
-                <div class="floating-shapes">
-                    <div class="shape shape-1"></div>
-                    <div class="shape shape-2"></div>
-                    <div class="shape shape-3"></div>
-                </div>
-            </div>
+            <h1> Let's Analyze, Research, and Discover with AI </h1>
+            <p> Empower your research with Dynax's intelligent paper analysis and scraping tools. </p>
+            <a href="#" class="cta-button"> Get Started → </a>
         </main>
 
-        <h2 class="section-title res-features reveal">
-            <span class="highlight">Key Features</span>
-        </h2>
+        
+        <h1 class="res-features">
+            Key Features
+        </h1>
 
         <section class="features-grid">
-            <div class="feature-card reveal">
+
+            <div class="feature-card">
+
                 <div class="feature-icon">
-                    <i class="fas fa-brain"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
                 </div>
-                <h3>Advanced AI Analysis</h3>
-                <p>Leverage cutting-edge NLP models to extract key insights, summarize findings, and identify trends across multiple research papers.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+
+                <h3> Advanced AI Analysis </h3>
+                <p> Leverage cutting-edge AI to extract insights from research papers.</p>
+                <a href="#" class="learn-more"> Learn More → </a>
+
             </div>
 
-            <div class="feature-card reveal">
+            <div class="feature-card">
+
                 <div class="feature-icon">
-                    <i class="fas fa-spider"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
                 </div>
-                <h3>Intelligent Web Scraping</h3>
-                <p>Extract structured data from journals, articles, and databases with our advanced algorithms that maintain citation integrity.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+
+                <h3> Seamless Scraping </h3>
+                <p> Efficiently extract and organize research data from multiple sources.</p>
+                <a href="#" class="learn-more" >Learn More → </a>
+
             </div>
 
-            <div class="feature-card reveal">
+            <div class="feature-card">
+
                 <div class="feature-icon">
-                    <i class="fas fa-project-diagram"></i>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                 </div>
-                <h3>Interactive Research Maps</h3>
-                <p>Visualize connections between papers, authors, and concepts with dynamic knowledge graphs and citation networks.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
+
+                <h3> Research Workflow </h3>
+                <p> Streamline your research process with intelligent tools and insights. </p>
+                <a href="#" class="learn-more"> Learn More → </a>
+
             </div>
 
-            <div class="feature-card reveal">
-                <div class="feature-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h3>AI Research Assistant</h3>
-                <p>Ask questions about papers, get summaries, and explore related work with our conversational AI research companion.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="feature-card reveal">
-                <div class="feature-icon">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
-                <h3>Real-time Analytics</h3>
-                <p>Track research trends, monitor citation metrics, and analyze the impact of publications across multiple disciplines.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="feature-card reveal">
-                <div class="feature-icon">
-                    <i class="fas fa-cloud"></i>
-                </div>
-                <h3>Cloud Library</h3>
-                <p>Store, organize, and access your research materials securely from anywhere with our collaborative cloud platform.</p>
-                <a href="#" class="learn-more">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
         </section>
    
-        <h2 class="section-title res-part reveal">
-            <span class="highlight">Research Partners</span>
-        </h2>
+        <h1 class="res-part">
+            Research Partners
+        </h1>
 
         <section class="res-partners">
-            <div class="res-partner reveal">
-                <img class="part-img" src="https://brand-experience.ieee.org/wp-content/uploads/2019/01/WEB_IEEE_blue_jpg.jpg" alt="IEEE">
-                <h4>IEEE</h4>
-                <p>Access the world's largest technical professional organization dedicated to advancing technology for humanity.</p>
-                <a href="#" class="explore">Explore <i class="fas fa-arrow-right"></i></a>
+
+            <div class="res-partner">
+                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="IEEE">
+                <h4> IEEE </h4>
+                <p> Enhance Research In Engineering and Computer Science </p>
+                <a href="#" class="explore"> Explore → </a>
             </div>
 
-            <div class="res-partner reveal">
-                <img class="part-img" src="https://cdn.pixabay.com/photo/2020/04/17/14/16/research-gate-5055220_1280.png" alt="Research Gate">
-                <h4>Research Gate</h4>
-                <p>Connect with researchers, share papers, and discover new collaborations across all scientific disciplines.</p>
-                <a href="#" class="explore">Explore <i class="fas fa-arrow-right"></i></a>
+            <div class="res-partner">
+                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="Research Gate">
+                <h4> Research Gate </h4>
+                <p> Enhance Research In Engineering and Computer Science </p>
+                <a href="#" class="explore"> Explore → </a>
             </div>
 
-            <div class="res-partner reveal">
-                <img class="part-img" src="https://upload.wikimedia.org/wikipedia/commons/2/28/Google_Scholar_logo.png" alt="Google Scholar">
-                <h4>Google Scholar</h4>
-                <p>Search across a wide variety of disciplines and sources: articles, theses, books, abstracts and court opinions.</p>
-                <a href="#" class="explore">Explore <i class="fas fa-arrow-right"></i></a>
+            <div class="res-partner">
+                <img class="part-img" src="{{url_for('static',filename = 'img/favicon.ico')}}" alt="Google Scholar">
+                <h4> Google Scholar </h4>
+                <p> Enhance Research In Engineering and Computer Science </p>
+                <a href="#" class="explore"> Explore → </a>
             </div>
 
-            <div class="res-partner reveal">
-                <img class="part-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/JSTOR_Logo.svg/1280px-JSTOR_Logo.svg.png" alt="JSTOR">
-                <h4>JSTOR</h4>
-                <p>Access a digital library of academic journals, books, and primary sources for advanced research projects.</p>
-                <a href="#" class="explore">Explore <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="res-partner reveal">
-                <img class="part-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Sciencedirect.svg/2560px-Sciencedirect.svg.png" alt="ScienceDirect">
-                <h4>ScienceDirect</h4>
-                <p>Access peer-reviewed journals, articles, book chapters and open access content in all fields of science.</p>
-                <a href="#" class="explore">Explore <i class="fas fa-arrow-right"></i></a>
-            </div>
-
-            <div class="res-partner reveal">
-                <img class="part-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/PubMed_logo.svg/1200px-PubMed_logo.svg.png" alt="PubMed">
-                <h4>PubMed</h4>
-                <p>Discover biomedical literature from MEDLINE, life science journals, and online books in the medical field.</p>
-                <a href="#" class="explore">Explore <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </section>
-
-        <section class="stats-section reveal">
-            <div class="stat-container">
-                <div class="stat-item">
-                    <div class="stat-number" id="papers-count">5M+</div>
-                    <div class="stat-label">Papers Analyzed</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="users-count">250K+</div>
-                    <div class="stat-label">Active Researchers</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="institutions-count">750+</div>
-                    <div class="stat-label">Partner Institutions</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number" id="topics-count">12K+</div>
-                    <div class="stat-label">Research Topics</div>
-                </div>
-            </div>
         </section>
     </div>
 
-    <div class="dyn-about reveal"> 
-        <h1>About Dynax: Revolutionizing Research Together</h1>
-        <p>We are dedicated to revolutionizing research through cutting-edge AI and comprehensive data solutions,
-            empowering users with actionable insights and seamless data discovery</p>
+    <div class="dyn-about"> 
+        <h1> 
+            About Dynax: Revolutionizing Research Together
+        </h1>
+        <p> 
+            We are dedicated to revolutionizing research research through cutting-edge AI and comprehensive data solutions,
+            empowering users with actionable insights and seamless data discovery
+        </p>
     </div>
 
     <footer class="footer-section">
-        <p id="foot-gr-stl">&copy; 2025 Dynax!. All rights reserved.</p>
+        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
         <br>
         <div class="social-links">
-            <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i> Twitter</a>
-            <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://x.com/AI_Instaraj"> Twitter </a>
+            <a href="#"> LinkedIn </a>
+            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
         </div>
     </footer>
     
-    <script>
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu-icon').addEventListener('click', function() {
-            document.querySelector('.nav-links').classList.toggle('active');
-        });
-        
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize GSAP ScrollTrigger
-            gsap.registerPlugin(ScrollTrigger);
-            
-            // Animate hero section
-            gsap.from('.animate-title', {
-                opacity: 0,
-                y: 50,
-                duration: 1,
-                delay: 0.2
-            });
-            
-            gsap.from('.animate-text', {
-                opacity: 0,
-                y: 30,
-                duration: 1,
-                delay: 0.5
-            });
-            
-            gsap.from('.animate-button', {
-                opacity: 0,
-                y: 20,
-                duration: 1,
-                delay: 0.8
-            });
-            
-            // Animate floating shapes
-            gsap.to('.shape-1', {
-                y: -20,
-                x: 15,
-                rotation: 15,
-                duration: 3,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut"
-            });
-            
-            gsap.to('.shape-2', {
-                y: 20,
-                x: -15,
-                rotation: -10,
-                duration: 4,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: 0.5
-            });
-            
-            gsap.to('.shape-3', {
-                y: -15,
-                x: -10,
-                rotation: 5,
-                duration: 5,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: 0.2
-            });
-            
-            // Animate sections on scroll
-            const reveals = document.querySelectorAll('.reveal');
-            
-            reveals.forEach((el) => {
-                gsap.from(el, {
-                    scrollTrigger: {
-                        trigger: el,
-                        start: "top 80%",
-                        toggleActions: "play none none none"
-                    },
-                    opacity: 0,
-                    y: 50,
-                    duration: 0.8
-                });
-            });
-            
-            // Count up animation for stats
-            const statElements = document.querySelectorAll('.stat-number');
-            statElements.forEach((el) => {
-                ScrollTrigger.create({
-                    trigger: el,
-                    start: "top 90%",
-                    onEnter: () => {
-                        el.classList.add('counting');
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 </html>

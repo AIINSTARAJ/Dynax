@@ -67,7 +67,7 @@ body {
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: 500;
     position: relative;
 }
@@ -153,23 +153,10 @@ body {
     font-size: 18px;
 }
 
-.cta-animate{
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    font-size: 24px;
-    background-color: rgb(1, 1, 65);
-    color: var(--text-primary);
-    margin: 0px 42.5%;
-}
-
 .cta-button {
     display: inline-block;
-    background: linear-gradient(125deg,#5229e9 20%, cyan);
-    -webkit-background-clip: text;
-    background-clip: linear-gradient(125deg,#5229e9 40%, cyan);
-    -webkit-text-fill-color: transparent;
+    background-color: #6939d8;
+    color: whitesmoke;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 8px;
@@ -177,8 +164,8 @@ body {
     font-size: 18px;
 }
 
-.cta-animate:hover {
-    background-color: black;
+.cta-button:hover {
+    background-color: blue;
 }
 
 .features-grid {
@@ -250,7 +237,7 @@ body {
     text-align: center;
     color: rgb(25, 6, 109);
     font-size: 28;
-    background: linear-gradient(25deg,#a605ac 12%, rgb(7, 185, 185) 80%);
+    background: linear-gradient(125deg,#a605ac 12%, rgb(7, 185, 185));
     -webkit-background-clip: text;
     background-clip: linear-gradient(125deg,#5229e9 40%, cyan);
     -webkit-text-fill-color: transparent;
@@ -322,6 +309,7 @@ body {
     font-size: 18px;
 }
 
+
 .footer-section {
     text-align: center;
     padding: 2rem 0;
@@ -332,8 +320,9 @@ body {
 #foot-gr-stl {
     font-size: 18px;
     color: var(--text-secondary);
-    margin-bottom: 1rem;
+    margin-bottom: -0.5rem;
 }
+
 
 .social-links {
     display: flex;

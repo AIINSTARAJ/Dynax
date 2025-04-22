@@ -21,7 +21,7 @@ app.register_blueprint(logic_)
 @app.route('/',methods = ['GET'])
 def index():
     auth_user = session.get("token")
-    return render_template('home.html',auth = auth_user)
+    return render_template('index.html',auth = auth_user)
 
 @app.route('/about')
 def about():
@@ -36,9 +36,9 @@ def PageError(error):
 def ServerError(error):
     return render_template('500.html')
 
-'''@app.errorhandler(Exception)
+@app.errorhandler(Exception)
 def Error(e):
-    return render_template('500.html'),500'''
+    return render_template('500.html'),500
 
 @app.route('/favicon.ico')
 def icon():
