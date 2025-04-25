@@ -1,0 +1,5 @@
+flask-sqlalchemy
+scholoarly
+crossref
+flask
+langchain
