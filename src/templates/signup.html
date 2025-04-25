@@ -1,145 +1,410 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Register! </title>
+    <title>Sign Up | Dynax!</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="{{url_for('static', filename = 'js/auth.js')}}"></script>
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/signup.css')}}">
 </head>
-
 <body>
     <div class="container">
+        <!-- Floating Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
 
+        <!-- Navigation -->
         <nav class="navbar">
-
-            <div class="logo"> Dynax! </div>
-
-            <ul class="nav-links">
-                <li><a href="#"> Analyze </a></li>
-                <li><a href="/search"> Search </a></li>
-                <li><a href="#"> History </a></li>
-                <li><a href="/about"> About </a></li>
-            </ul>
-
-            <div class="auth-buttons">
-                <a href="/auth/login" class="login-btn"> Log In </a>
-                <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
+                </div>
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a href="/auth/login" class="login-btn"> Log In </a>
+                    <a href="/auth/signup" class="signup-btn active"> Sign Up </a>
+                </div>
             </div>
-
         </nav>
-
-        <div class="hero-section">
+     
+        <div class="hero-sec">
             <div class="logo-x">
-                <span class="logo-icon"></span>
                 Dynax!
             </div>
-            <p class="typing-effect">Create an Account.</p>
         </div>
 
-        <form action="/auth/signup" method="post" id="form-sl-g">
+        <!-- Signup Section -->
+        <section class="signup-section">
+            <div class="signup-container">
+                <div class="signup-form-container">
+                    <form class="signup-form" id="signupForm" method="post">
+                        <h2>Join <span class="gradient-text">Dynax</span><span class="accent">!</span></h2>
+                        
+                        <div class="form-group">
+                            <label for="fullname">Full Name</label>
+                            <input type="text" id="fullname" name="user-name" placeholder="Enter your full name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="res-mail" placeholder="Enter your email address" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="research">Research Interest</label>
+                            <select id="research" name="research-interest" required>
+                                <option value="" disabled selected>Select your primary research interest</option>
+                                <option value="Artificial Intelligence">Artificial Intelligence</option>
+                                <option value="Machine Learning">Machine Learning</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="Medicine">Medicine</option>
+                                <option value="Literature">Literature</option>
+                                <option value="History">History</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="academic">Academic Level</label>
+                            <select id="academic" name="academic-level" required>
+                                <option value="" disabled selected>Select your academic level</option>
+                                <option value="Undergraduate">Undergraduate</option>
+                                <option value="Graduate">Graduate</option>
+                                <option value="PhD">PhD</option>
+                                <option value="Post-doctoral">Post-doctoral</option>
+                                <option value="Professor">Professor</option>
+                                <option value="Researcher">Researcher</option>
+                                <option value="Industry Professional">Industry Professional</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="res-pwd" placeholder="Create a password" required>
+                            <span class="password-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            <div class="password-strength">
+                                <div class="strength-meter" id="strengthMeter"></div>
+                            </div>
+                            <div class="strength-text">
+                                <span id="strengthText">Password strength</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirm Password</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                            <span class="password-toggle" id="confirmToggle">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                            <div class="password-match" id="passwordMatch">Passwords match!</div>
+                        </div>
+                        
+                        <div class="forgot-password">
+                            <a href="/auth/forgot-password">Forgot Password?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;"> Create Account </button>
 
-            <br>
-            <h1> Register </h1>
-            <hr color="yellow">
-            <label class="dyn-label">
-                Full Name
-            </label>
-            <br>
-            <input class="input-group" name="user-name" type="text" required>
-            <br>
+                        <div class="auth-alternative">
+                            Have an Account? <a href="/auth/login">Login</a>
+                        </div>
+                        
+                        <div class="terms">
+                            By signing up, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="ai-assistant">
+                    <div class="ai-chat-container">
+                        <div class="ai-chat-header">
+                            <div class="ai-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="ai-name">
+                                <h3>Dynax</h3>
+                                <div class="ai-status">
+                                    <span class="dot"></span>
+                                    <span>Online</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="ai-message-container" id="aiChat">
 
-            <label class="dyn-label">
-                Email
-            </label>
-            <br>
-            <input class="input-group" name="res-mail" type="email" required>
-            <br>
-
-            <label class="dyn-label">
-                Research Interest
-            </label>
-            <br>
-            <input class="input-group" name="research-interest" type="text" required>
-            <br>
-
-            <label class="dyn-label">
-                Academic Level
-            </label>
-            <br>
-            <input class="input-group" name="academic-level" type="text" required>
-            <br>
-
-            <label class="dyn-label">
-                Password
-            </label>
-            <br>
-            <div class="dyn-ins">
-                <input class="input-group" name="res-pwd" type="password" id="dyn-pwd" required>
-                <div class="dyn-toggle" id="pwd-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+                            <div class="ai-message" id="welcomeMessage" style="display: none;">
+                                👋 Welcome to Dynax! As your AI-powered research assistant, I’m here to help you navigate through over 50,000 academic papers spanning 350+ topics. Join a thriving community of 12,500+ researchers and unlock advanced tools like semantic search, citation analysis, and personalized recommendations. Together, we’ll uncover insights that will transform your research. 🌐🚀
+                            </div>
+                            
+                            <div class="ai-message" id="featuresMessage" style="display: none;">
+                                🧠 With Dynax, you can engage in insightful conversations about complex research topics. Receive clear, digestible summaries of difficult concepts, discover unexpected connections between studies, and even receive assistance in drafting research proposals. Our AI is designed to be your trusted research partner. 🔍🔧
+                            </div>
+                            
+                            <div class="ai-message" id="finalMessage1" style="display: none;">
+                                🌱 Dive deep into the world of academic papers and research with Dynax. Whether you’re exploring AI, biology, or other fields, our platform offers a wealth of resources, helping you connect with the latest research, articles, and leading experts in your area of interest. 💡🔬
+                            </div>
+                            
+                            <div class="ai-message" id="finalMessage2" style="display: none;">
+                                🌱 Stay at the cutting edge of research by discovering the latest breakthroughs and identifying emerging trends. With Dynax, you’ll gain access to an ever-growing network of top-tier researchers and researchers from across the globe, providing you with valuable insights and collaboration opportunities. 🔍💫
+                            </div>
+                            
+                            <div class="ai-message" id="finalMessage3" style="display: none;">
+                                🌱 Unlock the full potential of your research journey with Dynax. Our AI helps you connect the dots between seemingly unrelated studies and explore innovative areas you may not have considered. Let’s push the boundaries of knowledge together and fuel your academic growth. 📘🚀
+                            </div>
+                            
+                                                      
+                            <div class="typing-indicator" id="typingIndicator">
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                                <div class="typing-dot"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <br>
+        </section>
 
-            <label class="dyn-label" id="dyn-go-upp">
-                Confirm Password
-            </label>
-            <br>
-            <div class="dyn-ins">
-                <input class="input-group" name="res-pwd" type="password" id="dyn-pwd-cc" required>
-                <div class="dyn-toggle" id="pwd-toggle-cc">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Dynax<span class="accent">!</span></h2>
+                    <p>Transforming the research experience</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/#features">Features</a></li>
+                            <li><a href="/#partners">Partners</a></li>
+                            <li><a href="/#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API Access</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-
-            <br>
-            <div id="dyn-error-msg" style="color: rgb(7, 204, 89)">
-                .
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dynax Research. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-
-            <button id="btn-res">
-                Register
-            </button>
-
-            <br>
-
-            <h4 id="dyn-alt">
-                Already have an Account? <b><a href="/auth/login"> Login </a></b>
-            </h4>
-
-            <hr color="yellow">
-            <br>
-
-            <h1 class="dyn-under" id="dyn-under">
-                Dynax!
-            </h1>
-            <br>
-
-        </form>
-
+        </footer>
     </div>
+    <script>   
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('.nav-links').classList.toggle('active');
+            document.querySelector('.hamburger').classList.toggle('active');
+        });
 
-    <footer class="footer-section">
-        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
-        <br>
-        <div class="social-links">
-            <a href="https://x.com/AI_Instaraj"> Twitter </a>
-            <a href="#"> LinkedIn </a>
-            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
-        </div>
-    </footer>
+        // Password toggle visibility
+        document.getElementById('passwordToggle').addEventListener('click', function () {
+            const passwordField = document.getElementById('password');
+            const icon = this.querySelector('i');
 
-    <script src="{{url_for('static',filename='js/auth.js')}}"></script>
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
 
+        document.getElementById('confirmToggle').addEventListener('click', function () {
+            const confirmField = document.getElementById('confirmPassword');
+            const icon = this.querySelector('i');
+
+            if (confirmField.type === 'password') {
+                confirmField.type = 'text';
+                icon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                confirmField.type = 'password';
+                icon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        });
+
+        // Password strength meter
+        document.getElementById('password').addEventListener('input', function () {
+            const password = this.value;
+            const meter = document.getElementById('strengthMeter');
+            const text = document.getElementById('strengthText');
+
+            // Simple strength calculation
+            let strength = 0;
+
+            // Length check
+            if (password.length >= 8) strength += 1;
+            if (password.length >= 12) strength += 1;
+
+            // Complexity checks
+            if (/[A-Z]/.test(password)) strength += 1;
+            if (/[a-z]/.test(password)) strength += 1;
+            if (/[0-9]/.test(password)) strength += 1;
+            if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+
+            // Update meter
+            if (password.length === 0) {
+                meter.style.width = '0%';
+                meter.className = 'strength-meter';
+                text.textContent = 'Password strength';
+            } else if (strength < 3) {
+                meter.style.width = '30%';
+                meter.className = 'strength-meter weak';
+                text.textContent = 'Weak';
+            } else if (strength < 5) {
+                meter.style.width = '60%';
+                meter.className = 'strength-meter medium';
+                text.textContent = 'Medium';
+            } else {
+                meter.style.width = '100%';
+                meter.className = 'strength-meter strong';
+                text.textContent = 'Strong';
+            }
+
+            // Check if passwords match
+            checkPasswordMatch();
+        });
+
+        // Password match check
+        document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+
+        function checkPasswordMatch() {
+            const password = document.getElementById('password').value;
+            const confirm = document.getElementById('confirmPassword').value;
+            const matchIndicator = document.getElementById('passwordMatch');
+
+            if (confirm.length === 0) {
+                matchIndicator.style.display = 'none';
+            } else {
+                matchIndicator.style.display = 'block';
+
+                if (password === confirm) {
+                    matchIndicator.textContent = 'Passwords match!';
+                    matchIndicator.className = 'password-match valid';
+                } else {
+                    matchIndicator.textContent = 'Passwords do not match!';
+                    matchIndicator.className = 'password-match invalid';
+                }
+            }
+        }
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // You would typically handle the form submission with AJAX here
+            alert('Account creation would be processed here!');
+        });
+
+
+        function showAiMessage(messageId, delay, callback) {
+            // Show typing indicator
+            document.getElementById('typingIndicator').style.display = 'flex';
+
+            // After delay, hide typing indicator and show the message
+            setTimeout(() => {
+                document.getElementById('typingIndicator').style.display = 'none';
+                const message = document.getElementById(messageId);
+                message.style.display = 'block';
+
+                // Apply fade-in animation
+                gsap.from(message, {
+                    duration: 0.5,
+                    y: 10,
+                    opacity: 0,
+                    ease: 'power2.out',
+                    onComplete: () => {
+                        // If there's a callback, execute it
+                        if (callback) callback();
+                    }
+                });
+            }, delay);
+        }
+        // AI Assistant typing effect
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize GSAP
+            gsap.registerPlugin(ScrollTrigger);
+
+            // Wait a moment before starting the typing animation
+            setTimeout(() => {
+                showAiMessage('welcomeMessage', 1200, () => {
+                    showAiMessage('featuresMessage', 1800, () => {
+                        showAiMessage('finalMessage1', 2400, () => {
+                            showAiMessage('finalMessage2', 3000, () => {
+                                showAiMessage('finalMessage3', 3600);
+                            });
+                        });
+                    });
+                });
+            }, 800);
+
+            // Animate form elements
+            gsap.from('.signup-form', {
+                duration: 0.8,
+                y: 30,
+                opacity: 0,
+                ease: 'power2.out',
+                delay: 0.2
+            });
+
+            gsap.from('.ai-assistant', {
+                duration: 0.8,
+                y: 30,
+                opacity: 0,
+                ease: 'power2.out',
+                delay: 0.4
+            });
+        });
+    </script>
 </body>
-
 </html>

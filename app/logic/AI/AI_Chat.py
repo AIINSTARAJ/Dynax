@@ -8,6 +8,7 @@ from langchain_community.tools.arxiv.tool import ArxivQueryRun
 from langchain_community.utilities.arxiv import ArxivAPIWrapper
 from dotenv import load_dotenv
 import os
+import json
 
 
 load_dotenv()
@@ -35,7 +36,8 @@ tools = [
 ]
 
 
-user_memories = {}
+with open(r"C:\Users\USER\OneDrive\Documents\Advanced Projects\Dynax\src\assets\data\user.json",'r+') as user_memories:
+    user_memories = json.loads(user_memories.read())
 
 
 html_prompt = PromptTemplate(
@@ -207,3 +209,4 @@ def clear_user_memory(user_token):
         del user_memories[user_token]
         return True
     return False
+

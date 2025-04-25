@@ -10,7 +10,7 @@ def set_pdf(content: str,doi: str):
         if not os.path.exists("PDF"):
             os.mkdir("PDF")
 
-        filename = os.path.join('PDF', f'Dynax-{doi}.pdf')
+        filename = os.path.join(r'C:\Users\USER\OneDrive\Documents\Advanced Projects\Dynax\PDF', f'Dynax-{doi}.pdf')
 
         path_to_wkhtmltopdf = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"
 

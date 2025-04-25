@@ -1,35 +1,130 @@
-const Toggler = document.getElementById('pwd-toggle');
-const TogglerC = document.getElementById('pwd-toggle-cc');
 
-document.getElementById('pwd-toggle').addEventListener('click', () => {
-    const passwordInput = document.getElementById('dyn-pwd');
-    if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        Toggler.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7s-1.39 3.21-3.5 5.1"></path><path d="M6.61 6.61A13.66 13.66 0 0 0 2 12s3 7 10 7a9.9 9.9 0 0 04.13-.86"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg>';
+document.querySelector('.menu-toggle').addEventListener('click', function () {
+    document.querySelector('.nav-links').classList.toggle('active');
+    document.querySelector('.hamburger').classList.toggle('active');
+});
+
+// Password toggle visibility
+document.getElementById('passwordToggle').addEventListener('click', function () {
+    const passwordField = document.getElementById('password');
+    const icon = this.querySelector('i');
+
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
     } else {
-        passwordInput.type = 'password';
-        Toggler.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+        passwordField.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
     }
 });
 
-document.getElementById('pwd-toggle-cc').addEventListener('click', () => {
-    const confirmPasswordInput = document.getElementById('dyn-pwd-cc');
-    if (confirmPasswordInput.type === 'password') {
-        confirmPasswordInput.type = 'text';
-        TogglerC.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7s-1.39 3.21-3.5 5.1"></path><path d="M6.61 6.61A13.66 13.66 0 0 0 2 12s3 7 10 7a9.9 9.9 0 0 04.13-.86"></path><line x1="2" y1="2" x2="22" y2="22"></line></svg>';
+document.getElementById('confirmToggle').addEventListener('click', function () {
+    const confirmField = document.getElementById('confirmPassword');
+    const icon = this.querySelector('i');
+
+    if (confirmField.type === 'password') {
+        confirmField.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
     } else {
-        confirmPasswordInput.type = 'password';
-        TogglerC.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>';
+        confirmField.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
     }
 });
 
-document.getElementById('dyn-pwd-cc').addEventListener('input', () => {
-    const password = document.getElementById('dyn-pwd').value;
-    const confirmPassword = document.getElementById('dyn-pwd-cc').value;
+// Password strength meter
+document.getElementById('password').addEventListener('input', function () {
+    const password = this.value;
+    const meter = document.getElementById('strengthMeter');
+    const text = document.getElementById('strengthText');
 
-    if (password !== confirmPassword) {
-        document.getElementById('dyn-error-msg').innerText = '**Passwords do not match';
+    // Simple strength calculation
+    let strength = 0;
+
+    // Length check
+    if (password.length >= 8) strength += 1;
+    if (password.length >= 12) strength += 1;
+
+    // Complexity checks
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[a-z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+
+    // Update meter
+    if (password.length === 0) {
+        meter.style.width = '0%';
+        meter.className = 'strength-meter';
+        text.textContent = 'Password strength';
+    } else if (strength < 3) {
+        meter.style.width = '30%';
+        meter.className = 'strength-meter weak';
+        text.textContent = 'Weak';
+    } else if (strength < 5) {
+        meter.style.width = '60%';
+        meter.className = 'strength-meter medium';
+        text.textContent = 'Medium';
     } else {
-        document.getElementById('dyn-error-msg').innerText = '.';
+        meter.style.width = '100%';
+        meter.className = 'strength-meter strong';
+        text.textContent = 'Strong';
     }
+
+    // Check if passwords match
+    checkPasswordMatch();
 });
+
+// Password match check
+document.getElementById('confirmPassword').addEventListener('input', checkPasswordMatch);
+
+function checkPasswordMatch() {
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirmPassword').value;
+    const matchIndicator = document.getElementById('passwordMatch');
+
+    if (confirm.length === 0) {
+        matchIndicator.style.display = 'none';
+    } else {
+        matchIndicator.style.display = 'block';
+
+        if (password === confirm) {
+            matchIndicator.textContent = 'Passwords match!';
+            matchIndicator.className = 'password-match valid';
+        } else {
+            matchIndicator.textContent = 'Passwords do not match!';
+            matchIndicator.className = 'password-match invalid';
+        }
+    }
+}
+
+// Form submission
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    // You would typically handle the form submission with AJAX here
+    alert('Account creation would be processed here!');
+});
+
+
+function showAiMessage(messageId, delay, callback) {
+    // Show typing indicator
+    document.getElementById('typingIndicator').style.display = 'flex';
+
+    // After delay, hide typing indicator and show the message
+    setTimeout(() => {
+        document.getElementById('typingIndicator').style.display = 'none';
+        const message = document.getElementById(messageId);
+        message.style.display = 'block';
+
+        // Apply fade-in animation
+        gsap.from(message, {
+            duration: 0.5,
+            y: 10,
+            opacity: 0,
+            ease: 'power2.out',
+            onComplete: () => {
+                // If there's a callback, execute it
+                if (callback) callback();
+            }
+        });
+    }, delay);
+}
