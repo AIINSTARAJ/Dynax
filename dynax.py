@@ -1,6 +1,6 @@
 from telebot import *
 from app.config import *
-from app.logic.search import *
+from app.logic.scrap import *
 
 bot = TeleBot(API_TOKEN)
 
@@ -22,8 +22,6 @@ def read_(file):
     with open(file,encoding='cp1252') as r:
         content_ = r.read()
         return content_
-    
-
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -60,7 +58,7 @@ def send_results_separately(results, index=0, message=None):
 def search(message):
     try:
         loading_msg = bot.reply_to(message, "Loading...... 💎💍")
-        results =search_publications(message.text) 
+        results =search(message.text) 
         if not results:
             bot.edit_message_text("No results Found! 📞🎗", chat_id=loading_msg.chat.id, message_id=loading_msg.message_id)
         else:

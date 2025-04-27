@@ -16,7 +16,7 @@ load_dotenv()
 google_api_key = os.environ.get("GOOGLE_API_KEY")
 
 
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.7, google_api_key=google_api_key)
+llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.7, google_api_key=google_api_key,timeout= 20)
 
 wikipedia_tool = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
 
@@ -104,6 +104,7 @@ html_prompt = PromptTemplate(
             The link should redirect to another page e.g target=_blank
 
         3. Special Handling for Non-Research Queries:
+        
             Simple Pronouns/Short Inputs:
 
             Response: Provide a conversational, friendly response like, "How can I assist you today?" or "Tell me more about what you're looking for."
