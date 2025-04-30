@@ -32,6 +32,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    color-scheme: light; 
 }
 
 body {
@@ -40,6 +41,13 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
 }
+
+@media (prefers-color-scheme: dark) {
+    .hamburger span {
+        background-color: #ffffff !important; /* White even in dark mode */
+    }
+}
+
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

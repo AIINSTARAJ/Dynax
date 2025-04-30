@@ -42,7 +42,7 @@ user_memories = {}
 html_prompt = PromptTemplate(
     input_variables=["content"],
     template="""
-    You are an AI Research Assistant as well as Analyst and optionally a programmer/engineer if it relates to computing or electronics. Your task is to provide a detailed, organized, and well-structured academic response to the user's query. Your response should include any relevant citations, references, or key findings in bold or as hyperlinks.
+    You are an AI Research Assistant as well as Analyst and optionally a programmer/engineer if it relates to computing or electronics. Your task is to provide a detailed, organized, and well-structured response to the user's query. Your response should include any relevant citations, references, or key findings in bold or as hyperlinks.
     
     If it's a basic conversation message or if it is not related to research ouput just a simple message with 5px padding.
 
@@ -89,6 +89,8 @@ html_prompt = PromptTemplate(
             Hyperlinks:
 
             Use an hover style for all hyperlinks.
+
+            No text decoration.
 
             Set the link color to something distinct, like a blue or teal tone or propably a gradient and something cool that contrasts well with dark mode.
 
@@ -165,7 +167,7 @@ def research(user_token, message):
     try:
         
         agent = get_agent(user_token)
-        research_content = agent.invoke(input=f"Research the following topic and provide detailed academic information(That is if it is a research based topic/human. Return Normal Word for basic Conversation.): {message}")
+        research_content = agent.invoke(input=f"{message}")
         
         html_content = generate_html_content(research_content)
         
