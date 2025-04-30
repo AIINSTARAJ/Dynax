@@ -36,7 +36,7 @@ tools = [
 ]
 
 
-with open(r"C:\Users\USER\OneDrive\Documents\Advanced Projects\Dynax\src\assets\data\user.json",'r+') as user_memories:
+with open(r".../src/assets/data/user.json",'r+') as user_memories:
     user_memories = json.loads(user_memories.read())
 
 
