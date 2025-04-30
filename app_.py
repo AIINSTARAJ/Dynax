@@ -38,6 +38,7 @@ def ServerError(error):
 
 @app.errorhandler(Exception)
 def Error(e):
+    print(e)
     return render_template('500.html'),500
 
 @app.route('/favicon.ico')

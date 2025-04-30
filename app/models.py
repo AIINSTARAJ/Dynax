@@ -2,7 +2,7 @@ import sys
 
 sys.path.insert(0,'../../')
 
-from sqlalchemy.sql import *
+from sqlalchemy.sql import * 
 
 from werkzeug.security import *
 

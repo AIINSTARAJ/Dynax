@@ -338,13 +338,6 @@
             }
         }
 
-        // Form submission
-        document.getElementById('signupForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            // You would typically handle the form submission with AJAX here
-            alert('Account creation would be processed here!');
-        });
 
 
         function showAiMessage(messageId, delay, callback) {
@@ -377,11 +370,11 @@
 
             // Wait a moment before starting the typing animation
             setTimeout(() => {
-                showAiMessage('welcomeMessage', 1200, () => {
-                    showAiMessage('featuresMessage', 1800, () => {
-                        showAiMessage('finalMessage1', 2400, () => {
-                            showAiMessage('finalMessage2', 3000, () => {
-                                showAiMessage('finalMessage3', 3600);
+                showAiMessage('welcomeMessage', 1000, () => {
+                    showAiMessage('featuresMessage', 1500, () => {
+                        showAiMessage('finalMessage1', 2000, () => {
+                            showAiMessage('finalMessage2', 2500, () => {
+                                showAiMessage('finalMessage3', 3000);
                             });
                         });
                     });
