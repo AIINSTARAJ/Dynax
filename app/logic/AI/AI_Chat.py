@@ -36,7 +36,7 @@ tools = [
 ]
 
 
-with open(r".../src/assets/data/user.json",'r+') as user_memories:
+with open("user.json",'w+') as user_memories:
     user_memories = json.loads(user_memories.read())
 
 

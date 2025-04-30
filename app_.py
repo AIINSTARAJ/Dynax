@@ -49,4 +49,5 @@ def robots():
     return send_from_directory(directory=app.config["STATIC_FOLDER"],path="info/robots.txt")
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=5425)
+    port = int(os.environ.get("PORT", 5425))
+    app.run(debug=True,host='0.0.0.0',port=port)
