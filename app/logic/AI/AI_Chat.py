@@ -36,8 +36,7 @@ tools = [
 ]
 
 
-with open("user.json",'w+') as user_memories:
-    user_memories = json.loads(user_memories.read())
+user_memories = {}
 
 
 html_prompt = PromptTemplate(
