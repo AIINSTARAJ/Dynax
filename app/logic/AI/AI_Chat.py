@@ -6,6 +6,7 @@ from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_community.tools.arxiv.tool import ArxivQueryRun
 from langchain_community.utilities.arxiv import ArxivAPIWrapper
+from langchain_huggingface import ChatHuggingFace
 from dotenv import load_dotenv
 import os
 import json
@@ -16,7 +17,8 @@ load_dotenv()
 google_api_key = os.environ.get("GOOGLE_API_KEY")
 
 
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.7, google_api_key=google_api_key,timeout= 20)
+llm = ChatHuggingFace(repo_id="meta-llama/Llama-3-7b", model_kwargs={"temperature": 0.7},huggingfacehub_api_token=os.environ.gat("Dynax"))
+
 
 wikipedia_tool = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
 
