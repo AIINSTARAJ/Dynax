@@ -169,7 +169,7 @@ def decode_url(encoded_doi):
     except Exception as e:
         return f"Error decoding: {str(e)}"
 
-def add_link(papers_list, base_url="http://127.0.0.1:5425/paper/"):
+def add_link(papers_list, base_url="https://dynax.onrender.com/paper/"):
     for paper in papers_list:
         if 'doi' in paper and paper['doi']:
             encoded_doi = encode_url(paper['doi'])

@@ -308,7 +308,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify({ 
                     'message': query,
-                    'page': currentPage,
                     'sort': currentSort
                 }),
             });
