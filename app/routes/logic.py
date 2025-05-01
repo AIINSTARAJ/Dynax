@@ -5,25 +5,22 @@ __retro__ : Information Systems
 
 from flask import *
 
-from ..logic.scrap.research import *
+from ..logic.scrap.research import get_doi,get_papers,decode_url,add_link
 
 import sys
 
 import html
 
-from langchain.schema import AIMessage
+from langchain.schema import AIMessage # type: ignore
 
 from werkzeug.security import *
 
-from ..logic.scrap.scrap import *
 
-from ..logic.scrap.search import *
+from ..logic.AI.pdf_logic import set_pdf
 
-from ..logic.AI.pdf_logic import *
+from ..logic.AI.AI_Logic import get_analysis
 
-from ..logic.AI.AI_Logic import *
-
-from ..logic.AI.AI_Chat import *
+from ..logic.AI.AI_Chat import research
 
 from .auth import Token
 
@@ -78,7 +75,7 @@ def paper(doi):
     else:
         return redirect(url_for('auth.login'))
 
-@logic_.route('/analyze/', methods = ['GET','POST'])
+@logic_.route('/analyze', methods = ['GET','POST'])
 def analyze():
 
     auth_user = request.get_json()['user']
