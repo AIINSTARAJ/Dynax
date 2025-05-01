@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // DOM Elements
+    // DOM Elements //Logic
     const searchInput = document.getElementById("search-bar");
     const searchButton = document.getElementById("search-btn");
     const searchTags = document.querySelectorAll(".search-tag");
