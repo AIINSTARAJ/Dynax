@@ -1,88 +1,203 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dynax! </title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/search.css')}}">
+    <meta name="color-scheme" content="light">
+    <title>Dynax! | Research </title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/search_.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
-
 <body>
     <div class="container">
+        <!-- Floating Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <!-- Navigation -->
         <nav class="navbar">
-
-            <div class="logo"> Dynax! </div>
-
-            <ul class="nav-links">
-                <li><a href="#"> Analyze </a></li>
-                <li><a href="/search"> Search </a></li>
-                <li><a href="#"> History </a></li>
-                <li><a href="/about"> About </a></li>
-            </ul>
-
-            {% if not auth %}
-            <div class="auth-buttons">
-                <a href="/auth/login" class="login-btn"> Log In </a>
-                <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
+                </div>
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/search" class="active">Search</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+                {% if not auth %}
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="login-btn"> Log In </a>
+                        <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+                    </div>
+                {% else %}
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')"> Log Out </a>
+                    </div>
+                {% endif %}
             </div>
-            {% else %}
-            <div>
-                <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')">
-                    Log Out
-                </a>
-            </div>
-            {% endif %}
         </nav>
 
-        <div class="hero-section">
-            <div class="logo-x">
-                <span class="logo-icon"></span>
-                Dynax!
+        <!-- Search Hero Section -->
+        <section class="search-hero">
+            <div class="search-hero-content">
+                <div class="search-logo-animation">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
+                </div>
+                <p class="typing-effect">Discover groundbreaking research papers</p>
+                
+                <!-- Search Bar Section -->
+                <div class="search-container">
+                    <div class="search-bar-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-bar" placeholder="Search for papers, authors, topics...">
+                        <div class="search-suggestions"></div>
+                    </div>
+                    <button type="submit" id="search-btn" class="btn btn-primary">
+                        <span>Search</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Popular Searches -->
+                <div class="popular-searches">
+                    <span>Popular:</span>
+                    <div class="search-tags">
+                        <button class="search-tag" data-query="Artificial Intelligence">Artificial Intelligence</button>
+                        <button class="search-tag" data-query="Quantum Computing">Quantum Computing</button>
+                        <button class="search-tag" data-query="Electronics Engineering">Electronics Engineering</button>
+                        <button class="search-tag" data-query="Neuroscience">Neuroscience</button>
+                    </div>
+                </div>
             </div>
-            <p class="typing-effect"> Search Research Papers.</p>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div class="loading-container">
+            <div class="spinner-container">
+                <div class="spinner">
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+                <p>Searching across research databases...</p>
+            </div>
         </div>
 
+        <!-- Search Results Section -->
+        <section class="search-results-section">
+            <div class="results-header">
+                <h2 id="search-results-title" class="gradient-text"></h2>
+                <div class="results-meta">
+                    <span id="results-count"></span>
+                    <div class="results-filters">
+                        <div class="filter-dropdown">
+                            <button class="filter-btn">
+                                <i class="fas fa-sort"></i> Sort by: <span id="current-sort">Relevance</span>
+                            </button>
+                            <div class="filter-options">
+                                <div class="filter-option" data-sort="relevance">Relevance</div>
+                                <div class="filter-option" data-sort="date-desc">Newest first</div>
+                                <div class="filter-option" data-sort="date-asc">Oldest first</div>
+                                <div class="filter-option" data-sort="citations">Most cited</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-results-container">
+                <!-- Results will be inserted here by JavaScript -->
+            </div>
+
+            <div class="pagination-controls">
+                <button id="load-more" class="btn btn-secondary">Load more results</button>
+            </div>
+        </section>
+
+        <!-- No Results State -->
+        <section class="no-results-section">
+            <div class="no-results-content">
+                <img src="/favicon.ico" alt="No results illustration" class="no-results-image">
+                <h2>No research papers found</h2>
+                <p>Try adjusting your search terms or browse one of these popular topics:</p>
+                <div class="search-tags large">
+                    <button class="search-tag" data-query="Artificial Intelligence">Artificial Intelligence</button>
+                    <button class="search-tag" data-query="Quantum Computing">Quantum Computing</button>
+                    <button class="search-tag" data-query="Electronics Engineering">Electronics Engineering</button>
+                    <button class="search-tag" data-query="Neuroscience">Neuroscience</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Dynax<span class="accent">!</span></h2>
+                    <p>Transforming the research experience</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/search">Search</a></li>
+                            <li><a href="/chat">Chat</a></li>
+                            <li><a href="/about">About</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API Access</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dynax Research. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
     </div>
 
-
-    <!-- SEARCH BAR & NOTEPAD STYLE UI -->
-    <section class="search">
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="">
-        </div>
-        <button type="submit" id="search-btn">
-            SEARCH
-        </button>
-    </section>
-
-    <div class="dyn-loading">
-        <div class="spinner"></div>
-    </div>
-    
-
-    <div class="dyn-search-title">
-        <h1 id="dyn-search-title"> </h1>
-    </div>
-
-    <div class="dyn-scrap-contents">
-
-
-        <div class="dyn-scrap-items"> </div>  
-
-    </div>
-
-
-
-    <footer class="footer-section">
-        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
-        <br>
-        <div class="social-links">
-            <a href="https://x.com/AI_Instaraj"> Twitter </a>
-            <a href="#"> LinkedIn </a>
-            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
-        </div>
-    </footer>
-    <script src="{{url_for('static', filename = 'js/search.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/search_.js')}}"></script>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+        document.querySelector('.nav-links').classList.toggle('active');
+        document.querySelector('.hamburger').classList.toggle('active');
+    });
+</script>
 </body>
 </html>
