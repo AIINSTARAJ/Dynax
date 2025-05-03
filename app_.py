@@ -30,16 +30,19 @@ def about():
 
 @app.errorhandler(404)
 def PageError(error):
-    return render_template('404.html')
+    auth_user = session.get("token")
+    return render_template('404.html',auth = auth_user)
 
 @app.errorhandler(500)
 def ServerError(error):
-    return render_template('500.html')
+    auth_user = session.get("token")
+    return render_template('500.html',auth = auth_user)
 
 @app.errorhandler(Exception)
 def Error(e):
     print(e)
-    return render_template('500.html'),500
+    auth_user = session.get("token")
+    return render_template('500.html',auth = auth_user),500
 
 @app.route('/favicon.ico')
 def icon():

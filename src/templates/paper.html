@@ -1,103 +1,186 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dynax! </title>
+    <meta name="color-scheme" content="light">
+    <title> Dynax! | {{paper['title']}}</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/paper.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
-
 <body>
     <div class="container">
+        <!-- Floating Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <!-- Navigation -->
         <nav class="navbar">
-
-            <div class="logo"> Dynax! </div>
-
-            <ul class="nav-links">
-                <li><a href="#"> Analyze </a></li>
-                <li><a href="/search"> Search </a></li>
-                <li><a href="#"> History </a></li>
-                <li><a href="/about"> About </a></li>
-            </ul>
-             
-            <div hidden id="auth-token"> {{auth}} </div>
-
-            {% if not auth %}
-            <div class="auth-buttons">
-                <a href="/auth/login" class="login-btn"> Log In </a>
-                <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
+                </div>
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/search" class="active">Search</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+                {% if not auth %}
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="login-btn">Log In</a>
+                        <a href="/auth/signup" class="signup-btn">Sign Up</a>
+                    </div>
+                {% else %}
+                    <div class="user-actions">
+                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')">Log Out</a>
+                        <span id="auth-token" style="display: none;">{{ auth }}</span>
+                    </div>
+                {% endif %}
             </div>
-            {% else %}
-            <div>
-                <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')">
-                    Log Out
-                </a>
-            </div>
-            {% endif %}
         </nav>
 
-        <div class="hero-section">
-            <div class="logo-x">
-                <span class="logo-icon"></span>
-                Dynax!
+        <main class="research-content">
+            <!-- Paper Header -->
+            <div class="paper-header">
+                <div class="paper-logo">
+                    <div class="logo-icon"></div>
+                    <span class="logo-text">Dynax!</span>
+                </div>
+                
+                <div class="paper-title-container">
+                    <h1 class="paper-title" id="title">{{paper['title']}}</h1>
+                    <p class="paper-authors">{{', '.join(paper['authors'])}}</p>
+                </div>
+                
+                <div class="paper-badges">
+                    {% for field in paper['field'] %}
+                        <span class="paper-badge">{{field}}</span>
+                    {% endfor %}
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="res-head"> 
-        <p class="res-title" id="title"> {{paper['title']}} </p>
-        <p class="res-author"> {{', '.join(paper['authors'])}} </p>
+            <!-- Paper Metadata -->
+            <div class="paper-metadata">
+                <div class="metadata-card">
+                    <div class="metadata-item">
+                        <div class="metadata-icon"><i class="far fa-calendar-alt"></i></div>
+                        <div class="metadata-content">
+                            <span class="metadata-label">Published</span>
+                            <span class="metadata-value">{{paper['date']}}</span>
+                        </div>
+                    </div>
+                    <div class="metadata-item" id="res-doi">
+                        <div class="metadata-icon"><i class="fas fa-fingerprint"></i></div>
+                        <div class="metadata-content">
+                            <span class="metadata-label">DOI</span>
+                            <span class="metadata-value">{{paper['doi']}}</span>
+                        </div>
+                    </div>
+                    <div class="metadata-item">
+                        <div class="metadata-icon"><i class="fas fa-external-link-alt"></i></div>
+                        <div class="metadata-content">
+                            <span class="metadata-label">URL</span>
+                            <a href="{{paper['url'].replace("'", "")}}" class="metadata-link" target="_blank">Access Original Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paper Abstract -->
+            <section class="paper-abstract">
+                <h2 class="section-title">Abstract</h2>
+                <div class="abstract-content">{{paper['abstract']}}</div>
+            </section>
+
+            <!-- Action Buttons -->
+            <div class="paper-actions">
+                <button class="action-button analyze-btn" id="btn-ls">
+                    <i class="fas fa-brain"></i> Analyze with AI
+                </button>
+                <a href="{{paper['pdf'].replace("'", "")}}" download class="action-button download-btn" id="btn-rs">
+                    <i class="fas fa-file-download"></i> Download PDF
+                </a>
+            </div>
+
+            <!-- Loading Animation -->
+            <div class="loading-container">
+                <div class="loading-spinner">
+                    <div class="spinner-ring"></div>
+                    <span class="loading-text">Analyzing paper...</span>
+                </div>
+            </div>
+
+            <!-- Analysis Result Header -->
+            <div class="analysis-header"></div>
+
+            <!-- Analysis Result Content -->
+            <div class="analysis-content"></div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Dynax<span class="accent">!</span></h2>
+                    <p>Transforming the research experience</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#partners">Partners</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API Access</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dynax Research. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
     </div>
     
-
-    <ul class="res-content"> 
-        <li class="res-data"> <strong>  Date - </strong>{{paper['date']}}</li>
-        <li class="res-data"> <strong> Subject - </strong>{{', '.join(paper['field'])}}</li>
-        <li class="res-data" id="res-doi"> <strong> DOI - </strong>{{paper['doi']}}</li>
-        <li class="res-data"> <strong>  URL - </strong> <a href= "{{paper['url'].replace("'", "")}}"> {{paper['url'].replace("'", "")}} </a></li>
-    </ul>
-
-    <div class="res-abstract"> 
-        <h1 class=""> Abstract </h1>
-        <p class="abstract-content"> {{paper['abstract']}} </p>
-    </div>
-
-    <br>
-    <hr>
-
-    <div class="btn-s">
-
-        <button class="res-btn" id="btn-ls"> 
-            Analyze
-        </button>
-
-        <a href="{{paper['pdf'].replace("'", "")}}" download>
-            <button class="res-btn" id="btn-rs">
-                Download
-            </button>
-        </a>
-
-    </div>
-
-    <div class="dyn-loading">
-        <div class="spinner"></div>
-    </div>
-  
-    <div class="res-txt">  </div>
-
-    <div class="analysis_"> </div>
-
-    
-    <foot class="footer-section">
-        <div id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</div>
-        <br>
-        <div class="social-links">
-            <a href="https://x.com/AI_Instaraj"> Twitter </a>
-            <a href="#"> LinkedIn </a>
-            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
-        </div>
-    </foot>
     <script src="{{url_for('static', filename = 'js/paper.js')}}"></script>
+
 </body>
 </html>

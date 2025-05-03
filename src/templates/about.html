@@ -3,61 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dynax! </title>
+    <meta name="color-scheme" content="light">
+    <title>Dynax! | About</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/about.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/paper.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
 </head>
 <body>
     <div class="container">
+        <!-- Floating Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <!-- Navigation -->
         <nav class="navbar">
-
-            <div class="logo"> Dynax! </div>
-
-            <ul class="nav-links">
-                <li><a href="#"> Analyze </a></li>
-                <li><a href="/search"> Search </a></li>
-                <li><a href="#"> History </a></li>
-                <li><a href="/about"> About </a></li>
-            </ul>
-
-            {% if not auth %}
-                <div class="auth-buttons">
-                    <a href="/auth/login" class="login-btn"> Log In </a>
-                    <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
                 </div>
-            {% else %}
-                <div> 
-                    <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
                 </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/about" class="active">About</a></li>
+                </ul>
+                {% if not auth %}
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="login-btn">Log In</a>
+                        <a href="/auth/signup" class="signup-btn">Sign Up</a>
+                    </div>
+                {% else %}
+                    <div class="user-actions">
+                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')">Log Out</a>
+                        <span id="auth-token" style="display: none;">{{ auth }}</span>
+                    </div>
                 {% endif %}
+            </div>
         </nav>
 
+        <!-- Hero Section -->
         <div class="hero-section">
-            <div class="logo-x">
-                <span class="logo-icon"></span>
-                Dynax!
+            <div class="paper-logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Dynax!</span>
             </div>
-            <p class="typing-effect">Empowering Research.</p>
         </div>
             
-    <div class="dyn-about"> 
-        <h1> 
-            About Dynax: Revolutionizing Research Together
-        </h1>
-        <p> 
-            We are dedicated to revolutionizing research research through cutting-edge AI and comprehensive data solutions,
-            empowering users with actionable insights and seamless data discovery
-        </p>
+        <!-- About Section -->
+        <div class="about-container">
+            <!-- Mission Section -->
+            <div class="mission-section">
+                <div class="mission-card">
+                    <div class="mission-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h2>Our Mission</h2>
+                    <p>To transform how researchers access, analyze, and utilize information by creating intelligent tools that break down complexity into clarity.</p>
+                </div>
+            </div>
+
+            <!-- Values Section -->
+            <div class="values-section">
+                <h2 class="section-title">Our Core Values</h2>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Innovation</h3>
+                        <p>Constantly pushing boundaries with cutting-edge AI solutions to solve complex research challenges.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Integrity</h3>
+                        <p>Maintaining the highest standards of data quality, privacy, and ethical considerations in all our operations.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Collaboration</h3>
+                        <p>Fostering partnerships across disciplines to create tools that serve diverse research needs.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-universal-access"></i>
+                        </div>
+                        <h3>Accessibility</h3>
+                        <p>Making advanced research tools available to everyone, regardless of technical background.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section -->
+            <div class="team-section">
+                <h2 class="section-title">Meet Our Leadership</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-placeholder"></div>
+                        </div>
+                        <h3>Dr. Alex Morgan</h3>
+                        <p class="member-title">Chief Executive Officer</p>
+                        <p class="member-bio">Former research scientist with 15+ years experience in computational linguistics and AI systems.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-placeholder"></div>
+                        </div>
+                        <h3>Dr. Sophia Chen</h3>
+                        <p class="member-title">Chief Technology Officer</p>
+                        <p class="member-bio">AI researcher specializing in natural language processing and knowledge graph systems.</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">
+                            <div class="avatar-placeholder"></div>
+                        </div>
+                        <h3>James Wilson</h3>
+                        <p class="member-title">Head of Research</p>
+                        <p class="member-bio">Former director of data science with expertise in large language models and research systems.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Journey Section -->
+            <div class="journey-section">
+                <h2 class="section-title">Our Journey</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2022</h3>
+                            <p>Founded with a vision to transform research with AI-powered tools.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2023</h3>
+                            <p>Launched our first beta platform with intelligent search capabilities.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2024</h3>
+                            <p>Introduced our AI research assistant and expanded data partnerships.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <h3>2025</h3>
+                            <p>Developed advanced research synthesis and visualization tools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Choose Us Section -->
+            <div class="why-choose-section">
+                <h2 class="section-title">Why Choose Dynax</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Intelligent Search</h3>
+                        <p>Our AI understands context, meaning, and nuance, delivering precise results that matter to your research.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <h3>Research Assistant</h3>
+                        <p>Have conversations with our AI to clarify concepts, generate insights, and explore new directions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-network"></i>
+                        </div>
+                        <h3>Connection Mapping</h3>
+                        <p>Discover unexpected connections between research fields that spark innovation.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Comprehensive Data</h3>
+                        <p>Access millions of research papers, datasets, and reports from a single unified platform.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <div class="cta-content">
+                    <h2>Ready to Transform Your Research?</h2>
+                    <p>Join thousands of researchers who are discovering insights faster with Dynax!</p>
+                    <div class="cta-buttons">
+                        <a href="/auth/signup" class="cta-primary">Get Started</a>
+                        <a href="/contact" class="cta-secondary">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Dynax<span class="accent">!</span></h2>
+                    <p>Transforming the research experience</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#partners">Partners</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API Access</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dynax Research. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <footer class="footer-section">
-        <p id="foot-gr-stl"> &copy; 2025 Dynax!. All rights reserved.</p>
-        <br>
-        <div class="social-links">
-            <a href="https://x.com/AI_Instaraj"> Twitter </a>
-            <a href="#"> LinkedIn </a>
-            <a href="https://github.com/AIINSTARAJ"> GitHub </a>
-        </div>
-    </footer>
-    
+    <script>
+        // Animation for timeline and elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Timeline animation
+            gsap.from('.timeline-item', {
+                opacity: 0,
+                y: 50,
+                stagger: 0.3,
+                duration: 0.8,
+                scrollTrigger: {
+                    trigger: '.timeline',
+                    start: 'top 80%'
+                }
+            });
+            
+            // Value cards animation
+            gsap.from('.value-card', {
+                opacity: 0,
+                y: 30,
+                stagger: 0.2,
+                duration: 0.6,
+                scrollTrigger: {
+                    trigger: '.values-grid',
+                    start: 'top 80%'
+                }
+            });
+            
+            // Team members animation
+            gsap.from('.team-member', {
+                opacity: 0,
+                scale: 0.9,
+                stagger: 0.2,
+                duration: 0.7,
+                scrollTrigger: {
+                    trigger: '.team-grid',
+                    start: 'top 80%'
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        }
+    </script>
 </body>
 </html>

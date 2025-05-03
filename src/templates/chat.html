@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-us">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Dynax! </title>
+    <meta name="color-scheme" content="light">
+    <title>Dynax! | Smart Chat </title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/chat.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 </head>
-
 <body>
     <div class="container">
+        <!-- Floating Elements -->
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <!-- Navigation -->
         <nav class="navbar">
-            <div class="logo">Dynax!</div>
-            <ul class="nav-links">
-                <li><a href="#">Analyze</a></li>
-                <li><a href="/search">Search</a></li>
-                <li><a href="#">History</a></li>
-                <li><a href="/about">About</a></li>
-            </ul>
-            
-
-
-            {% if not auth %}
-                <div class="auth-buttons">
-                    <a href="/auth/login" class="login-btn"> Log In </a>
-                    <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+            <div class="nav-container">
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
                 </div>
+                <div class="menu-toggle">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="/search">Search</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+                {% if not auth %}
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="login-btn"> Log In </a>
+                        <a href="/auth/signup" class="signup-btn"> Sign Up </a>
+                    </div>
                 {% else %}
-                <div>
-                    <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')">
-                        Log Out
-                    </a>
-                </div>
-            {% endif %}
-
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
+                    </div>
+                {% endif %}
+            </div>
         </nav>
-        
+
         <div class="hero-section">
             <div class="logo-x">
                 <span class="logo-icon"></span>
@@ -68,15 +85,53 @@
         </div>
     </div>
     
-    <footer class="footer-section">
-        <p id="foot-gr-stl">&copy; 2025 Dynax!. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://x.com/AI_Instaraj">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="https://github.com/AIINSTARAJ">GitHub</a>
-        </div>
-    </footer>
-    <script src="{{url_for('static', filename = 'js/chat.js')}}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>Dynax<span class="accent">!</span></h2>
+                    <p>Transforming the research experience</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#partners">Partners</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Documentation</a></li>
+                            <li><a href="#">API Access</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookie Policy</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dynax Research. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
