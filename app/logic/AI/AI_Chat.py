@@ -6,10 +6,13 @@ from langchain_community.tools import WikipediaQueryRun
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_community.tools.arxiv.tool import ArxivQueryRun
 from langchain_community.utilities.arxiv import ArxivAPIWrapper
-from langchain_huggingface import ChatHuggingFace
+from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 import os
 import json
+import logging
+
+logging.basicConfig(level=logging.ERROR)
 
 
 load_dotenv()
@@ -17,7 +20,11 @@ load_dotenv()
 google_api_key = os.environ.get("GOOGLE_API_KEY")
 
 
-llm = ChatHuggingFace(repo_id="meta-llama/Llama-3-7b", model_kwargs={"temperature": 0.7},huggingfacehub_api_token=os.environ.gat("Dynax"))
+llm = ChatGoogleGenerativeAI(
+    model="gemini-1.5-pro",
+    google_api_key=google_api_key,
+    temperature=0.7
+)
 
 
 wikipedia_tool = WikipediaQueryRun(api_wrapper=WikipediaAPIWrapper())
@@ -178,7 +185,7 @@ def research(user_token, message):
             "message": html_content
         }
     except Exception as e:
-
+        print(e)
         return {
             "status": "error",
             "message": """ 

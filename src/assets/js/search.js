@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                     <div class="result-abstract">
-                        <p>${abstract}</p>
+                        <p>${item.abstract}</p>
                     </div>
                     <div class="result-footer">
                         ${item.doi ? `<div class="result-doi"><strong>DOI:</strong> ${item.doi}</div>` : ''}
