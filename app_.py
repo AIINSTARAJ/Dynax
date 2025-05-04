@@ -35,6 +35,7 @@ def PageError(error):
 
 @app.errorhandler(500)
 def ServerError(error):
+    print(error)
     auth_user = session.get("token")
     return render_template('500.html',auth = auth_user)
 
