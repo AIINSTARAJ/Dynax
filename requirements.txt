@@ -63,3 +63,5 @@ Werkzeug
 wikipedia
 
 langchain_huggingface
+
+psycopg2-binary
