@@ -86,7 +86,6 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
           font-family: Arial, sans-serif;
           line-height: 1.6;
           margin: 20px;
-          color: #333;
         }}
         .paper-title-dynax {{
           font-size: 28px;
@@ -101,7 +100,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
         .paper-authors-dynax {{
           font-size: 16px;
           font-style: italic;
-          color: #303F9F;
+          color: white;
           text-align: center;
           margin-bottom: 20px;
         }}
@@ -119,6 +118,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
         .paragraph-dynax {{
           text-align: justify;
           margin-bottom: 18px;
+          color: white;
         }}
         .highlight-dynax {{
           background-color: rgb(12, 11, 11);

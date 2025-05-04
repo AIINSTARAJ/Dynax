@@ -266,6 +266,32 @@
     margin-top: 5rem;
 }
 
+#search-results-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #3f12e0 40%, #00ffff 100%);
+    -webkit-background-clip: text;
+    background-clip: linear-gradient(90deg, #3f12e0 50%, #00ffff 100%);
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-bottom: 0.5rem;
+}
+
+#search-results-title::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #8338ec, #00ffff, #8338ec, transparent);
+    bottom: 0;
+    left: 20%;
+}
+
 .results-header {
     margin-bottom: 2rem;
 }
@@ -366,6 +392,7 @@
 
 .result-content {
     padding: 1.5rem;
+    background: rgb(30, 30, 50,0.3);
 }
 
 .result-title {
@@ -396,7 +423,7 @@
 
 .result-abstract {
     margin-bottom: 1.5rem;
-    color: white;
+    color:  #dadcf8;
     line-height: 1.6;
 }
 

@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>Dynax! | Academic Research Assistant</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/chat.css')}}">
+    <title>Dynax! | Smart Chat </title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/chat.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/search.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.9/dist/purify.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
 </head>
@@ -35,88 +37,55 @@
                     </div>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="/search">Search</a></li>
-                    <li><a href="/chat" class="active">Chat</a></li>
+                    <li><a href="/chat">Chat</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>
                 {% if not auth %}
                     <div class="auth-buttons">
-                        <a href="/auth/login" class="login-btn">Log In</a>
-                        <a href="/auth/signup" class="signup-btn">Sign Up</a>
+                        <a href="/auth/login" class="login-btn"> Log In </a>
+                        <a href="/auth/signup" class="signup-btn"> Sign Up </a>
                     </div>
                 {% else %}
-                    <div class="user-profile">
-                        <a href="/profile" class="profile-link">
-                            <div class="avatar">{{ auth[:1] }}</div>
-                        </a>
-                        <a href="/auth/logout" class="logout-btn">Log Out</a>
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                     </div>
                 {% endif %}
             </div>
         </nav>
 
-        <div class="chat-container">
-            <div class="chat-sidebar">
-                <div class="sidebar-header">
-                    <h3>Research Sessions</h3>
-                    <button id="new-chat" class="new-chat-btn">
-                        <i class="fas fa-plus"></i> New Chat
-                    </button>
-                </div>
-                <div class="conversation-list" id="conversation-list">
-                    <!-- Conversation history will be populated here -->
-                    <div class="conversation-item active">
-                        <i class="fas fa-comments"></i>
-                        <span>New Research</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="chat-main">
-                <div class="chat-header">
-                    <div class="chat-title">
-                        <div class="chat-logo">D<span class="accent">!</span></div>
-                        <h2>Research Assistant</h2>
-                    </div>
-                    <div class="chat-actions">
-                        <button id="clear-chat" class="action-btn" title="Clear chat">
-                            <i class="fas fa-trash-alt"></i>
-                        </button>
-                        <button id="export-chat" class="action-btn" title="Export conversation">
-                            <i class="fas fa-download"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="chat-messages" id="chat-messages">
-                    <div class="message bot-message">
-                        <div class="message-avatar">D!</div>
-                        <div class="message-content">
-                            <div class="message-bubble">
-                                <p>Hello! I'm Dynax, your academic research assistant. How can I help with your research today?</p>
-                            </div>
-                            <div class="message-time">Just now</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="input-container">
-                    <div class="input-wrapper">
-                        <textarea id="message-input" placeholder="Ask about a research topic..." rows="1"></textarea>
-                        <div class="input-actions">
-                            <button id="attach-button" title="Attach file">
-                                <i class="fas fa-paperclip"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <button id="send-button" disabled>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
+        <div class="paper-header">
+            <div class="paper-logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">Dynax!</span>
             </div>
         </div>
-
+    </div>
+    
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="chat-header-icon">D</div>
+            <div class="chat-header-title" id="search-results-title">Dynax!</div>
+        </div>
+        
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">
+                Hello! I'm Dynax, your AI assistant. How can I help you today?
+            </div>
+        </div>
+        
+        <div class="input-container">
+            <input type="text" id="message-input" placeholder="Type a message...">
+            <button id="send-button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+    
         <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
@@ -129,9 +98,9 @@
                         <h3>Quick Links</h3>
                         <ul>
                             <li><a href="/">Home</a></li>
-                            <li><a href="/search">Search</a></li>
-                            <li><a href="/chat">Chat</a></li>
-                            <li><a href="/about">About</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#partners">Partners</a></li>
+                            <li><a href="#contact">Contact</a></li>
                         </ul>
                     </div>
                     <div class="footer-links-column">
@@ -165,7 +134,6 @@
             </div>
         </footer>
     </div>
-
-    <script src="{{url_for('static', filename='js/chat.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/chat.js')}}"></script>
 </body>
 </html>

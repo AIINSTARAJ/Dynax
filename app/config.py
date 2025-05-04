@@ -4,7 +4,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 db_path = os.path.join(basedir, '..', 'src', 'assets', 'data', 'data.db')
 
-SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.abspath(db_path)}"
+SQLALCHEMY_DATABASE_URI = "postgresql://dynax:UpQC8z67I72voRo4qPAk2RT3wlIKUpyi@dpg-d098hcvdiees73dmcrj0-a.oregon-postgres.render.com/dynax"
+
 
 
 DEVELOPER = "A.I Instaraj"
