@@ -64,8 +64,8 @@ def signup():
 
             pwd_ = generate_password_hash(form_pwd,'scrypt')
 
-            exist_user = user.query.filter_by(username = form_name).first()
-            exist_mail = user.query.filter_by(mail=form_mail).first()
+            exist_user = User.query.filter_by(username = form_name).first()
+            exist_mail = User.query.filter_by(mail=form_mail).first()
 
             if exist_user or exist_mail:
                 print('User Exists')
@@ -86,7 +86,7 @@ def signup():
                 session['pwd'] = pwd_
                 session['token'] = token
 
-                new_user = user(username = form_name, mail = form_mail,res_ins = form_res_ins,
+                new_user = User(username = form_name, mail = form_mail,res_ins = form_res_ins,
                                 acad_level = form_edu_level,password = pwd_, token = token)
                 db.session.add(new_user)
                 db.session.commit() 
@@ -95,7 +95,8 @@ def signup():
                 flash("Signup Sucessful!.","sucess")
                 print(f'Account {form_name} Created Successfully')
 
-                return redirect(url_for('auth.login'))
+                return redirect(url_for('index'))
+            
     return render_template('signup.html')
 
 
@@ -118,25 +119,28 @@ def login():
             mail_ = request.form['res-mail']
             pwd_ = request.form['res-pwd']
 
-            User = user.query.filter_by(username = name_,mail = mail_).first()
-            p = check_password_hash(User.password,pwd_)
+            User_ = User.query.filter_by(username = name_,mail = mail_).first()
+            try:
+                p = check_password_hash(User_.password,pwd_)
+            except Exception as E:
+                return url_for('auth.signup')
 
-            if User and p:
+            if User_ is not None and p:
                 flash('Login Successful!','sucess')
 
-                session['name'] = User.username
-                session['mail'] = User.mail
-                session['interest'] = User.res_ins
-                session['level'] = User.acad_level
-                session['pwd'] = User.password
-                session['token'] = User.token
+                session['name'] = User_.username
+                session['mail'] = User_.mail
+                session['interest'] = User_.res_ins
+                session['level'] = User_.acad_level
+                session['pwd'] = User_.password
+                session['token'] = User_.token
 
-                
+                print(f'User {User_.username} Logged In')
                 return redirect(url_for('index'))
         
 
             else:
-                print(f'Password Incorrect{User.username}')
+                print(f'Password Incorrect {User_.username}')
                 flash('Invalid Username or Password', 'error')
 
                 return redirect(url_for("auth.login"))
@@ -167,8 +171,8 @@ def delete_account():
     except Exception as E:
         return redirect(url_for('auth.login'))  
        
-    User = user.query.filter_by(username = ses_name,mail = ses_mail,token = ses_token,password=ses_pwd).first()
-    db.session.delete(User)
+    User_ = User.query.filter_by(username = ses_name,mail = ses_mail,token = ses_token,password=ses_pwd).first()
+    db.session.delete(User_)
     db.session.commit()
     
     session.pop("name")

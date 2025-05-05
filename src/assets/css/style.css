@@ -164,12 +164,14 @@ body {
 .login-btn {
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    background-color: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, #5229e9, rgb(3, 158, 158));
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
 }
 
 .login-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    background: black;
     border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(2px);
 }
 
 .signup-btn, .logout-btn {
