@@ -33,6 +33,7 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
     color-scheme: light; 
+    font-size: 82%;
 }
 
 body {
@@ -275,7 +276,7 @@ body {
 .hamburger span {
     width: 100%;
     height: 2px;
-    background-color: #fff;
+    background-color: white;
     transition: all 0.3s ease;
 }
 
