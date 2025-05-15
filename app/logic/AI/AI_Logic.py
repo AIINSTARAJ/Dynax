@@ -41,9 +41,9 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
         7. Interdisciplinary Implications
         8. Conclusive Assessment
 
-        -- Each Sections shouldn't be less than 2500 words
+        -- Each Sections shouldn't be less than 4000 words
         
-        Focus on clarity and accuracy in your summary. Use academic language but avoid unnecessary jargon. Not less than 10000 words.
+        Focus on clarity and accuracy in your summary. Use academic language but avoid unnecessary jargon. Not less than 20000 words.
         """
     )
     
@@ -87,6 +87,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
           font-family: Arial, sans-serif;
           line-height: 1.6;
           margin: 20px;
+          color:transparent;
         }}
         .paper-title-dynax {{
           font-size: 28px;
@@ -178,7 +179,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
               font-family: Arial, sans-serif;
               line-height: 1.6;
               margin: 20px;
-              color: #333;
+              color: white;
             }}
             .paper-title-dynax {{
               font-size: 28px;
@@ -193,7 +194,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
             .paper-authors-dynax {{
               font-size: 16px;
               font-style: italic;
-              color: #303F9F;
+              color: white;
               text-align: center;
               margin-bottom: 20px;
             }}
@@ -329,7 +330,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
       
     
     # Initialize LLM
-    llm = GoogleGenerativeAI(model="gemini-1.5-flash", temperature=0.2, google_api_key=google_api_key)
+    llm = GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.2, google_api_key=google_api_key)
     
     # Generate PDF content
     pdf_chain = pdf_prompt | llm

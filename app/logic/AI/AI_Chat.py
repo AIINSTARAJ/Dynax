@@ -64,6 +64,7 @@ html_prompt = PromptTemplate(
     - Include any relevant academic paper links as [hyperlinks](link).
     - If the content refers to multiple sections or points, organize them as lists.
     - Include any necessary citations in parentheses (Author, Year) or as links with a nice color.
+    - Space betwwn various headers and others
     - Keep the language professional and academic in tone.
     - Output everything in a basic html that can be rendered in a chatbot
     - The font size should be large optimally
@@ -85,7 +86,7 @@ html_prompt = PromptTemplate(
 
             Tone: Friendly, engaging, and informal.
 
-            Text Styling: Keep the styling minimal for better readability. Avoid excessive bold or emphasis unless necessary.
+            Text Styling: Keep the styling minimal for better readability. Appropriate Spacing when necessary.
 
         2. Text Formatting Requirements:
 
@@ -129,6 +130,8 @@ html_prompt = PromptTemplate(
         5. Handling Multiple Sources:
             References: For academic responses, always try to include proper citations or reference links where possible. Ensure that the format is clean and readable.
 
+            The Reference must be correct 
+            
             For example, when referring to a specific paper, include the title in bold, followed by the author(s), year, and a hyperlink to the source.
 
             Example:
