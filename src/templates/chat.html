@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -21,6 +22,8 @@
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
             <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+            <div class="shape shape-6"></div>
         </div>
 
         <!-- Navigation -->
@@ -37,9 +40,9 @@
                     </div>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li><a href="/search">Search</a></li>
-                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/chat" class="active">Chat</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>
                 {% if not auth %}
@@ -63,77 +66,96 @@
         </div>
     </div>
     
-    <div class="chat-container">
-        <div class="chat-header">
-            <div class="chat-header-icon">D</div>
-            <div class="chat-header-title" id="search-results-title">Dynax!</div>
-        </div>
-        
-        <div class="chat-messages" id="chat-messages">
-            <div class="message bot-message">
-                Hello! I'm Dynax, your AI assistant. How can I help you today?
+    <div class="chat-interface-container">
+        <div class="chat-sidebar">
+            <div class="new-chat-btn" id="new-chat-btn">
+                <i class="fas fa-plus"></i>
+                <span>New Chat</span>
+            </div>
+            <div class="chat-history-container" id="chat-history-container">
+                <!-- Chat history items will be added here -->
             </div>
         </div>
         
-        <div class="input-container">
-            <input type="text" id="message-input" placeholder="Type a message...">
-            <button id="send-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="22" y1="2" x2="11" y2="13"></line>
-                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-            </button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-header-icon" id="chat-logo">D</div>
+                <div class="chat-header-title" id="chat-title">Dynax!</div>
+                <div class="chat-actions">
+                    <button id="delete-chat-btn" class="icon-btn" title="Delete Chat">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message intro-message">
+                    <div class="message-content">
+                        Hello! I'm Dynax, your AI assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-button">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
     
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Dynax<span class="accent">!</span></h2>
-                    <p>Transforming the research experience</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>Dynax<span class="accent">!</span></h2>
+                <p>Transforming the research experience</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#partners">Partners</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-links-column">
-                        <h3>Quick Links</h3>
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="#features">Features</a></li>
-                            <li><a href="#partners">Partners</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-column">
-                        <h3>Support</h3>
-                        <ul>
-                            <li><a href="#">Help Center</a></li>
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">API Access</a></li>
-                            <li><a href="#">FAQ</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-links-column">
-                        <h3>Legal</h3>
-                        <ul>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
-                            <li><a href="#">Accessibility</a></li>
-                        </ul>
-                    </div>
+                <div class="footer-links-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Access</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Accessibility</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Dynax Research. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Dynax Research. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://x.com/AI_Instaraj"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/AIINSTARAJ"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+    
     <script src="{{url_for('static', filename = 'js/chat.js')}}"></script>
 </body>
 </html>

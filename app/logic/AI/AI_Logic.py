@@ -5,6 +5,7 @@ from langchain_google_genai import GoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from .pdf_logic import *
 
+
 load_dotenv()
 
 def get_analysis(paper: json, google_api_key = None) -> dict:
@@ -365,5 +366,5 @@ if __name__ == '__main__':
     
     set_pdf(analysis,'arXiv:2504.07109')
     
-    with open('html_output.html', 'w', encoding='utf-8') as f:
+    with open('output.html', 'w', encoding='utf-8') as f:
         f.write(analysis)

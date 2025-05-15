@@ -21,7 +21,7 @@ google_api_key = os.environ.get("GOOGLE_API_KEY")
 
 
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-pro",
+    model="gemini-2.0-flash",
     google_api_key=google_api_key,
     temperature=0.7
 )
@@ -33,7 +33,7 @@ arxiv = ArxivQueryRun(api_wrapper=ArxivAPIWrapper())
 
 tools = [
     Tool(
-        name="Wikipedia",
+        name="Wikipedia",  
         func=wikipedia_tool.run,
         description="Searches Wikipedia for academic-related articles and general knowledge. Input should be a search query."
     ),
@@ -91,7 +91,7 @@ html_prompt = PromptTemplate(
 
             Paragraph Headers:
 
-            Bold all major section headers to make them stand out.
+            Bold all major section headers to make them stand out(really bold) You can optionally change the color since it is more of a presentation.
 
             Ensure that headers are distinct, i.e., with more prominent font weight, ensuring they separate the content logically.
 
