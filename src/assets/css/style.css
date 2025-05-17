@@ -52,7 +52,7 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -167,6 +167,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: linear-gradient(135deg, #5229e9, rgb(3, 158, 158));
     box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+    padding: 0.6rem 1.2rem;
 }
 
 .login-btn:hover {
@@ -179,6 +180,7 @@ body {
     background: linear-gradient(135deg, #5229e9, rgb(3, 158, 158));
     color: var(--text-primary);
     box-shadow: 0 4px 12px rgba(108, 99, 255, 0.2);
+    padding: 0.6rem 1.2rem;
 }
 
 .signup-btn:hover, .logout-btn:hover {
@@ -201,7 +203,7 @@ body {
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--glass-border);
     z-index: 1000;
-    padding: 1rem 0;
+    padding: 0.8rem 0;
     transition: all 0.3s ease;
 }
 
@@ -993,6 +995,9 @@ h1, h2, h3, h4, h5 {
 }
 
 @media (max-width: 480px) {
+    html{
+        font-size:75%
+    }
     .hero {
         padding-top: 10rem;
     }
