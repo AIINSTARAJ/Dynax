@@ -221,6 +221,7 @@ body {
     font-weight: 800;
     letter-spacing: -1px;
     color: var(--text-primary);
+    margin-top: 0.5rem;
 }
 
 .logo .accent {
