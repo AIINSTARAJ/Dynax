@@ -24,15 +24,15 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
-                </div>
                 <div class="menu-toggle">
                     <div class="hamburger">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
+                </div>
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
                 </div>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
@@ -42,13 +42,11 @@
                 </ul>
                 {% if not auth %}
                     <div class="auth-buttons">
-                        <a href="/auth/login" class="login-btn">Log In</a>
-                        <a href="/auth/signup" class="signup-btn">Sign Up</a>
+                        <a href="/auth/login" class="login-btn"> Log In </a>
                     </div>
                 {% else %}
-                    <div class="user-actions">
-                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')">Log Out</a>
-                        <span id="auth-token" style="display: none;">{{ auth }}</span>
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                     </div>
                 {% endif %}
             </div>
@@ -218,7 +216,7 @@
                     <p>Join thousands of researchers who are discovering insights faster with Dynax!</p>
                     <div class="cta-buttons">
                         <a href="/auth/signup" class="cta-primary">Get Started</a>
-                        <a href="/contact" class="cta-secondary">Contact Us</a>
+                        <a href="/#contact" class="cta-secondary">Contact Us</a>
                     </div>
                 </div>
             </div>
@@ -281,7 +279,18 @@
                 opacity: 0,
                 y: 50,
                 stagger: 0.3,
-                duration: 0.8,
+                duration: 1.8,
+                scrollTrigger: {
+                    trigger: '.timeline',
+                    start: 'top 80%'
+                }
+            });
+
+            gsap.from('.mission-section', {
+                opacity: 0,
+                y: 50,
+                stagger: 0.3,
+                duration: 1.8,
                 scrollTrigger: {
                     trigger: '.timeline',
                     start: 'top 80%'
@@ -293,7 +302,7 @@
                 opacity: 0,
                 y: 30,
                 stagger: 0.2,
-                duration: 0.6,
+                duration: 1.2,
                 scrollTrigger: {
                     trigger: '.values-grid',
                     start: 'top 80%'
@@ -305,7 +314,7 @@
                 opacity: 0,
                 scale: 0.9,
                 stagger: 0.2,
-                duration: 0.7,
+                duration: 2.0,
                 scrollTrigger: {
                     trigger: '.team-grid',
                     start: 'top 80%'

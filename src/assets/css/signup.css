@@ -96,7 +96,7 @@
 
 .forgot-password {
     text-align: right;
-    margin-top: -1rem;
+    margin-top: -0.5rem;
     margin-bottom: 1.5rem;
 }
 
@@ -108,13 +108,14 @@
 }
 
 .forgot-password a:hover {
-    color: var(--accent-color);
+    color: rgb(13, 143, 175);
 }
 
 .auth-alternative {
     margin: 1.5rem 0;
     text-align: center;
     color: var(--text-secondary);
+    font-size: 1.1rem;
 }
 
 .auth-alternative a {
@@ -123,17 +124,25 @@
     font-weight: 500;
 }
 
+.auth-alternative a:hover {
+    color: rgb(19, 212, 212);
+}
+
 
 .terms {
     margin: 1.5rem 0;
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     text-align: center;
 }
 
 .terms a {
     color: var(--accent-color);
     text-decoration: none;
+}
+
+.terms a:hover {
+    color: rgb(19, 212, 212);
 }
 
 .ai-assistant {

@@ -25,9 +25,6 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
-                </div>
                 <div class="menu-toggle">
                     <div class="hamburger">
                         <span></span>
@@ -35,16 +32,24 @@
                         <span></span>
                     </div>
                 </div>
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/chat">Chat</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>
-                <div class="auth-buttons">
-                    <a href="/auth/login" class="login-btn"> Log In </a>
-                    <a href="/auth/signup" class="signup-btn active"> Sign Up </a>
-                </div>
+                {% if not auth %}
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="login-btn"> Log In </a>
+                    </div>
+                {% else %}
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
+                    </div>
+                {% endif %}
             </div>
         </nav>
      
@@ -74,7 +79,7 @@
                         <div class="form-group">
                             <label for="research">Research Interest</label>
                             <select id="research" name="research-interest" required>
-                                <option value="" disabled selected>Select your primary research interest</option>
+                                <option value="" disabled>Select your primary research interest</option>
                                 <option value="Artificial Intelligence">Artificial Intelligence</option>
                                 <option value="Machine Learning">Machine Learning</option>
                                 <option value="Physics">Physics</option>
@@ -92,7 +97,7 @@
                         <div class="form-group">
                             <label for="academic">Academic Level</label>
                             <select id="academic" name="academic-level" required>
-                                <option value="" disabled selected>Select your academic level</option>
+                                <option value="" disabled>Select your academic level</option>
                                 <option value="Undergraduate">Undergraduate</option>
                                 <option value="Graduate">Graduate</option>
                                 <option value="PhD">PhD</option>
@@ -132,7 +137,7 @@
                             <a href="/auth/forgot-password">Forgot Password?</a>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;"> Create Account </button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px;color: rgb(193, 210, 224)"> Create Account </button>
 
                         <div class="auth-alternative">
                             Have an Account? <a href="/auth/login">Login</a>
@@ -371,11 +376,11 @@
 
             // Wait a moment before starting the typing animation
             setTimeout(() => {
-                showAiMessage('welcomeMessage', 1000, () => {
-                    showAiMessage('featuresMessage', 1500, () => {
-                        showAiMessage('finalMessage1', 2000, () => {
-                            showAiMessage('finalMessage2', 2500, () => {
-                                showAiMessage('finalMessage3', 3000);
+                showAiMessage('welcomeMessage', 800, () => {
+                    showAiMessage('featuresMessage', 1200, () => {
+                        showAiMessage('finalMessage1', 1600, () => {
+                            showAiMessage('finalMessage2', 2000, () => {
+                                showAiMessage('finalMessage3', 2400);
                             });
                         });
                     });

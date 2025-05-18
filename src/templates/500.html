@@ -21,11 +21,8 @@
         </div>
 
         <!-- Navigation -->
-        <nav class="navbar">
+<nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
-                </div>
                 <div class="menu-toggle">
                     <div class="hamburger">
                         <span></span>
@@ -33,21 +30,22 @@
                         <span></span>
                     </div>
                 </div>
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/chat">Chat</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>
                 {% if not auth %}
                     <div class="auth-buttons">
-                        <a href="/auth/login" class="login-btn">Log In</a>
-                        <a href="/auth/signup" class="signup-btn">Sign Up</a>
+                        <a href="/auth/login" class="login-btn"> Log In </a>
                     </div>
                 {% else %}
-                    <div class="user-actions">
-                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')">Log Out</a>
-                        <span id="auth-token" style="display: none;">{{ auth }}</span>
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                     </div>
                 {% endif %}
             </div>
@@ -78,7 +76,7 @@
                 <ul>
                     <li><i class="fas fa-redo-alt"></i> Refresh the page to try again</li>
                     <li><i class="fas fa-clock"></i> Wait a few moments and retry your request</li>
-                    <li><i class="fas fa-home"></i> Return to our <a href="/" style="margin: 0px 5px;">Homepage</a></li>
+                    <li><i class="fas fa-home"></i> Return to our <a href="/" style="margin: 0px 5px; text-decoration: none;">Homepage</a></li>
                 </ul>
             </div>
             
@@ -88,7 +86,7 @@
             </div>
 
             <div class="support-note">
-                <p>If the problem persists, please <a href="#contact">contact our support team</a>.</p>
+                <p>If the problem persists, please <a href="/#contact" style="text-decoration: none;">contact our support team</a>.</p>
             </div>
         </div>
 

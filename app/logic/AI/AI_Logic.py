@@ -18,7 +18,7 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
     title = paper['title']
     authors = paper['authors']
     
-    # Prompt for PDF version (kept simple and focused on content)
+    #Prompt for PDF version
     pdf_prompt = PromptTemplate(
         input_variables=["title", "authors", "full_text"],
         template="""
@@ -41,9 +41,11 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
         7. Interdisciplinary Implications
         8. Conclusive Assessment
 
-        -- Each Sections shouldn't be less than 4000 words
+        -- It's not compulsory to use the exact section above but make it as  structured as that.
+
+        -- Each Sections shouldn't be less than 5000 words
         
-        Focus on clarity and accuracy in your summary. Use academic language but avoid unnecessary jargon. Not less than 20000 words.
+        Focus on clarity and accuracy in your summary. Use academic language but avoid unnecessary jargon. Not less than 32000 words.
         """
     )
     
@@ -60,27 +62,32 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
       Create an HTML document with the following specifications:
       
       1. MOST IMPORTANT: Every single class name and ID must end with "-dynax" suffix to prevent styling conflicts
+
       2. Structure:
         - Everything must be contained within a single parent div with class="paper-container-dynax"
         - Proper HTML structure with proper nesting
         - No styling in the head section - all styling must be within style tags in the body
       
       3. Styling:
+
         - All CSS class and ID selectors must include the "-dynax" suffix (e.g., .highlight-dynax, #title-dynax)
-        - Font: Arial or sans-serif for body text, size 16px, line height 1.6
+        - Font: Arial or sans-serif/Poppins for body text, size 16px, line height 1.6
         - Title: 28px, centered, bold, with gradient from purple to cyan
         - Authors: 16px, centered, italic, indigo color
         - Section headers: 21px, bold, with gradient from purple to cyan
         - Text: Justified paragraphs with 18px bottom margin and appropriate color
         - Highlights: Dark background with padding for key findings
-        - Links: Blue with hover underline effect
+        - Links: Blue with hover effect
       
       4. Content Organization:
+
         - Structured sections with numbered headers
         - Lists for multiple points within sections
         - Highlight boxes for key findings
       
-      Here's the CSS structure you MUST follow (note all selectors have -dynax suffix):
+      Here's the CSS structure you can follow (note all selectors have -dynax suffix):
+
+      -- It's not necessary it must have the same css styling but something similar.
       
       <style>
         .paper-container-dynax {{
@@ -156,20 +163,20 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
       Sample structure you should follow:
       
       <div class="paper-container-dynax">
-        <div class="paper-title-dynax">TITLE HERE</div>
-        <div class="paper-authors-dynax">AUTHORS HERE</div>
-        
-        <div class="section-header-dynax">1. Executive Synthesis</div>
-        <div class="paragraph-dynax">Content here...</div>
-        
-        <div class="section-header-dynax">2. Methodological Architecture</div>
-        <div class="paragraph-dynax">Content here...</div>
-        <div class="list-container-dynax">
-          <div class="list-item-dynax">• Item one</div>
-          <div class="list-item-dynax">• Item two with <span class="highlight-dynax">highlighted text</span></div>
-        </div>
-        
-        <!-- And so on for all sections -->
+          <div class="paper-title-dynax">TITLE HERE</div>
+          <div class="paper-authors-dynax">AUTHORS HERE</div>
+          
+          <div class="section-header-dynax">1. Executive Synthesis</div>
+          <div class="paragraph-dynax">Content here...</div>
+          
+          <div class="section-header-dynax">2. Methodological Architecture</div>
+          <div class="paragraph-dynax">Content here...</div>
+          <div class="list-container-dynax">
+            <div class="list-item-dynax">• Item one</div>
+            <div class="list-item-dynax">• Item two with <span class="highlight-dynax">highlighted text</span></div>
+          </div>
+          
+          <!-- And so on for all sections -->
       </div>
 
       Example == '
@@ -243,6 +250,9 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
               text-decoration: underline;
             }}
           </style>
+        
+        -- Sample HTML FORMAT.
+        -- Not necessary it is exact but follow the structure.
 
           <div class="paper-title-dynax">Scalable Neural Architectures for Distributed Edge Intelligence</div>
           <div class="paper-authors-dynax">Alice Morgan, David Turing, Elias Kim, Fatima Rahman</div>
@@ -324,10 +334,9 @@ def get_analysis(paper: json, google_api_key = None) -> dict:
       6. Use divs instead of paragraphs, headings, etc.
       7. Return complete, valid HTML that presents the academic content professionally
       8. Do not include code tags, backticks or HTML comments in your output
+      9. Make sure the output is presentable and highly intuitive as it is to be read by researchers.
       """
     )
-
-      
     
     # Initialize LLM
     llm = GoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.2, google_api_key=google_api_key)

@@ -6,6 +6,8 @@ from app.routes.auth import *
 
 from app.routes.logic import *
 
+from app.routes.admin import *
+
 app = Flask(__name__,
             static_folder='src/assets',
             template_folder='src/templates')
@@ -17,6 +19,8 @@ db.init_app(app)
 app.register_blueprint(auth_,url_prefix='/auth')
 
 app.register_blueprint(logic_)
+
+app.register_blueprint(admin,url_prefix='/admin')
 
 @app.route('/',methods = ['GET'])
 def index():

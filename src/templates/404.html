@@ -23,9 +23,6 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
-                </div>
                 <div class="menu-toggle">
                     <div class="hamburger">
                         <span></span>
@@ -33,21 +30,22 @@
                         <span></span>
                     </div>
                 </div>
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/chat">Chat</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>
                 {% if not auth %}
                     <div class="auth-buttons">
-                        <a href="/auth/login" class="login-btn">Log In</a>
-                        <a href="/auth/signup" class="signup-btn">Sign Up</a>
+                        <a href="/auth/login" class="login-btn"> Log In </a>
                     </div>
                 {% else %}
-                    <div class="user-actions">
-                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')">Log Out</a>
-                        <span id="auth-token" style="display: none;">{{ auth }}</span>
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                     </div>
                 {% endif %}
             </div>
@@ -75,8 +73,8 @@
                 <h3>You might want to:</h3>
                 <ul>
                     <li><i class="fas fa-search"></i> Double-check the URL for typos</li>
-                    <li><i class="fas fa-home"></i> Return to our <a href="/" style="margin: 0px 5px;"> HomePage </a></li>
-                    <li><i class="fas fa-compass"></i> Use our <a href="/search" style="margin: 0px 5px;"> Search Tool </a> to find what you need</li>
+                    <li><i class="fas fa-home"></i> Return to our <a href="/" style="margin: 0px 5px; text-decoration: none;"> HomePage </a></li>
+                    <li><i class="fas fa-compass"></i> Use our <a href="/search" style="margin: 0px 5px;text-decoration: none;"> Search Tool </a> to find what you need</li>
                 </ul>
             </div>
             

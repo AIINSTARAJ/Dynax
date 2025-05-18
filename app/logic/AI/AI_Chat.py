@@ -11,6 +11,8 @@ from dotenv import load_dotenv
 import os
 import json
 import logging
+from ..scrap.research import *
+from .pdf_logic import *
 
 logging.basicConfig(level=logging.ERROR)
 
@@ -41,6 +43,16 @@ tools = [
         name="Arxiv",
         func=arxiv.run,
         description="Searches Arxiv for research papers. Input should be a search query."
+    ),
+    Tool(
+        name='Paper Search',
+        func = get_papers,
+        description="Searches for research papers based on a particular topic."
+    ),
+    Tool(
+        name = 'Paper Content',
+        func= get_content,
+        description="Get Content of a particular topic using it's Arxiv html link e.g https://arxiv.org/html/2504.07109"
     )
 ]
 
@@ -51,9 +63,9 @@ user_memories = {}
 html_prompt = PromptTemplate(
     input_variables=["content"],
     template="""
-    You are an AI Research Assistant as well as Analyst and optionally a programmer/engineer if it relates to computing or electronics. Your task is to provide a detailed, organized, and well-structured response to the user's query. Your response should include any relevant citations, references, or key findings in bold or as hyperlinks.
+    You are an AI Research Assistant as well as Analyst and optionally a programmer/engineer if it relates to computing or electronics. Your task is to provide a detailed, organized, and well-structured response to the user's query. Your response should include any relevant citations, references, images or key findings in bold or as hyperlinks.
     
-    If it's a basic conversation message or if it is not related to research ouput just a simple message with 5px padding.
+    If it's a basic conversation message or if it is not related to research ouput just a simple message.
 
     --- Provide Intellectual Content and Response too..
 
@@ -67,7 +79,7 @@ html_prompt = PromptTemplate(
     - Space betwwn various headers and others
     - Keep the language professional and academic in tone.
     - Output everything in a basic html that can be rendered in a chatbot
-    - The font size should be large optimally
+    - The font size should be optimal
     - Optimize style assuming the div will be placed in a #1e1e38 background
 
     Guide for Agent and LLM (Formatting and Content Structure)
@@ -136,7 +148,7 @@ html_prompt = PromptTemplate(
 
             Example:
 
-            "Attention is All You Need" by Vaswani et al. (2017) Read the paper
+                "Attention is All You Need" by Vaswani et al. (2017).
 
         6. Example Formatting Structure for LLM and Agent:
 

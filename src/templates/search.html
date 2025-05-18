@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light">
-    <title>Dynax! | Research </title>
+    <title> Dynax! | Research </title>
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename = 'css/search.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -23,15 +23,15 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <h1><a href="/"><span class="gradient-text">Dynax</span><span class="accent">!</span></a></h1>
-                </div>
                 <div class="menu-toggle">
                     <div class="hamburger">
                         <span></span>
                         <span></span>
                         <span></span>
                     </div>
+                </div>
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
                 </div>
                 <ul class="nav-links">
                     <li><a href="/">Home</a></li>
@@ -42,11 +42,10 @@
                 {% if not auth %}
                     <div class="auth-buttons">
                         <a href="/auth/login" class="login-btn"> Log In </a>
-                        <a href="/auth/signup" class="signup-btn"> Sign Up </a>
                     </div>
                 {% else %}
                     <div> 
-                        <a href="/auth/logout" class="logout-btn" onclick="return confirm('Are you sure you want to logout?')"> Log Out </a>
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
                     </div>
                 {% endif %}
             </div>
@@ -56,7 +55,7 @@
         <section class="search-hero">
             <div class="search-hero-content">
                 <div class="search-logo-animation">
-                    <h1><span class="gradient-text" id="">Dynax</span><span class="accent">!</span></h1>
+                    <h1><span class="gradient-text" id="">Dynax</span><span style="color: var(--accent-color)">!</span></h1>
                 </div>
                 <p class="typing-effect">Discover groundbreaking research papers</p>
                 
@@ -110,8 +109,8 @@
                             </button>
                             <div class="filter-options">
                                 <div class="filter-option" data-sort="relevance">Relevance</div>
-                                <div class="filter-option" data-sort="date-desc">Newest first</div>
-                                <div class="filter-option" data-sort="date-asc">Oldest first</div>
+                                <div class="filter-option" data-sort="desc">Newest first</div>
+                                <div class="filter-option" data-sort="asc">Oldest first</div>
                                 <div class="filter-option" data-sort="citations">Most cited</div>
                             </div>
                         </div>

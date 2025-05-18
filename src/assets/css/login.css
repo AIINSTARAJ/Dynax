@@ -91,19 +91,24 @@
 }
 
 .forgot-password a:hover {
-    color: var(--accent-color);
+    color: rgb(13, 143, 175);
 }
 
 .auth-alternative {
     margin: 1.5rem 0;
     text-align: center;
     color: var(--text-secondary);
+    font-size: 15px;
 }
 
 .auth-alternative a {
     color: var(--accent-color);
     text-decoration: none;
     font-weight: 500;
+}
+
+.auth-alternative a:hover {
+    color: rgb(19, 212, 212);
 }
 
 .social-login {
@@ -151,14 +156,14 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-primary);
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     flex: 1;
 }
 
 .social-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--card-bg);
 }
 
 .social-btn.google {
@@ -281,6 +286,7 @@
     }
 }
 
+
 .hero-sec {
     display: flex;
     flex-direction: column;
@@ -296,7 +302,7 @@
     letter-spacing: -0.5px;
     display: flex;
     align-items: center;
-    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    background: linear-gradient(135deg, #3a86ff, #8338ec);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

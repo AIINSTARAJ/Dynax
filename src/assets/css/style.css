@@ -8,7 +8,7 @@
     --bot-message: #1e1e38;
     --user-message: #4a2e91;
     --typing-dot-color: #7c3aed;
-    --card-bg: rgba(30, 30, 60, 0.5);
+    --card-bg: rgba(30, 30, 65, 0.5);
     --card-hover: rgba(35, 35, 70, 0.8);
     --success-color: #10b981;
     --error-color: #ef4444;
@@ -272,8 +272,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 25px;
-    height: 20px;
+    width: 21px;
+    height: 18px;
 }
 
 .hamburger span {

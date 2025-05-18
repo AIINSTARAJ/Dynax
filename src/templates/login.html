@@ -25,9 +25,6 @@
         <!-- Navigation -->
         <nav class="navbar">
             <div class="nav-container">
-                <div class="logo">
-                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
-                </div>
                 <div class="menu-toggle">
                     <div class="hamburger">
                         <span></span>
@@ -35,16 +32,24 @@
                         <span></span>
                     </div>
                 </div>
+                <div class="logo">
+                    <h1><span class="gradient-text">Dynax</span><span class="accent">!</span></h1>
+                </div>
                 <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
                     <li><a href="/search">Search</a></li>
                     <li><a href="/chat">Chat</a></li>
                     <li><a href="/about">About</a></li>
                 </ul>
-                <div class="auth-buttons">
-                    <a href="/auth/login" class="login-btn active"> Log In </a>
-                    <a href="/auth/signup" class="signup-btn"> Sign Up </a>
-                </div>
+                {% if not auth %}
+                    <div class="auth-buttons">
+                        <a href="/auth/login" class="login-btn"> Log In </a>
+                    </div>
+                {% else %}
+                    <div> 
+                        <a href="/auth/logout" class="logout-btn" onclick="alert('ARE YOU SURE YOU WANT TO LOGOUT?  ')"> Log Out </a>
+                    </div>
+                {% endif %}
             </div>
         </nav>
      
@@ -83,7 +88,7 @@
                             <a href="/auth/forgot-password">Forgot Password?</a>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;"> Log In </button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 16px; color: rgb(193, 210, 224);"> Log In </button>
                         
                         <div class="auth-alternative">
                             Don't have an account? <a href="/auth/signup">Sign up</a>

@@ -17,7 +17,7 @@ def clean_categories(category_string):
 
     return clean_subjects
 
-def get_papers(topic:str,max=100,sort_by = ''):
+def get_papers(topic:str, max = 100,sort_by = ''):
 
     base_url = "https://arxiv.org/search/?"
 

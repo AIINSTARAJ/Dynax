@@ -51,9 +51,11 @@ def scrap():
 
         data = request.get_json()
         topic = data['message']
+        sort = data['sort']
+        max_ = data['max']
 
         try:
-            papers = get_papers(topic)
+            papers = get_papers(topic,sort_by=sort,max=max_)
             papers = add_link(papers)
             
             return jsonify(papers)

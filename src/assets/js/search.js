@@ -308,7 +308,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify({ 
                     'message': query,
-                    'sort': currentSort
+                    'sort': currentSort,
+                    'max': 200
                 }),
             });
             
@@ -381,7 +382,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                     <div class="result-abstract">
-                        <p>${item.abstract}</p>
+                        <div>${item.abstract}</div>
                     </div>
                     <div class="result-footer">
                         ${item.doi ? `<div class="result-doi"><strong>DOI:</strong> ${item.doi}</div>` : ''}
