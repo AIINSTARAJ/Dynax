@@ -366,7 +366,7 @@
 .filter-options {
     position: absolute;
     top: calc(100% + 5px);
-    right: 0;
+    right: 20;
     background: rgba(18, 18, 20, 0.925);
     border: 1px solid var(--glass-border);
     border-radius: 8px;
@@ -629,7 +629,7 @@
     .results-header h2 {
         font-size: 1.5rem;
     }
-    
+
     .filter-options{
         right: 18;
     }

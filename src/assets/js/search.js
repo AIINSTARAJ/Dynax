@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
         
         // Update displayed results count
-        displayedResults += displayData.length;
+        displayedResults += resultsPerPage;
         
         // Update load more button visibility
         hasMoreResults = displayedResults < totalResults;
