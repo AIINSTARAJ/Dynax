@@ -222,7 +222,7 @@
 .abstract-content {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: #dadcf8;
+    color: var(--text-secondary);
     text-align: justify;
 }
 

@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
             analysisHeader.innerHTML = `<i class="fas fa-exclamation-triangle"></i> Analysis Error`;
             analysisContent.innerHTML = `
                 <div class="error-message">
-                    <p>We encountered an error while analyzing this paper. Please try again later.</p>
+                    <p style='font-size:15px; color:var(--text-secondary);'>We encountered an error while analyzing this paper. Please try again later.</p>
                     <button class="retry-button" onclick="location.reload()">
                         <i class="fas fa-redo"></i> Retry
                     </button>
