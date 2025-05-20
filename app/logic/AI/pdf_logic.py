@@ -24,11 +24,8 @@ def set_pdf(content: str,doi: str):
         return 'Error'
 
 def get_content(link:str):
-    
-    if link.startswith("DOI"):
-        link = link.replace("DOI - ","").replace('pdf','html')
-    else:
-        link = link
+
+    link = link.replace("DOI - ","").replace('pdf','html')
 
     response = requests.get(link)
 

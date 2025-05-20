@@ -110,6 +110,8 @@ def get_doi(doi:str):
     base_url = "https://arxiv.org/search/?"
 
     param = f"searchtype=doi&query={doi}&abstracts=show"
+    
+    doi = doi.replace("\n"," - ")
 
     url = base_url + param
 

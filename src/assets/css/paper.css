@@ -263,15 +263,15 @@
 }
 
 .download-btn {
-    background: rgba(30, 30, 50, 0.6);
+    background: rgba(30, 30, 50, 0.3);
     color: #f8f9fa;
     border: 1px solid rgba(131, 56, 236, 0.5);
     text-decoration: none;
 }
 
 .download-btn:hover {
-    background: rgba(30, 30, 50, 0.8);
-    color: #00ffff;
+    background: black;
+    color: rgb(111, 212, 212);
     transform: translateY(-2px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
@@ -318,7 +318,7 @@
     text-align: center;
     font-size: 2rem;
     font-weight: 700;
-    background: linear-gradient(90deg, #3f12e0 0%, #3f12e0 40%, #00ffff 50%, #3f12e0 60%, #3f12e0 100%);
+    background: linear-gradient(90deg, #3f12e0 20%, #3f12e0 40%, #00ffff 50%, #3f12e0 60%, #3f12e0 100%);
     -webkit-background-clip: text;
     background-clip: linear-gradient(90deg, #3f12e0 50%, #00ffff 100%);
     -webkit-text-fill-color: transparent;
@@ -728,15 +728,15 @@
 
 /* Print Button Styles */
 .print-btn {
-    background: rgba(30, 30, 50, 0.6);
+    background: rgba(30, 30, 50, 0.3);
     color: #f8f9fa;
     border: 1px solid rgba(131, 56, 236, 0.5);
 }
 
 .print-btn:hover {
-    background: rgba(30, 30, 50, 0.8);
+    background: black;
     border: 1px solid rgba(131, 56, 236, 0.8);
-    color: #00ffff;
+    color: rgb(111, 212, 212);
 }
 
 /* Print Media Query */
