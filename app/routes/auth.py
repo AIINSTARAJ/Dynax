@@ -11,6 +11,8 @@ from werkzeug.security import *
 
 import jwt
 
+from flask_mail import *
+
 from ..config import *
 
 from ..models import *
@@ -24,6 +26,8 @@ auth_ = Blueprint('auth',
             url_prefix='/auth'
             )
 
+
+mail = Mail()
 class Token:
     def __init__(self):
         self.secret_key = SECRET_KEY
@@ -95,8 +99,18 @@ def signup():
                 flash("Signup Sucessful!.","sucess")
                 print(f'Account {form_name} Created Successfully')
 
-                return redirect(url_for('index'))
-            
+                try:
+                    msg = Message(subject=f'Your research journey begins now - Welcome aboard!',
+                                recipients=[form_mail],
+                                html = render_template("signup_msg.html", name = form_name,field_of_interest = form_res_ins)
+                    )
+                    mail.send(msg)
+                    print('Mail Sent 🌹')
+                except Exception as e:
+                    print('Error ✖')
+                
+            return redirect(url_for('index'))
+                       
     return render_template('signup.html')
 
 
@@ -123,6 +137,7 @@ def login():
             try:
                 p = check_password_hash(User_.password,pwd_)
             except Exception as E:
+                print(E)
                 return url_for('auth.signup')
 
             if User_ is not None and p:

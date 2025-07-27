@@ -7,6 +7,8 @@ from flask import *
 
 from werkzeug.security import *
 
+from flask_mail import *
+
 import sys
 
 from ..config import *
@@ -21,6 +23,34 @@ admin = Blueprint('admin',
             template_folder='./src/templates',
             url_prefix='/admin'
             )
+
+
+mail = Mail()
+   
+
+@admin.route('/contact', methods=['POST'])
+def contact():
+    data = request.get_json()
+    try:
+        name = session["name"]
+        email = session["mail"]
+
+    except Exception as E:
+        name = data.get('name')
+        email = data.get('email')
+        print(E)
+
+    message = data.get('message')
+
+    try:
+        msg = Message(subject=f'New Message from {name}',
+                      recipients=['tomjayray05@gmail.com'],
+                      html = render_template("msg.html", name = name, email = email, message = message)
+        )
+        mail.send(msg)
+        return jsonify({'message': 'Message sent successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 @admin.route('/view')
 def view():

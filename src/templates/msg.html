@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body style="margin: 0; padding: 20px; font-family: sans-serif; border-radius: 15px;background: linear-gradient(135deg, #667eea 0%, #88dbb9 100%); min-height:fit-content;">
+    
+    <div style="max-width: 600px; margin: 0 auto; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(20px); border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1); overflow: hidden; position: relative;">
+        
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 100%; background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.1) 100%); pointer-events: none;"></div>
+        
+        <div style="padding: 40px 30px 20px; text-align: center; position: relative; z-index: 2;">
+            <div style="background: linear-gradient(135deg, #f5f3f0 0%, #e8e2db 50%, #f5f3f0 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 48px; font-weight: 800; letter-spacing: -2px; text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin-bottom: 10px; font-family: 'Georgia', serif;">
+                Dynax!✨
+            </div>
+            <div style="color: rgba(255, 255, 255, 0.8); font-size: 16px; font-weight: 300; letter-spacing: 1px; text-transform: uppercase;">
+                New Message💎
+            </div>
+        </div>
+
+        <div style="padding: 20px 30px; position: relative; z-index: 2;">
+
+            <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 15px; padding: 25px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 10px 20px rgba(0, 0, 0, 0.05);">
+                <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #f5f3f0 0%, #d4c4b0 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); border: 2px solid rgba(255, 255, 255, 0.3);">
+                        <span style="color: #8b7355; font-weight: 700; font-size: 18px; margin-top: 28%; margin-left: 37.5%">{{name[0] if name else 'U'}}</span>
+                    </div>
+                    <div style="margin-top: 3.2%;">
+                        <div style="color: #f5f3f0; font-weight: 600; font-size: 18px; margin-bottom: 2px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">
+                            {{name}}
+                        </div>
+                        <div style="color: rgba(255, 255, 255, 0.7); font-size: 14px;">
+                            {{email}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(245, 243, 240, 0.95); backdrop-filter: blur(15px); border-radius: 15px; padding: 30px; margin-bottom: 25px; border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 15px 25px rgba(0, 0, 0, 0.1); position: relative; overflow: hidden;">
+
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.3) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(248, 245, 240, 0.4) 0%, transparent 50%); pointer-events: none;"></div>
+                
+                <div style="position: relative; z-index: 1;">
+                    <div style="color: #8b7355; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; opacity: 0.8;">
+                        Message Content
+                    </div>
+                    <div style="color: #5a4a3a; font-style: italic; font-size: 16px; line-height: 1.7; font-weight: 400; text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);">
+                        {{message}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="padding: 20px 30px 40px; text-align: center; position: relative; z-index: 2;">
+            <a href="mailto:{{email}}?subject=Reply: Your message to Dynax" style="display: inline-flex; align-items: center; background: linear-gradient(135deg, #f5f3f0 0%, #e8e2db 50%, #f5f3f0 100%); color: #8b7355; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.3s ease; text-transform: uppercase;">
+                <svg style="width: 18px; height: 18px; margin-right: 10px; fill: currentColor;" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                Reply to Message
+            </a>
+        </div>
+        
+        <!-- Liquid Glass Bottom Effect -->
+        <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(to top, rgba(255, 255, 255, 0.1) 0%, transparent 100%); pointer-events: none;"></div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px; color: rgb(224, 183, 136); font-size: 15px; font-weight: 300;">
+        Powered by 
+        <span style="background: linear-gradient(135deg, #f5f3f0 0%, #e8e2db 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600;">
+            DYNAX ❤
+        </span>
+    </div>
+    
+</body>
+</html>

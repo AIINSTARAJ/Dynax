@@ -133,6 +133,15 @@ def chat():
         return render_template('chat.html', auth = auth_user)
     else:
         return redirect(url_for('auth.login'))
+
+@logic_.route('/rizz')
+def rizz():
+    auth_user = session.get("token")
+
+    if auth_user:
+        return render_template('rizz.html', auth = auth_user)
+    else:
+        return redirect(url_for('auth.login'))
     
 
 @logic_.route('/bot', methods=['POST'])

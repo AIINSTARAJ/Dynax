@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); min-height: 100vh;">
+    
+    <!-- Main Container -->
+    <div style="max-width: 650px; margin: 40px auto; padding: 0; background: rgba(255, 255, 255, 0.95); border-radius: 20px; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2); overflow: hidden; position: relative;">
+        
+        <!-- Header Section with Gradient -->
+        <div style="background: linear-gradient(135deg, #4a90e2 0%, #6c5ce7 50%, #a29bfe 100%); padding: 50px 40px; text-align: center; position: relative; overflow: hidden;">
+            <!-- Decorative Elements -->
+            <div style="position: absolute; top: -50px; left: -50px; width: 150px; height: 150px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; opacity: 0.6;"></div>
+            <div style="position: absolute; top: 20px; right: -30px; width: 100px; height: 100px; background: rgba(255, 255, 255, 0.08); border-radius: 50%; opacity: 0.8;"></div>
+            <div style="position: absolute; bottom: -40px; right: 40px; width: 120px; height: 120px; background: rgba(255, 255, 255, 0.05); border-radius: 50%;"></div>
+            
+            <div style="position: relative; z-index: 10;">
+                <h1 style="color: white; font-size: 42px; font-weight: 800; margin: 0 0 15px 0; letter-spacing: -1px; text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+                    Welcome Aboard!
+                </h1>
+                <p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin: 0; font-weight: 300; letter-spacing: 0.5px;">
+                    Your research journey starts here
+                </p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div style="padding: 45px 40px;">
+            
+            <!-- Personal Greeting -->
+            <div style="margin-bottom: 35px;">
+                <h2 style="color: #2d3748; font-size: 28px; font-weight: 700; margin: 0 0 15px 0; line-height: 1.3;">
+                    Hello {{ name }}! 🎉
+                </h2>
+                <p style="color: #4a5568; font-size: 16px; line-height: 1.7; margin: 0;">
+                    We're absolutely thrilled to have you join our community of passionate researchers and innovators. Your interest in <strong style="color: #6c5ce7; font-weight: 600;">{{ field_of_interest }}</strong> caught our attention, and we can't wait to see what amazing discoveries you'll make!
+                </p>
+            </div>
+            
+            <!-- What's Next Section -->
+            <div style="background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%); border-radius: 15px; padding: 30px; margin-bottom: 35px; border-left: 5px solid #6c5ce7; position: relative;">
+                <div style="position: absolute; top: 15px; right: 20px; width: 40px; height: 40px; background: linear-gradient(135deg, #6c5ce7, #a29bfe); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: white; font-size: 20px; font-weight: bold;">✨</span>
+                </div>
+                
+                <h3 style="color: #2d3748; font-size: 22px; font-weight: 600; margin: 0 0 20px 0;">
+                    What's Next?
+                </h3>
+                
+                <div style="margin-bottom: 15px;">
+                    <div style="display: inline-block; background: #6c5ce7; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-right: 15px; margin-bottom: 10px;">
+                        Step 1
+                    </div>
+                    <span style="color: #4a5568; font-size: 15px;">Explore our extensive research database and latest publications</span>
+                </div>
+                
+                <div style="margin-bottom: 15px;">
+                    <div style="display: inline-block; background: #a29bfe; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-right: 15px; margin-bottom: 10px;">
+                        Step 2
+                    </div>
+                    <span style="color: #4a5568; font-size: 15px;">Leverage AI-powered analysis tools for {{ field_of_interest }} research</span>
+                </div>
+                
+                <div>
+                    <div style="display: inline-block; background: #74b9ff; color: white; padding: 8px 16px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-right: 15px; margin-bottom: 10px;">
+                        Step 3
+                    </div>
+                    <span style="color: #4a5568; font-size: 15px;">Generate insights with our advanced AI research assistant</span>
+                </div>
+            </div>
+            
+            <!-- Special Features -->
+            <div style="margin-bottom: 35px;">
+                <h3 style="color: #2d3748; font-size: 22px; font-weight: 600; margin: 0 0 20px 0; text-align: center;">
+                    Exclusive Access Unlocked
+                </h3>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;">
+                    <div style="background: linear-gradient(135deg, #fd79a8, #fdcb6e); color: white; padding: 15px 25px; border-radius: 25px; font-size: 14px; font-weight: 600; text-align: center; min-width: 160px; box-shadow: 0 8px 16px rgba(253, 121, 168, 0.3);">
+                        📚 Research Library
+                    </div>
+                    <div style="background: linear-gradient(135deg, #6c5ce7, #a29bfe); color: white; padding: 15px 25px; border-radius: 25px; font-size: 14px; font-weight: 600; text-align: center; min-width: 160px; box-shadow: 0 8px 16px rgba(108, 92, 231, 0.3);">
+                        🤖 AI Analysis Tools
+                    </div>
+                    <div style="background: linear-gradient(135deg, #00b894, #00cec9); color: white; padding: 15px 25px; border-radius: 25px; font-size: 14px; font-weight: 600; text-align: center; min-width: 160px; box-shadow: 0 8px 16px rgba(0, 184, 148, 0.3);">
+                        🧠 Smart Insights
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div style="text-align: center; margin-bottom: 30px;">
+                <a href="#" style="display: inline-block; background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%); color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-size: 16px; font-weight: 600; letter-spacing: 0.5px; box-shadow: 0 15px 25px rgba(108, 92, 231, 0.4); transition: all 0.3s ease; text-transform: uppercase;">
+                    Start Exploring Now
+                </a>
+            </div>
+            
+            <!-- Support Info -->
+            <div style="background: rgba(108, 92, 231, 0.05); border-radius: 12px; padding: 25px; text-align: center; border: 1px solid rgba(108, 92, 231, 0.1);">
+                <p style="color: #4a5568; font-size: 15px; margin: 0 0 10px 0; line-height: 1.6;">
+                    Need help getting started? Our research support team is here for you 24/7.
+                </p>
+                <p style="color: #6c5ce7; font-size: 14px; font-weight: 600; margin: 0;">
+                    📧 contact@dynax.research | 📞 +1 (555) 123-4567
+                </p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div style="background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%); padding: 30px 40px; text-align: center;">
+            <p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin: 0 0 10px 0;">
+                Welcome to the future of collaborative research
+            </p>
+            <p style="color: rgba(255, 255, 255, 0.6); font-size: 12px; margin: 0;">
+                © 2025 Research Platform. All rights reserved. | 
+                <a href="#" style="color: #a29bfe; text-decoration: none;">Privacy Policy</a> | 
+                <a href="#" style="color: #a29bfe; text-decoration: none;">Terms of Service</a>
+            </p>
+        </div>
+    </div>
+    
+    <!-- Floating Background Elements -->
+    <div style="position: fixed; top: 10%; left: 5%; width: 100px; height: 100px; background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: -1;"></div>
+    <div style="position: fixed; top: 70%; right: 10%; width: 150px; height: 150px; background: radial-gradient(circle, rgba(162, 155, 254, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: -1;"></div>
+    <div style="position: fixed; bottom: 20%; left: 15%; width: 80px; height: 80px; background: radial-gradient(circle, rgba(116, 185, 255, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none; z-index: -1;"></div>
+    
+</body>
+</html>

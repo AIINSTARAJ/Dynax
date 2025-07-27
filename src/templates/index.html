@@ -80,6 +80,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -251,14 +255,14 @@
                 </div>
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/JSTOR_wordmark.svg/640px-JSTOR_wordmark.svg.png" alt="ArXiv">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/ArXiv_logo_2022.svg">
                     </div>
                     <h3>ArXiv</h3>
                     <p>Open access archive for scholarly articles in physics, mathematics, and related disciplines</p>
                 </div>
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/JSTOR_wordmark.svg/640px-JSTOR_wordmark.svg.png" alt="IEEE Xplore">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/IEEE_logo.svg" alt="IEEE Xplore">
                     </div>
                     <h3>IEEE Xplore</h3>
                     <p>Digital library providing access to technical literature in engineering and technology</p>
@@ -303,7 +307,7 @@
                             <label for="message">Message</label>
                             <textarea id="message" placeholder="Your message" rows="5" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" class="btn btn-primary" onclick="sendMessage(event)">Send Message</button>
                     </form>
                 </div>
                 <div class="contact-info">
@@ -489,6 +493,40 @@
                 onEnter: animateStats
             });
         });
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            if (!name || !email || !message) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            fetch("admin/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => {
+                if (response.ok) {
+                    toastr.options = {
+                        "positionClass": "toast-bottom-center"
+                    };
+                    toastr.success("Message sent successfully!");
+                    document.getElementsByClassName("contact-form")[0].reset();
+                } else {
+                    return response.text().then(text => { throw new Error(text); });
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            })
+        };
     </script>
 </body>
 </html>

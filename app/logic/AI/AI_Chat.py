@@ -81,6 +81,9 @@ html_prompt = PromptTemplate(
     - Output everything in a basic html that can be rendered in a chatbot
     - The font size should be optimal
     - Optimize style assuming the div will be placed in a #1e1e38 background
+    - Transparent background only.
+    - All style, class and id should have suffix -dynax to avoid the page styling
+    - Everything should be contained in a single div.
 
     Guide for Agent and LLM (Formatting and Content Structure)
         1. Response Type Detection:

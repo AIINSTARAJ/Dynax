@@ -8,7 +8,7 @@ db_path = os.path.join(basedir, '..', 'src', 'assets', 'data', 'data.db')
 try:
     checker = requests.get('https://google.com')
     if checker.status_code == 200:
-        SQLALCHEMY_DATABASE_URI = "postgresql://dynax_towi_user:lcOA6Tz5CYo5YKdtT1eCAU5y9px0H4yE@dpg-d1biebmuk2gs739qhrng-a.oregon-postgres.render.com/dynax_towi"
+        SQLALCHEMY_DATABASE_URI = "postgresql://dynax:mGrpzKGB7DQzw67cVTDuAYEBw4nBePPn@dpg-d221vk7fte5s73867dt0-a.oregon-postgres.render.com/dynax_zz2y?sslmode=require"
 except Exception as E:
     SQLALCHEMY_DATABASE_URI = f"sqlite:///{os.path.abspath(db_path)}"
 
@@ -32,3 +32,9 @@ ENGINE = "JINJA"
 CATEGORIES = "RESEARCH"
 DOCS = "readme"
 PDF_FOLDER = "PDF"
+MAIL_USERNAME = "tomiwakuteyi@gmail.com"
+MAIL_DEFAULT_SENDER = "tomjayray05@gmail.com"
+MAIL_PASSWORD = "ltiu gsao iptm zpjr"
+MAIL_SERVER = 'smtp.gmail.com'
+MAIL_PORT = 587
+MAIL_USE_TLS = True

@@ -244,8 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
         messageDiv.appendChild(messageContent);
         chatMessages.appendChild(messageDiv);
         
-        // Scroll to bottom
-        scrollToBottom();
         
         return messageDiv;
     }
@@ -268,8 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
         typingDiv.appendChild(typingIndicator);
         chatMessages.appendChild(typingDiv);
         
-        // Scroll to bottom
-        scrollToBottom();
+
     }
     
     // Function to remove typing indicator
@@ -390,7 +387,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     typedContent += decodedContent.charAt(i);
                     messageContent.innerHTML = typedContent;
                     i++;
-                    scrollToBottom();
                 } else {
                     clearInterval(typingInterval);
                 }
